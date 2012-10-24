@@ -1,0 +1,9 @@
+/* style rows on mouseover */
+.x-grid-row-over .x-grid-cell-inner {
+    font-weight: bold;
+}
+.x-grid-row td , .x-grid-summary-row td  {
+    
+    font-size: 13px !important;
+    color: #000;
+}

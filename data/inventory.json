@@ -1,0 +1,15 @@
+[{
+	"source": 'Flipkart',
+	"category": 'E-commerce',
+	"channel": 'display rtb',
+	"impressions": 245634,
+	"avgcpm":0.5,
+},
+{
+	"source": 'Learning Ext JS',
+	"category": 'Education',
+	"channel": 'mobile rtb',
+	"impressions": 134534,
+	"avgcpm":0.6,
+}
+]
