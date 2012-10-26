@@ -7,6 +7,7 @@ Ext.define('ImpulseOne.view.creative.HtmlCreative' ,{
     width: 350,
     height: 300,
     modal: true,
+    id: 'htmlCreative',
     //bodyPadding: 15,
     initComponent: function() {
         this.items = [
@@ -37,7 +38,9 @@ Ext.define('ImpulseOne.view.creative.HtmlCreative' ,{
             {
                 xtype: 'combobox',
                 store: ['728x90', '160x600', '120x600', '300x250'] ,
-                fieldLabel: 'Creative Size'
+                fieldLabel: 'Creative Size',
+                forceSelection: true,
+                editable: false,
             }
             ]
         }

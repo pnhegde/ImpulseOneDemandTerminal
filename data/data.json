@@ -1,0 +1,27 @@
+[{
+	"id": '221',
+	"name": 'test seg1',
+	"dp": 'forever',
+	"users": "20",
+	"attrib":"age: 1 user, gender:7 users"
+},
+{
+	"id": '223',
+	"name": 'test seg2',
+	"dp": 'forever',
+	"users": "60",
+	"attrib":"age: 5 users, gender:7 users, key1: 32 users"
+},{
+	"id": '224',
+	"name": 'test seg3',
+	"dp": 'forever',
+	"users": "52",
+	"attrib":"gender:27 users, key2: 21 users"
+},{
+	"id": '227',
+	"name": 'test seg4',
+	"dp": 'forever',
+	"users": "9",
+	"attrib":"age: 5 users, gender:4 users"
+}
+]

@@ -1,0 +1,16 @@
+[
+{
+	"id": '221',
+	"name": 'Apple',
+	"entitytype": 'Corporation',
+	"rmname": "Tim Cook",
+	"rmmobile":"0123456789"
+},
+{
+	"id": '222',
+	"name": 'Google',
+	"entitytype": 'Partnership',
+	"rmname": "Larry Page",
+	"rmmobile":"9876543210"
+}
+]

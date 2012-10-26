@@ -12,6 +12,12 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid' ,{
 		this.store = 'Inventory';
         this.tbar = [
         {
+                xtype: 'box',
+                html: '<b>RTB Inventory Data</b>'
+        },
+        '->',
+        '-',
+        {
             xtype: 'buttongroup',
             items: [
             {
@@ -27,7 +33,8 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid' ,{
                     id: 'excel',
                 }]
             }]
-        } ];
+        },
+        '-' ];
         this.columns = [
         {
         	text: "<h3 style = \'font-size:13px; \'>Source</h3>",
@@ -55,7 +62,7 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid' ,{
         },
         {
         	text: "<h3 style = \'font-size:13px; \'>Avg CPM</h3>",
-        	width: 250,
+        	width: 253,
         	dataIndex: 'avgcpm',
         	sortable: true
         }

@@ -11,7 +11,9 @@
     requires: [
     'ImpulseOne.view.inventory.InventoryGrid',
     'ImpulseOne.view.inventory.InventoryDetail',
-    'ImpulseOne.view.creative.CreativeGrid'
+    'ImpulseOne.view.creative.CreativeGrid',
+    'ImpulseOne.view.data.DataGrid',
+    'ImpulseOne.view.vendor.VendorGrid'
     ],
     style: {"background":"#007"},
     initComponent: function() {
@@ -32,6 +34,7 @@
                     arrowAlign: 'right',
                     width: 140,
                     height: 40,
+                    arrowCls: 'arrow',
                     text: ' <h3 style = \'color:#fff;font-size:13px; \'>User Name</h3>',
                     style: { 'position':'absolute','right':'20px', 'top': '1px','background':'transparent !important'},
                     menu: [{
@@ -50,7 +53,6 @@
             },
             {
                 xtype: 'tabpanel',
-                
                 items: [ 
                 { 
                     title: '<h3 style = \'font-size:14px; \'>Inventory</h3>',
@@ -91,8 +93,7 @@
                     },
                     items:[
                     {
-                        xtype:'box',
-                        html:'data test'
+                        xtype:'datagrid',
                     }
                     ]
                 },
@@ -110,8 +111,7 @@
                     id:'vendors',
                     items:[
                     {
-                        xtype:'box',
-                        html:'Vendor test'
+                        xtype:'vendorgrid',
                     }
                     ]
                 }
@@ -121,7 +121,7 @@
                         window.location.hash = '#'+ tab.id;
                     }
                 },
-                margin: '3 3 3 3',
+                margin: '3 4 3 4',
                 region: 'center'
             },
             {

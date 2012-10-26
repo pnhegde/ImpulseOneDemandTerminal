@@ -23,6 +23,8 @@ Ext.application({
     controllers: [
     'Inventories',
     'Creatives',
+    'Data',
+    'Vendors',
     'Globals'
     ],
     autoCreateViewport : true
