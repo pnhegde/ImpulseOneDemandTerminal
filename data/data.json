@@ -1,27 +1,664 @@
 [{
-	"id": '221',
-	"name": 'test seg1',
-	"dp": 'forever',
-	"users": "20",
-	"attrib":"age: 1 user, gender:7 users"
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
 },
 {
-	"id": '223',
-	"name": 'test seg2',
-	"dp": 'forever',
-	"users": "60",
-	"attrib":"age: 5 users, gender:7 users, key1: 32 users"
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
 },{
-	"id": '224',
-	"name": 'test seg3',
-	"dp": 'forever',
-	"users": "52",
-	"attrib":"gender:27 users, key2: 21 users"
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
 },{
-	"id": '227',
-	"name": 'test seg4',
-	"dp": 'forever',
-	"users": "9",
-	"attrib":"age: 5 users, gender:4 users"
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
+},{
+	"segmentId": '221',
+	"segmentName": 'test seg1',
+	"days": 'forever',
+	"userCount": "20",
+	"attrib":"age: 1 user, gender:7 userCount"
+},
+{
+	"segmentId": '223',
+	"segmentName": 'test seg2',
+	"days": 'forever',
+	"userCount": "60",
+	"attrib":"age: 5 userCount, gender:7 userCount, key1: 32 userCount"
+},{
+	"segmentId": '224',
+	"segmentName": 'test seg3',
+	"days": 'forever',
+	"userCount": "52",
+	"attrib":"gender:27 userCount, key2: 21 userCount"
+},{
+	"segmentId": '227',
+	"segmentName": 'test seg4',
+	"days": 'forever',
+	"userCount": "9",
+	"attrib":"age: 5 userCount, gender:4 userCount"
 }
 ]

@@ -2,14 +2,18 @@ Ext.define('ImpulseOne.controller.Creatives', {
 	extend: 'Ext.app.Controller',
 	stores: ['Creative'],
 	models:['Creative'],
-	views: ['creative.CreativeGrid', 'creative.HtmlCreative'],
+	views: ['creative.CreativeGrid', 'creative.HtmlCreative','creative.UploadCreative'],
 
 	init: function() {
 		this.getCreativeStore().load();
 		this.control ({
 			'creativegrid button menu #htmlcreative': {
 				click: this.editUser 
-			},		
+			},	
+			'creativegrid button menu #creativeupload': {
+				click: this.creativeUpload 
+			},	
+
 			'creativegrid buttongroup #preview': {
 				click:  this.showPreview
 			},
@@ -34,6 +38,9 @@ Ext.define('ImpulseOne.controller.Creatives', {
 		editUser: function() {
 			console.log('Double clicked ') ;
 			Ext.widget('htmlcreative').show();
+		},
+		creativeUpload: function() {
+			Ext.widget('uploadcreative').show();
 		},
 		updateUser: function(button) {
 			console.log('clicked the Save button');

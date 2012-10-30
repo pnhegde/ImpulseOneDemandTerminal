@@ -5,7 +5,7 @@ var filters = {
         local: true,   // defaults to false (remote filtering)
         filters: [{
           type: 'string',
-          dataIndex: 'name'
+          dataIndex: 'creativeName'
         }]
       };
 
@@ -49,8 +49,8 @@ var filters = {
           text: ' + Create HTML Creative'
         },
         {
-          text: ' ^ Upload Flash Creatives',
-          id: 'flashcreative',
+          text: ' ^ Upload Creatives',
+          id: 'creativeupload',
         }]
 
       },
@@ -77,20 +77,20 @@ var filters = {
        text: "Id",
        id: 'col',
        width: 150,
-       dataIndex: 'id',
+       dataIndex: 'creativeId',
        sortable:true,
        filter:[{xtype:"combo"}]
      },
      {
        text: "Name",
        width: 350,
-       dataIndex: 'name',
+       dataIndex: 'creativeName',
        sortable: true
      },
      {
        text: "Tags",
        width: 350,
-       dataIndex: 'tags',
+       dataIndex: 'tagCode',
        editor: {xtype: 'textfield'},
        sortable: true,
        renderer : function(value, metadata) {

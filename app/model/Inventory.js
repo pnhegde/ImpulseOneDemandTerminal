@@ -1,5 +1,5 @@
 Ext.define('ImpulseOne.model.Inventory',{
 	extend: 'Ext.data.Model',
-	fields: ['source','category','channel','impressions',
-	'avgcpm']
+	fields: ['sourceId','device','category','channel','impressions',
+	'avgcpm','exchange']
 });

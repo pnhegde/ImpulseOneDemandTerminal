@@ -1,5 +1,5 @@
 Ext.define('ImpulseOne.model.Vendor',{
 	extend: 'Ext.data.Model',
-	fields: ['id','name','entitytype','rmname',
-	'rmmobile']
+	fields: ['vendorId','accountId','vendorName','entityType','address','city', 'state', 'zip', 'phone', 
+	'mobile', 'fax', 'pan', 'stn', 'ceoName', 'ceoEmail', 'rmName','rmMobile','rmMail']
 });

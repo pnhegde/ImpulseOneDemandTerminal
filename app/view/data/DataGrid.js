@@ -1,18 +1,19 @@
 var filters = {
   ftype: 'filters',
-        // encode and local configuration options defined previously for easier reuse
-        //encode: encode, // json encode the filter query
-        local: true,   // defaults to false (remote filtering)
-        filters: [{
-          type: 'string',
-          dataIndex: 'name'
-        }]
-      };
+  local: true,
+  filters: [{
+    type: 'string',
+    dataIndex: 'segmentName'
+  }]
+};
 
 Ext.define('ImpulseOne.view.data.DataGrid' ,{
   extend: 'Ext.grid.Panel',
   alias : 'widget.datagrid',
+  requires: ['Ext.toolbar.Paging'],
   id: 'dataGrid',
+  flex: 0.6,
+  height: 570,
   features: [filters],
   plugins :  [{  
     ptype: 'cellediting' 
@@ -55,56 +56,64 @@ Ext.define('ImpulseOne.view.data.DataGrid' ,{
     this.columns = [
     {
       text: "ID",
-      id: 'id',
+      id: 'segmentId',
       width: 100,
-      dataIndex: 'id',
+      dataIndex: 'segmentId',
       sortable:true,
       align: 'center'
     },
     {
      text: "Name",
      width: 350,
-     dataIndex: 'name',
+     dataIndex: 'segmentName',
      sortable: true,
      editor: {xtype: 'textfield'},
      align: 'center',
      filterable: true,
      renderer : function(value, metadata) {
-        var display = "Double click to edit";
-        metadata.tdAttr = 'data-qtip="' +display + '"';
-        return value;
-      }
-   },
-   {
-     text: "Data Persistence",
-     width: 200,
-     dataIndex: 'dp',
-     editor: {xtype: 'textfield'},
-     sortable: true,
-     align: 'center',
-     renderer : function(value, metadata) {
-        var display = "Double click to edit";
-        metadata.tdAttr = 'data-qtip="' +display + '"';
-        return value;
-      }
-   },
+      var display = "Double click to edit";
+      metadata.tdAttr = 'data-qtip="' +display + '"';
+      return value;
+    }
+  },
   {
-   text: "#Users in this Group",
-   width: 250,
-   dataIndex: 'users',
+   text: "Data Persistence",
+   width: 200,
+   dataIndex: 'days',
+   editor: {xtype: 'textfield'},
    sortable: true,
-   align: 'center'
- },
- {
-   text: "Attributes",
-   width: 453,
-   dataIndex: 'attrib',
-   sortable: true,
-   align: 'center'
- },
+   align: 'center',
+   renderer : function(value, metadata) {
+    var display = "Double click to edit";
+    metadata.tdAttr = 'data-qtip="' +display + '"';
+    return value;
+  }
+},
+{
+ text: "#Users in this Group",
+ width: 250,
+ dataIndex: 'userCount',
+ sortable: true,
+ align: 'center'
+},
+{
+ text: "Attributes",
+ width: 433,
+ dataIndex: 'attrib',
+ sortable: true,
+ align: 'center'
+},
 
- ];
- this.viewConfig = {
+];
+this.dockedItems = {
+  xtype: 'pagingtoolbar',
+  dock:'top',
+  store: 'Data',
+  displayInfo: true,
+  displayMsg: 'ImpulseOne {0} - {1} of {2}',
+  emptyMsg: "Nenhum contato encontrado."
+};
+this.viewConfig = {
   forceFit: true,
   stripeRows: true
 };

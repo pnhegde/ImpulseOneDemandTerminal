@@ -39,7 +39,7 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid' ,{
         {
         	text: "<h3 style = \'font-size:13px; \'>Source</h3>",
         	width: 350,
-        	dataIndex: 'source',
+        	dataIndex: 'sourceId',
         	sortable:true,
         },
         {

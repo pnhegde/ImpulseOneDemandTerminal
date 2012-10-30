@@ -24,7 +24,8 @@ Ext.define('ImpulseOne.controller.Globals', {
 		var financeWin = Ext.widget ('financewin');
 	},
 	logout: function() {
-		alert('Loggedout');
+		var redirect = 'index.html'; 
+		window.location = redirect;
 		//TODO: Implement logout
 	}
 });

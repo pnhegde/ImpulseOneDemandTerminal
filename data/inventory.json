@@ -1,12 +1,12 @@
 [{
-	"source": 'Flipkart',
+	"sourceId": 'Flipkart',
 	"category": 'E-commerce',
 	"channel": 'display rtb',
 	"impressions": 245634,
 	"avgcpm":0.5,
 },
 {
-	"source": 'Learning Ext JS',
+	"sourceId": 'Learning Ext JS',
 	"category": 'Education',
 	"channel": 'mobile rtb',
 	"impressions": 134534,

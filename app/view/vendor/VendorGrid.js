@@ -3,7 +3,7 @@ var filters = {
   local: true,
   filters: [{
     type: 'string',
-    dataIndex: 'name'
+    dataIndex: 'vendorName'
   }]
 };
 
@@ -28,7 +28,7 @@ Ext.define('ImpulseOne.view.vendor.VendorGrid' ,{
     this.tbar = [
     {
       xtype: 'box',
-      html: '<b style=\'font-size:13px;\'>Direct Advertisers</b>'
+      html: '<b style=\'font-size:13px;\'>Direct Vendors</b>'
     },
     '->',
     '-',
@@ -47,16 +47,16 @@ Ext.define('ImpulseOne.view.vendor.VendorGrid' ,{
     this.columns = [
     {
       text: "ID",
-      id: 'id',
+      id: 'vendorId',
       width: 100,
-      dataIndex: 'id',
+      dataIndex: 'vendorId',
       sortable:true,
       align: 'center'
     },
     {
      text: "Name",
      width: 350,
-     dataIndex: 'name',
+     dataIndex: 'vendorName',
      sortable: true,
      editor: {xtype: 'textfield'},
      align: 'center',
@@ -70,7 +70,7 @@ Ext.define('ImpulseOne.view.vendor.VendorGrid' ,{
   {
    text: "Entity Type",
    width: 250,
-   dataIndex: 'entitytype',
+   dataIndex: 'entityType',
    editor: {xtype: 'textfield'},
    sortable: true,
    align: 'center',
@@ -83,14 +83,14 @@ Ext.define('ImpulseOne.view.vendor.VendorGrid' ,{
 {
  text: "Contact Person",
  width: 300,
- dataIndex: 'rmname',
+ dataIndex: 'rmName',
  sortable: true,
  align: 'center'
 },
 {
  text: "Contact Mobile",
  width: 353,
- dataIndex: 'rmmobile',
+ dataIndex: 'rmMobile',
  sortable: true,
  align: 'center'
 },

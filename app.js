@@ -26,6 +26,10 @@ Ext.application({
     'Data',
     'Vendors',
     'Globals'
+    
     ],
-    autoCreateViewport : true
+    autoCreateViewport : true,
+    // launch: function() {
+    //     Ext.create('ImpulseOne.view.viewport.MainViewport');
+    // }
 });

@@ -15,7 +15,7 @@
     'ImpulseOne.view.data.DataGrid',
     'ImpulseOne.view.vendor.VendorGrid'
     ],
-    style: {"background":"#007"},
+    style: {"background-image":"url(\'data/bg.png\')","width":"100%"},
     initComponent: function() {
         var me = this;
         
@@ -25,8 +25,7 @@
                 xtype: 'container',
                 height: 40,
                 region: 'north',
-                html: "<h2 style=\'font-size:25px;position:absolute;left:10px;color:#fff ;\'> \
-                ImpulseOne Demand Terminal </h2>",
+                html: "<img src=\'data/logo.gif\' \> ",
                 
                 items: [{
                     xtype: 'button',
@@ -55,7 +54,29 @@
                 xtype: 'tabpanel',
                 items: [ 
                 { 
-                    title: '<h3 style = \'font-size:14px; \'>Inventory</h3>',
+                    title: 'Dashboard',
+                    id:'dashboard',
+                    items:[
+                    { 
+                        xtype:'box',
+                        html:'Dashboard'
+
+                    }
+                    ]
+                },
+                
+                { 
+                    title: 'Trafficking',
+                    id:'traffic',
+                    items:[
+                    { 
+                        xtype:'box',
+                        html:'Traffic test'
+
+                    }
+                    ]
+                },{ 
+                    title: 'Inventory',
                     id: 'inventory',
                     layout:'border',
                     items:[
@@ -73,18 +94,7 @@
                     }]
                 },
                 { 
-                    title: '<h3 style = \'font-size:14px; \'>Trafficking</h3>',
-                    id:'traffic',
-                    items:[
-                    { 
-                        xtype:'box',
-                        html:'Traffic test'
-
-                    }
-                    ]
-                },
-                { 
-                    title: '<h3 style = \'font-size:14px; \'>Data</h3>',
+                    title: 'Data',
                     id: 'data',
                     tabConfig: {
                         tooltip: 'tooltip',
@@ -94,11 +104,12 @@
                     items:[
                     {
                         xtype:'datagrid',
+
                     }
                     ]
                 },
                 { 
-                    title: '<h3 style = \'font-size:14px; \'>Creatives</h3>',
+                    title: 'Creatives',
                     id:'creatives',
                     items:[
                     {
@@ -107,7 +118,7 @@
                     ]
                 },
                 { 
-                    title: '<h3 style = \'font-size:14px; \'>Vendors </h3>',
+                    title: 'Vendors',
                     id:'vendors',
                     items:[
                     {
@@ -121,7 +132,7 @@
                         window.location.hash = '#'+ tab.id;
                     }
                 },
-                margin: '3 4 3 4',
+                margin: '0 0 0 0',
                 region: 'center'
             },
             {

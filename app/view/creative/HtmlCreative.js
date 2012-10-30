@@ -3,6 +3,7 @@ Ext.define('ImpulseOne.view.creative.HtmlCreative' ,{
 	alias : 'widget.htmlcreative',
 	title: 'Create HTML Creative',
 	layout: 'fit',
+    closable: false,
     autoShow: true,
     width: 350,
     height: 300,

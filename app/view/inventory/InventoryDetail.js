@@ -11,7 +11,7 @@ Ext.define('ImpulseOne.view.inventory.InventoryDetail' ,{
         {
         	text: "<h3 style = \'font-size:13px; \'>Dimension</h3>",
         	width: 600,
-        	dataIndex: 'source',
+        	dataIndex: 'sourceId',
         	sortable:true,
         },
         {
