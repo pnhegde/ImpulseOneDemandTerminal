@@ -7,44 +7,45 @@ var filters = {
   }]
 };
 
-Ext.define('ImpulseOne.view.data.DataGrid' ,{
+Ext.define('ImpulseOne.view.data.DataGrid', {
   extend: 'Ext.grid.Panel',
-  alias : 'widget.datagrid',
+  alias: 'widget.datagrid',
   requires: ['Ext.toolbar.Paging'],
   id: 'dataGrid',
   flex: 0.6,
   height: 570,
   features: [filters],
-  plugins :  [{  
-    ptype: 'cellediting' 
-  }], 
-  selModel : {  
-    mode: 'MULTI' 
+  plugins: [{
+    ptype: 'cellediting'
+  }],
+  selModel: {
+    mode: 'MULTI'
   },
-  requires: [
-  'Ext.ux.grid.FiltersFeature',
+  requires: ['Ext.ux.grid.FiltersFeature',
   //'Ext.ux.Exporter.Button'
   ],
-
+  plugins: [
+  Ext.create('Ext.grid.plugin.RowEditing', {
+    clicksToEdit: 2
+  })],
+  selType: 'rowmodel',
   initComponent: function() {
     this.store = 'Data';
-    this.tbar = [
-    {
+    this.tbar = [{
       xtype: 'box',
       html: '<b style=\'font-size:13px;\'>Impulse Audiencce Cloud - Managed Audience Groups</b>'
-    },
-    '->',
-    '-',
+    }, '->', '-',
     {
       xtype: 'button',
-      text: '<b>+New Audience Group</b>',
-      id : 'createNewButton'
-    },
-    '-',
+      text: 'New Audience Group',
+      icon: 'data/icons/add.png',
+      id: 'createNewButton'
+    }, '-',
     {
       xtype: 'button',
       id: 'codeButton',
-      text: '<b>Get Code</b>',
+      text: 'Get Code',
+      icon: 'data/icons/download.png',
       disabled: true
 
     },
@@ -53,70 +54,80 @@ Ext.define('ImpulseOne.view.data.DataGrid' ,{
     //   store: 'Data'
     // }
     ];
-    this.columns = [
-    {
+    this.columns = [{
       text: "ID",
-      id: 'segmentId',
-      width: 100,
-      dataIndex: 'segmentId',
-      sortable:true,
+      id: 'id',
+      width:80,
+      dataIndex: 'id',
+      sortable: true,
       align: 'center'
-    },
-    {
-     text: "Name",
-     width: 350,
-     dataIndex: 'segmentName',
-     sortable: true,
-     editor: {xtype: 'textfield'},
-     align: 'center',
-     filterable: true,
-     renderer : function(value, metadata) {
-      var display = "Double click to edit";
-      metadata.tdAttr = 'data-qtip="' +display + '"';
-      return value;
+    }, {
+      text: "Name",
+      flex: 2,
+      dataIndex: 'segmentName',
+      editor: {
+        xtype: 'textfield',
+        allowBlank: false
+      },
+      sortable: true,
+      align: 'center',
+      filterable: true,
+      //  renderer : function(value, metadata) {
+      //   var display = "Double click to edit";
+      //   metadata.tdAttr = 'data-qtip="' +display + '"';
+      //   return value;
+      // }
+    }, {
+      text: "Data Persistence",
+      flex: 1,
+      dataIndex: 'days',
+      //editor: {xtype: 'textfield'},
+      sortable: true,
+      align: 'center',
+      editor: {
+        xtype: 'numberfield',
+        minValue: 0,
+        allowBlank: false
+      }
+      //  renderer : function(value, metadata) {
+      //   var display = "Double click to edit";
+      //   metadata.tdAttr = 'data-qtip="' +display + '"';
+      //   return value;
+      // }
+    }, {
+      text: "#Users in this Group",
+      flex: 1,
+      dataIndex: 'userCount',
+      sortable: true,
+      align: 'center'
+    }, {
+      text: "Date",
+      flex: 2,
+      dataIndex: 'date',
+      sortable: true,
+      align: 'center'
+    }, {
+      text: "Piggy Back",
+      flex: 1,
+      dataIndex: 'piggyback',
+      sortable: true,
+      align: 'center',
+      hidden: true
     }
-  },
-  {
-   text: "Data Persistence",
-   width: 200,
-   dataIndex: 'days',
-   editor: {xtype: 'textfield'},
-   sortable: true,
-   align: 'center',
-   renderer : function(value, metadata) {
-    var display = "Double click to edit";
-    metadata.tdAttr = 'data-qtip="' +display + '"';
-    return value;
-  }
-},
-{
- text: "#Users in this Group",
- width: 250,
- dataIndex: 'userCount',
- sortable: true,
- align: 'center'
-},
-{
- text: "Attributes",
- width: 433,
- dataIndex: 'attrib',
- sortable: true,
- align: 'center'
-},
 
-];
-this.dockedItems = {
-  xtype: 'pagingtoolbar',
-  dock:'top',
-  store: 'Data',
-  displayInfo: true,
-  displayMsg: 'ImpulseOne {0} - {1} of {2}',
-  emptyMsg: "Nenhum contato encontrado."
-};
-this.viewConfig = {
-  forceFit: true,
-  stripeRows: true
-};
-this.callParent(arguments);
-}
+    ];
+    this.dockedItems = {
+      xtype: 'pagingtoolbar',
+      dock: 'bottom',
+      store: 'Data',
+      displayInfo: true,
+      displayMsg: 'ImpulseOne {0} - {1} of {2}',
+      emptyMsg: "ImpulseOne"
+    };
+    this.viewConfig = {
+      forceFit: true,
+      stripeRows: true
+    };
+    this.callParent(arguments);
+  }
 });

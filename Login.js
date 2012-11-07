@@ -1,4 +1,6 @@
-
+function Redirect(){
+    window.location = 'Home.php';
+}
 Ext.onReady(function(){
     Ext.QuickTips.init();
     var login = new Ext.FormPanel({ 
@@ -24,19 +26,14 @@ Ext.onReady(function(){
             handler:function(){
                 login.getForm().submit({     
                     method:'GET', 
-                    waitTitle:'Connecting', 
-                    waitMsg:'Sending data...',
+                    waitTitle:'Connecting...', 
+                    waitMsg:'Sending Data to the server...',
                     success:function(){ 
-                     //  Ext.Msg.alert('Status', 'Login Successful!', function(btn, text){
-                         //if (btn == 'ok'){
-                          var redirect = 'Home.php'; 
-                          window.location = redirect;
-                      //}
-                  //});
-                   },
+                        Redirect();
+                    },
 
-                   failure:function(form, action){
-                    if(action.failureType == 'server'){ 
+                    failure:function(form, action){
+                        if(action.failureType == 'server'){ 
                         //obj = Ext.util.JSON.decode(action.response.responseText); 
                         Ext.Msg.alert('Login Failed! Try again'); 
                     }else{ 
@@ -45,9 +42,9 @@ Ext.onReady(function(){
                     login.getForm().reset(); 
                 } 
             }); 
-} 
-}] 
-});
+            } 
+        }] 
+    });
 
 var win = new Ext.Window({
     layout:'fit',

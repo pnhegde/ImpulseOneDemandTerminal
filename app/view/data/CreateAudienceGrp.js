@@ -21,7 +21,7 @@ Ext.define('ImpulseOne.view.data.CreateAudienceGrp' ,{
             items: [
             {
                 xtype: 'textfield',
-                name : 'grpname',
+                name : 'segmentName',
                 fieldLabel: 'Group Name'
             },
             {
@@ -31,8 +31,8 @@ Ext.define('ImpulseOne.view.data.CreateAudienceGrp' ,{
                 bodyPadding: 10
             },
             {
-                xtype: 'textfield',
-                name : 'autoremovedays',
+                xtype: 'numberfield',
+                name : 'days',
                 fieldLabel: 'No of days'
             }]
         }

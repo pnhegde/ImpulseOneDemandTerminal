@@ -1,13 +1,13 @@
-Ext.define('ImpulseOne.view.vendor.CreateVendor', {
+Ext.define('ImpulseOne.view.vendor.EditVendor', {
     extend: 'Ext.window.Window',
-    alias: 'widget.createvendor',
+    alias: 'widget.editvendor',
     layout: 'fit',
-    title: 'Create a new Vendor',
+    title: 'Edit Vendor',
     autoShow: true,
     width: 400,
     height: 440,
     modal: true,
-    id: 'createvendor',
+    id: 'editvendor',
 
     initComponent: function() {
         this.items = [{
@@ -15,7 +15,7 @@ Ext.define('ImpulseOne.view.vendor.CreateVendor', {
             bodyPadding: 10,
             layout: 'anchor',
             autoScroll: true,
-            id: 'newvendorform',
+            id: 'editvendorform',
             defaults: {
                 anchor: '100%',
                 labelWidth: 150
@@ -32,8 +32,7 @@ Ext.define('ImpulseOne.view.vendor.CreateVendor', {
                 fieldLabel: 'Vendor Type',
                 forceSelection: true,
                 allowBlank: false,
-                editable: false,
-                value: 'Individual'
+                editable: false
             }, {
                 name: 'address',
                 fieldLabel: 'Address'
@@ -48,8 +47,7 @@ Ext.define('ImpulseOne.view.vendor.CreateVendor', {
                 name: 'country',
                 store: ['India', 'South Africa', 'Kenya', 'UAE', 'Malaysia', 'Indonesia', 'Singapore', 'Hong Kong', 'South Korea', 'Vietnam', 'Thailand', 'Phillipines', 'Japan'],
                 fieldLabel: 'Country',
-                editable: false,
-                value : 'India'
+                editable: false
             }, {
                 name: 'zip',
                 fieldLabel: 'Zip'
@@ -78,8 +76,8 @@ Ext.define('ImpulseOne.view.vendor.CreateVendor', {
         }];
 
         this.buttons = [{
-            text: 'Save',
-            action: 'save'
+            text: 'Apply',
+            action: 'apply'
         }, {
             text: 'Cancel',
             scope: this,

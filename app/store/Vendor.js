@@ -1,15 +1,17 @@
 Ext.define('ImpulseOne.store.Vendor', {
 	extend: 'Ext.data.Store',
 	model: 'ImpulseOne.model.Vendor',
-	autoLoad: true,
-	autoSync: true,
-	pageSize: 50,
+	buffered: true,
+	//autoLoad: true,
+	//autoSync: true,
+	pageSize: 200,
+	//autoLoad: {start: 0, limit: 200},
 	proxy: {
 		type: 'ajax',
 		api: {
 			read: 'https://user.impulse01.com/newServer.php?do=get_all_vendors',
-			create: 'https://user.impulse01.com/newServer.php?do=create_new_vendor'
-			//update: 'https://user.impulse01.com/newServer.php?do=edit_vendor'
+			create: 'https://user.impulse01.com/newServer.php?do=create_new_vendor',
+			update: 'https://user.impulse01.com/newServer.php?do=edit_vendor'
 			//destroy: 'app.php/users/destroy'
 		},
 		reader: {
@@ -20,7 +22,8 @@ Ext.define('ImpulseOne.store.Vendor', {
 		},
 		writer: {
 			type: 'json',
-			writeAllFields: false
+			writeAllFields: false,
+			root: 'data'
 		}
 	}
 });

@@ -1,6 +1,6 @@
 Ext.define('ImpulseOne.view.creative.UploadCreative', {
   extend: 'Ext.window.Window',
-  alias : 'widget.uploadcreative',
+  alias: 'widget.uploadcreative',
   title: 'Creative upload',
   width: 410,
   layout: 'anchor',
@@ -8,8 +8,9 @@ Ext.define('ImpulseOne.view.creative.UploadCreative', {
   autoHeight: true,
   closable: false,
   modal: true,
+  id: 'uploadCreative',
 
-  initComponent: function(){
+  initComponent: function() {
     this.items = [
     new Ext.form.FormPanel({
       fileUpload: true,
@@ -18,38 +19,32 @@ Ext.define('ImpulseOne.view.creative.UploadCreative', {
       autoHeight: true,
       bodyStyle: 'padding: 10px 10px 0 10px;',
 
-      items: [
-      {
+      items: [{
         xtype: 'fileuploadfield',
         id: 'form-file',
         emptyText: 'Select your image',
         hideLabel: true,
         name: 'uploadfile'
-      },
-      {
+      }, {
         xtype: 'textfield',
         name: 'oid',
         hidden: true
       }]
-    })
-    ];
+    })];
 
     this.fbar = {
       xtype: 'toolbar',
-      items: [
-      {
+      items: [{
         xtype: 'button',
         text: 'Ok',
-        action: 'login',
-        id: ''
-      },
-      {
+        action: 'upload'
+      }, {
         xtype: 'button',
         text: 'Cancel',
         action: 'cancel',
-        id: ''
-      }
-      ]
+        scope: this,
+        handler: this.close
+      }]
     };
     this.callParent(arguments);
   }

@@ -11,3 +11,10 @@
 .arrow {
 	color: #fff !important;
 }
+.x-action-col-icon img.icon-preview {
+    background-image: url('../../../data/icons/preview.gif') !important;
+}
+/* custom icon for the "alert" ActionColumn icon */
+.x-action-col-icon img.icon-archive {
+    background-image: url('../../../data/icons/archive.png') !important;
+}
