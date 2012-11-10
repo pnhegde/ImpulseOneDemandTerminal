@@ -116,12 +116,14 @@ Ext.define('ImpulseOne.view.Viewport', {
                 },
                 margin: '0 0 0 0',
                 region: 'center'
-            }, {
-                xtype: 'box',
+            }, 
+            {
+                xtype: 'toolbar',
                 height: 16,
                 region: 'south',
-                html: "<h4 style=\'font-size:10px;position:absolute;left:600px;color:#fff; \'>\
-                Copyright (C) 2012 Impulse Media Pvt.Ltd </h4>"
+                // html: '<>'
+                // "<h4 style=\'font-size:10px;position:absolute;left:600px;color:#fff; \'>\
+                // Copyright (C) 2012 Impulse Media Pvt.Ltd </h4>"
             }
 
             ]

@@ -22,24 +22,28 @@ Ext.define('ImpulseOne.view.creative.HtmlCreative' ,{
             items: [
             {
                 xtype: 'textfield',
-                name : 'name',
+                name : 'creativeName',
                 fieldLabel: 'Name'
             },
             {
                 xtype: 'textarea',
-                name : 'code',
+                name : 'tagCode',
                 fieldLabel: 'Ad Code',
                 emptyText: 'Please replace the click tracker macro with [CLICK_MACRO]'
             },
             {
-                xtype: 'textfield',
-                name : 'tags',
-                fieldLabel: 'Tags (Separated by commas)'
+                xtype: 'combobox',
+                name: 'width',
+                store: ['728','160','120','300'],
+                fieldLabel: 'Width',
+                forceSelection: true,
+                editable: false,
             },
             {
                 xtype: 'combobox',
-                store: ['728x90', '160x600', '120x600', '300x250'] ,
-                fieldLabel: 'Creative Size',
+                name: 'height',
+                store: ['90', '600', '600', '250'] ,
+                fieldLabel: 'Height',
                 forceSelection: true,
                 editable: false,
             }

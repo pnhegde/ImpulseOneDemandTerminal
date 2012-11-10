@@ -59,10 +59,10 @@ Ext.define('ImpulseOne.controller.Vendors', {
 		f.getForm().loadRecord(record);
 	},
 	editVendorApply: function(button) {
-		wi = button.up('window');
-		form1 = wi.down('form');
-		record1 = form1.getRecord();
-		values1 = form1.getForm().getValues();
+		var wi = button.up('window');
+		var form1 = wi.down('form');
+		var record1 = form1.getRecord();
+		var values1 = form1.getForm().getValues();
 		record1.set(values1);
 
 		this.getVendorStore().sync();

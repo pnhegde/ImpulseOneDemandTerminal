@@ -6,16 +6,21 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.inventorygrid',
     id: 'inventoryGrid',
+    columnLines: true,
     style: {
         'font': '14px !important'
     },
     loadMask: true,
-    verticalScrollerType: 'paginggridscroller',
+    verticalScroller: {
+        xtype: 'paginggridscroller',
+    },
+
     invalidateScrollerOnRefresh: false,
     disableSelection: true,
 
     initComponent: function() {
         this.store = 'Inventory';
+        var me = this;
         this.tbar = [{
             xtype: 'box',
             html: '<b>Filters</b>'
@@ -93,46 +98,58 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
                 }, {
                     text: 'Microsoft Excel',
                     id: 'excel',
+                    handler: function() {
+                        console.log(this);
+                        document.location = 'data:application/vnd.ms-excel;base64' + Base64.encode(me.getExcelXml());
+                    }
                 }]
             }]
         }, '-'];
-        this.columns = [{
+        this.columns = [
+        {
+            text: " Id ",
+            width: 70,
+            dataIndex: 'sourceId',
+            sortable: true,
+
+        },{
             text: " Domain ",
+            style: {'font-weight':'bold','color':'green'},
             flex: 2,
             dataIndex: 'domain',
             sortable: true,
-            align: 'center'
+
         }, {
             text: " Category ",
             flex: 2,
             dataIndex: 'category',
             sortable: true,
-            align: 'center'
+
         }, {
             text: " Channel",
             flex: 2,
             dataIndex: 'channel',
             sortable: true,
-            align: 'center'
+
         }, {
             text: " Exchange",
             flex: 2,
             dataIndex: 'exchange',
             sortable: true,
-            align: 'center'
+
         }, {
-            text: "mpressions",
-            flex: 2,
+            text: "Impressions",
+            flex: 1,
             dataIndex: 'impressions',
             sortable: true,
-            hidden: true,
-            align: 'center'
+            
+
         }, {
             text: "Avg CPM",
             flex: 1,
             dataIndex: 'avgcpm',
             sortable: true,
-            align: 'center'
+
         }];
         this.viewConfig = {
             forceFit: true,

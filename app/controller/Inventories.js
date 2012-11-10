@@ -6,17 +6,18 @@ Ext.define('ImpulseOne.controller.Inventories', {
 
 	init: function() {
 		inventoryStore = this.getInventoryStore();
-		inventoryStore.load();
-			// params: {
-			// 	start: 0,
-			// 	limit: 50,
-			// 	channel: 'MobileWeb'
-			// }
-		
+		//inventoryStore.load();
+		//inventoryStore.guaranteeRange(0, 99);
+
+		// params: {
+		// 	start: 0,
+		// 	limit: 50,
+		// 	channel: 'MobileWeb'
+		// }
 		//store.load();
 		// inventoryStore.prefetch({
 		// 	start: 0,
-		// 	limit: 200,
+		// 	limit: 100,
 		// 	callback: function() {
 		// 		inventoryStore.guaranteeRange(0, 99);
 		// 	}
@@ -36,8 +37,6 @@ Ext.define('ImpulseOne.controller.Inventories', {
 	applyFilter: function(button) {
 		inventoryStore.load({
 			params: {
-				start: 0,
-				limit: 50,
 				channel: Ext.getCmp('ChannelFilter').getValue(),
 				filter: Ext.getCmp('DomainFilter').getValue(),
 				exchange: Ext.getCmp('ExchangeFilter').getValue(),

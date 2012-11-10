@@ -1,26 +1,21 @@
 Ext.define('ImpulseOne.store.Inventory', {
 	extend: 'Ext.data.Store',
 	model: 'ImpulseOne.model.Inventory',
+	pageSize: 100,
 	buffered: true,
-	remoteSort: true,
-	pageSize: 200,
+	autoLoad: true,
 	proxy: {
 		type: 'ajax',
-		// buildRequest: function(operation) {
-		// 	request = this.callParent(arguments);
-		// 	console.log(request);
-		// 	request.jsonData = request.params;
-		// 	delete request.params;
-		// 	return request;
-		// },
 		api: {
 			read: 'https://user.impulse01.com/newServer.php?do=getInventory'
 		},
-		simpleSortMode: true,
 		reader: {
 			root: 'data',
-			successProperty: 'success'
-		}
+			type: 'json',
+			successProperty: 'success',
+			totalProperty: 'totalCount'
+		},
+		simpleSortMode: true
 	}
 
 });

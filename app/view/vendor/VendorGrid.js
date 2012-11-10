@@ -11,6 +11,7 @@ Ext.define('ImpulseOne.view.vendor.VendorGrid', {
   extend: 'Ext.grid.Panel',
   alias: 'widget.vendorgrid',
   id: 'vendorGrid',
+  columnLines: true,
   // loadMask: true,
   features: [filters],
   plugins: [{
@@ -51,7 +52,7 @@ Ext.define('ImpulseOne.view.vendor.VendorGrid', {
     }, '-'];
     this.columns = [{
       text: "ID",
-      flex: 1,
+      width:70,
       dataIndex: 'id',
       sortable: true,
       align: 'center'

@@ -12,6 +12,7 @@ Ext.define('ImpulseOne.view.data.DataGrid', {
   alias: 'widget.datagrid',
   requires: ['Ext.toolbar.Paging'],
   id: 'dataGrid',
+  columnLines: true,
   flex: 0.6,
   height: 570,
   features: [filters],

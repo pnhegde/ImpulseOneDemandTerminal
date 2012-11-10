@@ -18,9 +18,9 @@ Ext.define('ImpulseOne.model.Creative', {
 			case "4":
 				return "HTML Tag";
 				break;
-			default:
-				return "Unknown";
-			}
+			// default:
+			// 	return "Unknown";
+			 }
 		}
 	}, 'creativeName', 'filePath', 'height', 'width', 'tagCode',
 	{
@@ -37,17 +37,19 @@ Ext.define('ImpulseOne.model.Creative', {
 			case "3":
 				return "Archived";
 				break;
-			default:
-				return "Unknown";
-			}
+			// default:
+			// 	return "Unknown";
+			 }
 		}
-	}, {
-		name: 'size',
-		type: 'string',
-		convert: function(value, record) {
-			return record.get('height') + ' x ' + record.get('width')
-		}
-	}],
+	 },
+	 // {
+	// 	name: 'size',
+	// 	type: 'string',
+	// 	convert: function(value, record) {
+	// 		return record.get('height') + ' x ' + record.get('width')
+	// 	}
+	// }
+	],
 
 	idProperty: 'creativeId'
 });

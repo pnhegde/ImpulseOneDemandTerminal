@@ -16,7 +16,7 @@ Ext.define('ImpulseOne.controller.Creatives', {
 		});
 		this.control({
 			'creativegrid button menu #htmlcreative': {
-				click: this.editUser
+				click: this.newHtmlCreativeSelected
 			},
 			'creativegrid button menu #creativeupload': {
 				click: this.creativeUpload
@@ -31,7 +31,7 @@ Ext.define('ImpulseOne.controller.Creatives', {
 				click: this.editHtmlCreative
 			},
 			'htmlcreative button[text="Save"]': {
-				click: this.updateUser
+				click: this.newHtmlCreative
 			},
 			'uploadcreative button[action=upload]': {
 				click: this.submitFileupload
@@ -39,18 +39,18 @@ Ext.define('ImpulseOne.controller.Creatives', {
 		});
 
 	},
-	editUser: function() {
-		console.log('Double clicked ');
+	newHtmlCreativeSelected: function() {
 		Ext.widget('htmlcreative').show();
 	},
 	enableEdit: function(grid, row) {
-		var b = Ext.getCmp('HtmlEditButton')
-		if(row.data['creativeType'] == "Image" && b.disabled) {
+		var b = Ext.getCmp('HtmlEditButton');
+		if(row.data['creativeType'] == "HTML Tag" && b.disabled) {
 			b.enable();
 			console.log(row);
 		}
 	},
 	editHtmlCreative: function(button) {
+		var me = this;
 		var w = Ext.create('Ext.window.Window', {
 			title: 'Edit HTML Creative',
 			width: 300,
@@ -69,26 +69,51 @@ Ext.define('ImpulseOne.controller.Creatives', {
 				},
 				items: [{
 					xtype: 'textarea',
-					value: button.up('creativegrid').getSelectionModel().getSelection()[0].data['tagCode']
+					name: 'tagCode',
+					//value: button.up('creativegrid').getSelectionModel().getSelection()[0].data['tagCode']
 				}],
 				buttons: [{
 					text: 'Save',
-					action: 'saveHtml'
+					action: 'saveHtml',
+					handler: function(button) {
+						var wi = button.up('window');
+						var form1 = wi.down('form');
+						var record1 = form1.getRecord();
+						var values1 = form1.getForm().getValues();
+						record1.set(values1);
+						console.log(record1);
+						me.getCreativeStore().sync();
+						me.getCreativeStore().load();
+						wi.close();
+					}
 				}, {
 					text: 'Cancel',
 					scope: this,
-					handler: function(){ w.close();}
+					handler: function() {
+						w.close();
+					}
 				}]
 			}]
 		});
 		w.show();
+		w.down('form').getForm().loadRecord(button.up('creativegrid').getSelectionModel().getSelection()[0]);
+
 	},
 	creativeUpload: function() {
 		Ext.widget('uploadcreative').show();
 	},
-	updateUser: function(button) {
-		console.log('clicked the Save button');
-		Ext.getCmp('htmlCreative').close;
+	newHtmlCreative: function(button) {
+		var win = button.up('window');
+		var form = win.down('form');
+		var record = form.getRecord();
+		var values = form.getValues();
+
+		record = Ext.create('ImpulseOne.model.Creative');
+		record.set(values);
+		this.getCreativeStore().add(record);
+		this.getCreativeStore().sync();
+		this.getCreativeStore().load();
+		win.close();
 	},
 	showPreview: function(view, cell, row, col, e) {
 		//var grid = button.up('creativegrid');
