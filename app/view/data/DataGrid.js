@@ -12,9 +12,9 @@ Ext.define('ImpulseOne.view.data.DataGrid', {
   alias: 'widget.datagrid',
   requires: ['Ext.toolbar.Paging'],
   id: 'dataGrid',
-  columnLines: true,
-  flex: 0.6,
+  //columnLines: true,
   height: 570,
+  loadMask: true,
   features: [filters],
   plugins: [{
     ptype: 'cellediting'
@@ -61,17 +61,18 @@ Ext.define('ImpulseOne.view.data.DataGrid', {
       width:80,
       dataIndex: 'id',
       sortable: true,
-      align: 'center'
+      
     }, {
       text: "Name",
       flex: 2,
       dataIndex: 'segmentName',
+      tdCls : 'custom-inventory-grid-domain',
       editor: {
         xtype: 'textfield',
         allowBlank: false
       },
       sortable: true,
-      align: 'center',
+      
       filterable: true,
       //  renderer : function(value, metadata) {
       //   var display = "Double click to edit";
@@ -84,7 +85,7 @@ Ext.define('ImpulseOne.view.data.DataGrid', {
       dataIndex: 'days',
       //editor: {xtype: 'textfield'},
       sortable: true,
-      align: 'center',
+      
       editor: {
         xtype: 'numberfield',
         minValue: 0,
@@ -100,31 +101,31 @@ Ext.define('ImpulseOne.view.data.DataGrid', {
       flex: 1,
       dataIndex: 'userCount',
       sortable: true,
-      align: 'center'
+      
     }, {
       text: "Date",
       flex: 2,
       dataIndex: 'date',
       sortable: true,
-      align: 'center'
+      
     }, {
       text: "Piggy Back",
       flex: 1,
       dataIndex: 'piggyback',
       sortable: true,
-      align: 'center',
+      
       hidden: true
     }
 
     ];
-    this.dockedItems = {
-      xtype: 'pagingtoolbar',
-      dock: 'bottom',
-      store: 'Data',
-      displayInfo: true,
-      displayMsg: 'ImpulseOne {0} - {1} of {2}',
-      emptyMsg: "ImpulseOne"
-    };
+    // this.dockedItems = {
+    //   xtype: 'pagingtoolbar',
+    //   dock: 'bottom',
+    //   store: 'Data',
+    //   displayInfo: true,
+    //   displayMsg: 'ImpulseOne {0} - {1} of {2}',
+    //   emptyMsg: "ImpulseOne"
+    // };
     this.viewConfig = {
       forceFit: true,
       stripeRows: true

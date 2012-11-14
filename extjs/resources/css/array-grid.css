@@ -1,12 +1,12 @@
 /* style rows on mouseover */
-.x-grid-row-over .x-grid-cell-inner {
+/*.x-grid-row-over .x-grid-cell-inner {
     font-weight: bold;
     color: #007;
 }
 .x-grid-row td , .x-grid-summary-row td  {
-    
+
     color: #000;
-}
+}*/
 .arrow {
 	color: #fff !important;
 }
@@ -16,4 +16,38 @@
 /* custom icon for the "alert" ActionColumn icon */
 .x-action-col-icon img.icon-archive {
     background-image: url('../../../data/icons/archive.png') !important;
+}
+
+.custom-inventory-grid-domain { 
+    color: #080 !important; 
+    font-weight: bold !important;
+}
+.custom-inventory-grid-category {
+   color: #009 !important; 
+
+}
+.active-status .custom-creative-grid {
+	color: #080 !important;
+}
+.pending-status .custom-creative-grid {
+	color: #F00 !important;
+}
+.archive-status .custom-creative-grid {
+	color: #008 !important;
+}
+.combobox-style {
+    font-size: 11px !important;
+}
+
+.verified-true
+{
+   background:url(../../../data/icons/true.jpg) no-repeat !important;
+}
+.verified-false
+{
+   background:url(../../../data/icons/false.jpg) no-repeat !important;
+}
+.padding-img
+{
+ width:18px;height:0px;
 }

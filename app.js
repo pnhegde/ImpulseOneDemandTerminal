@@ -38,8 +38,9 @@ Ext.application({
     'Creatives',
     'Data',
     'Vendors',
-    'Globals'
-    
+    'Globals',
+    'ExchangeGraphs',
+    'CampaignGraphs'
     ],
     launch: function() {  // Setup a task to fadeOut the splashscreen
         var task = new Ext.util.DelayedTask(function() {

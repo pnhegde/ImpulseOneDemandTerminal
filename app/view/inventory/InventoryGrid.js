@@ -6,10 +6,7 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.inventorygrid',
     id: 'inventoryGrid',
-    columnLines: true,
-    style: {
-        'font': '14px !important'
-    },
+    //columnLines: true,
     loadMask: true,
     verticalScroller: {
         xtype: 'paginggridscroller',
@@ -17,6 +14,7 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
 
     invalidateScrollerOnRefresh: false,
     disableSelection: true,
+    remoteSort: true,
 
     initComponent: function() {
         this.store = 'Inventory';
@@ -33,6 +31,7 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
         }, {
             xtype: 'combobox',
             name: 'channelFilter',
+            style: {'font-size':'11px'},
             store: ['MobileWeb', 'MobileApp', 'DesktopDisplay', 'DesktopVideo'],
             emptyText: 'Channel',
             editable: false,
@@ -42,6 +41,7 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
         }, {
             xtype: 'combobox',
             name: 'exchangeFilter',
+            itemCls: 'combobox-style',
             store: ['Google AdX', 'OpenX', 'Rubicon', 'Pubmatics', 'SpotXchange'],
             emptyText: 'Exchange',
             editable: true,
@@ -49,6 +49,24 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
             typeAhead: true,
             multiSelect: true,
             id: 'ExchangeFilter'
+        },
+        {
+            xtype: 'combobox',
+            name: 'countryFilter',
+            style: {'font-size':'11px'},
+            valueField: 'countryId',
+            displayField: 'countryName',
+            mode: 'local',
+            store: new Ext.data.SimpleStore({ 
+                fields:['countryId','countryName'], 
+                data: [['IN','India'], ['SA','South Africa'], ['KE','Kenya'], ['AE', 'UAE'], ['MY', 'Malaysia'], [ 'ID','Indonesia'], ['SG','Singapore'], ['HK', 'Hong Kong'], ['SK','South Korea'], ['VN','Vietnam'], ['TH','Thailand'], ['PH','Phillipines'], ['JP','Japan']],
+                autoLoad: false
+            }),
+            emptyText: 'Country',
+            editable: false,
+            typeAhead: true,
+            multiSelect: true,
+            id: 'CountryFilter'
         }, {
             xtype: 'combobox',
             width: 220,
@@ -58,7 +76,7 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
             editable: true,
             typeAhead: true,
             multiSelect: true,
-            valueField: 'categoryName',
+            valueField: 'catId',
             displayField: 'categoryName',
             id: 'CategoryFilter',
             store: {
@@ -81,7 +99,8 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
             xtype: 'button',
             text: 'Search',
             icon: 'data/icons/search.png',
-            id: 'applySearch'
+            id: 'applySearch',
+            // store: 'Inventory'
         },
 
         '->', '-',
@@ -98,10 +117,9 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
                 }, {
                     text: 'Microsoft Excel',
                     id: 'excel',
-                    handler: function() {
-                        console.log(this);
-                        document.location = 'data:application/vnd.ms-excel;base64' + Base64.encode(me.getExcelXml());
-                    }
+                    // handler: function() {
+                    //     document.location = 'data:application/vnd.ms-excel;base64,' + Base64.encode(me.getExcelXml());
+                    // }
                 }]
             }]
         }, '-'];
@@ -110,54 +128,84 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
             text: " Id ",
             width: 70,
             dataIndex: 'sourceId',
-            sortable: true,
+            sortable: false,
 
         },{
             text: " Domain ",
-            style: {'font-weight':'bold','color':'green'},
-            flex: 2,
+            //style: {'font-weight':'bold','color':'green'},
+            tdCls : 'custom-inventory-grid-domain',
+            flex: 1.5,
             dataIndex: 'domain',
-            sortable: true,
+            // renderer: function(value) {
+            //     return '<a href="http://'+value+'">'+value+'</a>';
+            // },
+            sortable: false,
 
         }, {
             text: " Category ",
-            flex: 2,
+            flex: 1,
+            tdCls : 'custom-inventory-grid-category',
             dataIndex: 'category',
-            sortable: true,
+            sortable: false,
 
-        }, {
-            text: " Channel",
-            flex: 2,
-            dataIndex: 'channel',
-            sortable: true,
+        },
+        {
+            text: " Verified",
+            flex: 0.4,
+            dataIndex: 'manuallyVerified',
+            renderer: function(value, metaData, record, rowIndex, colIndex, store) {
+                switch (value) {
+                 case 'Y':
+                 metaData.css = 'verified-true';
+                 icon = 'data/icons/true.jpg';
+                 break;
+                 case 'N':
+                 metaData.css = 'verified-false';
+                 icon = 'data/icons/false.jpg';
+                 break;
+             }
+             return '<img src="'+icon+'" />';
+         }
+     }, {
+        text: " Channel",
+        flex: 0.8,
+        dataIndex: 'channel',
+        sortable: false,
 
-        }, {
-            text: " Exchange",
-            flex: 2,
-            dataIndex: 'exchange',
-            sortable: true,
+    }, {
+        text: " Exchange",
+        flex: 0.8,
+        dataIndex: 'exchange',
+        sortable: false,
 
-        }, {
-            text: "Impressions",
-            flex: 1,
-            dataIndex: 'impressions',
-            sortable: true,
-            
+    }, {
+        text: " Country",
+        flex: 0.5,
+        dataIndex: 'country',
+        sortable: false,
 
-        }, {
-            text: "Avg CPM",
-            flex: 1,
-            dataIndex: 'avgcpm',
-            sortable: true,
-
-        }];
-        this.viewConfig = {
-            forceFit: true,
-            trackOver: false,
-            singleSelect: true
-        };
-        this.features = {
-            ftype: 'filters',
+    },{
+        text: "Impressions",
+        flex: 1,
+        dataIndex: 'impressions',
+        sortable: true
+    }, {
+        text: "Avg CPM",
+        flex: 0.7,
+        dataIndex: 'cpm',
+        sortable: false,
+    },{
+        text: "Date Added",
+        flex: 1,
+        dataIndex: 'date_added'
+    }];
+    this.viewConfig = {
+        forceFit: true,
+        trackOver: false,
+        singleSelect: true
+    };
+    this.features = {
+        ftype: 'filters',
             updateBuffer: 1000 // trigger load after a 1 second timer
         },
 

@@ -11,7 +11,7 @@ Ext.define('ImpulseOne.view.creative.CreativeGrid', {
   extend: 'Ext.grid.Panel',
   alias: 'widget.creativegrid',
   id: 'creative',
-  columnLines: true,
+  //columnLines: true,
   features: [filters],
   plugins: [{
     ptype: 'cellediting'
@@ -31,6 +31,11 @@ Ext.define('ImpulseOne.view.creative.CreativeGrid', {
       html: '<b style=\'font-size:13px;\'>Banners </b>'
     }, '->', '-',
     {
+      xtype: 'checkboxfield',
+      fieldLabel: 'Show Archived',
+      // icon: 'data/icons/archive.png',
+      checked: false
+    },  '-' ,  {
       xtype: 'button',
       text: 'Edit',
       icon: 'data/icons/edit.png',
@@ -72,7 +77,7 @@ Ext.define('ImpulseOne.view.creative.CreativeGrid', {
       width: 80,
       dataIndex: 'creativeId',
       sortable: true,
-      align: 'center',
+      align: 'left',
       filter: [{
         xtype: "text"
       }]
@@ -80,32 +85,34 @@ Ext.define('ImpulseOne.view.creative.CreativeGrid', {
       header: "Name",
       flex: 2,
       dataIndex: 'creativeName',
-      align: 'center',
+      tdCls : 'custom-inventory-grid-domain',
+      align: 'left',
       sortable: true
     }, {
       header: "Creative Type",
       flex: 2,
       dataIndex: 'creativeType',
-      align: 'center',
+      align: 'left',
       sortable: true
     }, {
       header: "Width",
       flex: 1,
       dataIndex: 'width',
-      align: 'center',
+      align: 'left',
       sortable: true
     }, {
       header: "Height",
       flex: 1,
       dataIndex: 'height',
-      align: 'center',
+      align: 'left',
       sortable: true
     }, {
       header: "Status",
       flex: 1,
       dataIndex: 'status',
-      align: 'center',
-      sortable: true
+      align: 'left',
+      sortable: true,
+      tdCls: 'custom-creative-grid'
     }, {
       xtype: 'actioncolumn',
       header: 'Action',
@@ -122,7 +129,17 @@ Ext.define('ImpulseOne.view.creative.CreativeGrid', {
     }];
     this.viewConfig = {
       forceFit: true,
-      stripeRows: true
+      stripeRows: true,
+      getRowClass: function(record, index) {
+        var c = record.get('status');
+        if(c == "Active") {
+          return 'active-status';
+        } else if(c == "Pending") {
+          return 'pending-status';
+        } else if(c == "Archived") {
+          return 'archive-status';
+        }
+      }
     };
     this.callParent(arguments);
   },

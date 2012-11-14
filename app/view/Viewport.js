@@ -8,7 +8,7 @@ Ext.define('ImpulseOne.view.Viewport', {
 
     layout: 'border',
 
-    requires: ['ImpulseOne.view.inventory.InventoryGrid', 'ImpulseOne.view.inventory.InventoryDetail', 'ImpulseOne.view.creative.CreativeGrid', 'ImpulseOne.view.data.DataGrid', 'ImpulseOne.view.vendor.VendorGrid'],
+    requires: ['ImpulseOne.view.inventory.InventoryGrid', 'ImpulseOne.view.inventory.InventoryDetail', 'ImpulseOne.view.creative.CreativeGrid', 'ImpulseOne.view.data.DataGrid', 'ImpulseOne.view.vendor.VendorGrid','ImpulseOne.view.dashboard.Dashboard'],
     style: {
         "background-image": "url(\'data/bg.png\')",
         "width": "100%"
@@ -59,9 +59,7 @@ Ext.define('ImpulseOne.view.Viewport', {
                     title: 'Dashboard',
                     id: 'dashboard',
                     items: [{
-                        xtype: 'box',
-                        html: 'Dashboard'
-
+                        xtype: 'dashboard'                      
                     }]
                 },
 
@@ -93,11 +91,11 @@ Ext.define('ImpulseOne.view.Viewport', {
                 }, {
                     title: 'Data',
                     id: 'data',
-                    tabConfig: {
-                        tooltip: 'tooltip',
-                        padding: '3 15 0 15'
+                    // tabConfig: {
+                    //     tooltip: 'tooltip',
+                    //     padding: '3 15 0 15'
 
-                    },
+                    // },
                     xtype: 'datagrid',
                 }, {
                     title: 'Creatives',
@@ -108,7 +106,8 @@ Ext.define('ImpulseOne.view.Viewport', {
                     title: 'Vendors',
                     id: 'vendors',
                     xtype: 'vendorgrid'
-                }],
+                }
+                ],
                 listeners: {
                     tabchange: function(tabPanel, tab) {
                         window.location.hash = '#' + tab.id;
@@ -119,7 +118,7 @@ Ext.define('ImpulseOne.view.Viewport', {
             }, 
             {
                 xtype: 'toolbar',
-                height: 16,
+                height: 25,
                 region: 'south',
                 // html: '<>'
                 // "<h4 style=\'font-size:10px;position:absolute;left:600px;color:#fff; \'>\

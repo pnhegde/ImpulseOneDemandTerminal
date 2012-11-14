@@ -11,7 +11,7 @@ Ext.define('ImpulseOne.view.vendor.VendorGrid', {
   extend: 'Ext.grid.Panel',
   alias: 'widget.vendorgrid',
   id: 'vendorGrid',
-  columnLines: true,
+//  columnLines: true,
   // loadMask: true,
   features: [filters],
   plugins: [{
@@ -58,6 +58,7 @@ Ext.define('ImpulseOne.view.vendor.VendorGrid', {
       align: 'center'
     }, {
       text: "Name",
+      tdCls : 'custom-inventory-grid-domain',
       flex: 2,
       dataIndex: 'vendorName',
       sortable: true,

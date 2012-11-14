@@ -6,22 +6,9 @@ Ext.define('ImpulseOne.controller.Inventories', {
 
 	init: function() {
 		inventoryStore = this.getInventoryStore();
+		
 		//inventoryStore.load();
 		//inventoryStore.guaranteeRange(0, 99);
-
-		// params: {
-		// 	start: 0,
-		// 	limit: 50,
-		// 	channel: 'MobileWeb'
-		// }
-		//store.load();
-		// inventoryStore.prefetch({
-		// 	start: 0,
-		// 	limit: 100,
-		// 	callback: function() {
-		// 		inventoryStore.guaranteeRange(0, 99);
-		// 	}
-		// });
 		this.control({
 			'inventorygrid': {
 				itemdblclick: this.editUser
@@ -40,7 +27,8 @@ Ext.define('ImpulseOne.controller.Inventories', {
 				channel: Ext.getCmp('ChannelFilter').getValue(),
 				filter: Ext.getCmp('DomainFilter').getValue(),
 				exchange: Ext.getCmp('ExchangeFilter').getValue(),
-				category: Ext.getCmp('CategoryFilter').getValue()
+				category: Ext.getCmp('CategoryFilter').getValue(),
+				country: Ext.getCmp('CountryFilter').getValue()
 			}
 		});
 		console.log('clicked');

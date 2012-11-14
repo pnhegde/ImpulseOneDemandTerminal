@@ -4,6 +4,9 @@ Ext.define('ImpulseOne.store.Inventory', {
 	pageSize: 100,
 	buffered: true,
 	autoLoad: true,
+	remoteSort: true,
+	remoteFilter: true,
+	loadMask: true,
 	proxy: {
 		type: 'ajax',
 		api: {
@@ -16,33 +19,12 @@ Ext.define('ImpulseOne.store.Inventory', {
 			totalProperty: 'totalCount'
 		},
 		simpleSortMode: true
-	}
-
-});
-
-/*
-Ext.define('ImpulseOne.store.Inventory', {
-	extend: 'Ext.data.Store',
-	model: 'ImpulseOne.model.Inventory',
-	autoLoad: true,
-	autoSync: true,
-	pageSize: 200,
-	remoteSort: true,
-	buffered: true,
-	proxy: {
-		type: 'jsonp',
-		url: 'https://user.impulse01.com/newServer.php?do=getInventory',
-		reader: {
-			successProperty: 'success',
-			root: 'data',
-			messageProperty: 'message'
-		}
 	},
+	//sortInfo: { field: 'impressions', direction: 'ASC' }
 	sorters: [{
-		property: 'sourceId',
-		direction: 'DESC'
-	}],
+		property: "impressions",
+		direction: "DESC"
+	}]
+
 });
 
-
-*/

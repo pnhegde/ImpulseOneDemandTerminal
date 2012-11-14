@@ -115,8 +115,12 @@ Ext.define('ImpulseOne.controller.Creatives', {
 		this.getCreativeStore().load();
 		win.close();
 	},
+	tea_break: function (msec) { 
+		var date = new Date(); var curDate = null; do { curDate = new Date(); } while(curDate - date < msec); 
+	},
 	showPreview: function(view, cell, row, col, e) {
 		//var grid = button.up('creativegrid');
+		this.tea_break(1500);
 		var record = this.getCreativeStore().getAt(row);
 		if(Ext.get(e.getTarget()).hasCls('icon-preview')) {
 			var p = record.data['filePath'];
@@ -124,25 +128,25 @@ Ext.define('ImpulseOne.controller.Creatives', {
 			var filePath = "https://user.impulse01.com/" + p;
 			if(record.data['creativeType'] == "Flash Video") {
 				htmlContent = '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="600" height="400" id="flvPlayer"> \
-  <param name=\'allowFullScreen\' value=\'true\'> \
-  <param name=\'movie\' value=\'https://user.impulse01.com/OSplayer.swf?movie=[' + filePath + ']&bgcolor=0x8E6A4F&fgcolor=0x8E6A4F&volume=70&autoplay=on&autoload=on&clickurl=http://google.com&clicktarget=_blank&postimage=\'> \
-  <embed src=\'https://user.impulse01.com/OSplayer.swf?movie=[' + filePath + ']&bgcolor=0x8E6A4F&fgcolor=0x8E6A4F&volume=70&autoplay=on&autoload=on&clickurl=http://google.com&clicktarget=_blank&postimage=\' width=\'600\' height=\'400\' allowFullScreen=\'true\' type=\'application/x-shockwave-flash\'> \
- </object> ';
+				<param name=\'allowFullScreen\' value=\'true\'> \
+				<param name=\'movie\' value=\'https://user.impulse01.com/OSplayer.swf?movie=[' + filePath + ']&bgcolor=0x8E6A4F&fgcolor=0x8E6A4F&volume=70&autoplay=on&autoload=on&clickurl=http://google.com&clicktarget=_blank&postimage=\'> \
+				<embed src=\'https://user.impulse01.com/OSplayer.swf?movie=[' + filePath + ']&bgcolor=0x8E6A4F&fgcolor=0x8E6A4F&volume=70&autoplay=on&autoload=on&clickurl=http://google.com&clicktarget=_blank&postimage=\' width=\'600\' height=\'400\' allowFullScreen=\'true\' type=\'application/x-shockwave-flash\'> \
+				</object> ';
 			} else if(record.data['creativeType'] == "Flash") {
 				htmlContent = '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" \
-codebase="http://download.macromedia.com/pub/shockwave/ \
-cabs/flash/swflash.cab#version=6,0,40,0" \
-width="[' + record.data["width"] + ']" height="[' + record.data["height"] + ']" \
- id="mymoviename"> \
-<param name="movie" value="[' + filePath + ']" /> \
-<param name="quality" value="high" /> \
-<param name="bgcolor" value="#ffffff" /> \
-<embed src="' + filePath + '" quality="high" bgcolor="#ffffff" \
-width="[' + record.data["width"] + ']" height="[' + record.data["height"] + ']" \
-name="mymoviename" align="" type="application/x-shockwave-flash" \
-pluginspage="http://www.macromedia.com/go/getflashplayer"> \
-</embed> \
-</object> ';
+				codebase="http://download.macromedia.com/pub/shockwave/ \
+				cabs/flash/swflash.cab#version=6,0,40,0" \
+				width="[' + record.data["width"] + ']" height="[' + record.data["height"] + ']" \
+				id="mymoviename"> \
+				<param name="movie" value="[' + filePath + ']" /> \
+				<param name="quality" value="high" /> \
+				<param name="bgcolor" value="#ffffff" /> \
+				<embed src="' + filePath + '" quality="high" bgcolor="#ffffff" \
+				width="[' + record.data["width"] + ']" height="[' + record.data["height"] + ']" \
+				name="mymoviename" align="" type="application/x-shockwave-flash" \
+				pluginspage="http://www.macromedia.com/go/getflashplayer"> \
+				</embed> \
+				</object> ';
 			} else if(record.data['creativeType'] == "Image") {
 				htmlContent = "<image src=\'" + filePath + " \' />";
 			} else {

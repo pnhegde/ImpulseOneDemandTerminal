@@ -68,5 +68,6 @@ Ext.define('ImpulseOne.controller.Vendors', {
 		this.getVendorStore().sync();
 		this.getVendorStore().load();
 		wi.close();
+		Ext.example.msg('Test');
 	}
 });
