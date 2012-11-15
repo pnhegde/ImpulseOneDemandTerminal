@@ -8,7 +8,7 @@ Ext.define('ImpulseOne.view.Viewport', {
 
     layout: 'border',
 
-    requires: ['ImpulseOne.view.inventory.InventoryGrid', 'ImpulseOne.view.inventory.InventoryDetail', 'ImpulseOne.view.creative.CreativeGrid', 'ImpulseOne.view.data.DataGrid', 'ImpulseOne.view.vendor.VendorGrid','ImpulseOne.view.dashboard.Dashboard'],
+    requires: ['ImpulseOne.view.inventory.InventoryGrid', 'ImpulseOne.view.inventory.InventoryDetail', 'ImpulseOne.view.creative.CreativeGrid', 'ImpulseOne.view.data.DataGrid', 'ImpulseOne.view.vendor.VendorGrid', 'ImpulseOne.view.dashboard.Dashboard', 'ImpulseOne.view.dashboard.TopExchangeGraph', 'ImpulseOne.view.dashboard.TopCampaignGraph'],
     style: {
         "background-image": "url(\'data/bg.png\')",
         "width": "100%"
@@ -58,8 +58,21 @@ Ext.define('ImpulseOne.view.Viewport', {
                 items: [{
                     title: 'Dashboard',
                     id: 'dashboard',
+                    layout: 'border',
                     items: [{
-                        xtype: 'dashboard'                      
+                        xtype: 'topexchangegraph',
+                        region: 'center',
+                    },
+                    /* {
+                        xtype: 'toolbar',
+                        height:2,
+                        region: 'center'
+                    }*/
+                    {
+                        xtype: 'topcampaigngraph',
+                        region: 'south',
+                        height: 311,
+                        split:true,
                     }]
                 },
 
@@ -94,7 +107,6 @@ Ext.define('ImpulseOne.view.Viewport', {
                     // tabConfig: {
                     //     tooltip: 'tooltip',
                     //     padding: '3 15 0 15'
-
                     // },
                     xtype: 'datagrid',
                 }, {
@@ -106,8 +118,7 @@ Ext.define('ImpulseOne.view.Viewport', {
                     title: 'Vendors',
                     id: 'vendors',
                     xtype: 'vendorgrid'
-                }
-                ],
+                }],
                 listeners: {
                     tabchange: function(tabPanel, tab) {
                         window.location.hash = '#' + tab.id;
@@ -115,8 +126,7 @@ Ext.define('ImpulseOne.view.Viewport', {
                 },
                 margin: '0 0 0 0',
                 region: 'center'
-            }, 
-            {
+            }, {
                 xtype: 'toolbar',
                 height: 25,
                 region: 'south',

@@ -1,38 +1,18 @@
- /*Ext.create('Ext.data.JsonStore', {
-     fields: ['exchange', 'impressions', 'cps'],
-     data: [{
-         'exchange': 'Google AdX',
-         'impressions': 32,
-         'cps': 12
-     }, {
-         'exchange': 'Rubicon',
-         'impressions': 7,
-         'cps': 11
-     }, {
-         'exchange': 'Pubmatic',
-         'impressions': 11,
-         'cps': 9
-     }, {
-         'exchange': 'SpotXchange',
-         'impressions': 14,
-         'cps': 14
-     }, {
-         'exchange': 'OpenX',
-         'impressions': 27,
-         'cps': 17
-     }]
- });*/
-
  Ext.define('ImpulseOne.view.dashboard.TopExchangeGraph', {
      extend: 'Ext.container.Container',
      alias: 'widget.topexchangegraph',
      layout: 'hbox',
      id: 'topExchangeGraph',
+     autoScroll: true,
+     style: {
+         background: '#FFFFFF'
+     },
      initComponent: function() {
          var me = this;
          Ext.apply(me, {
              items: [{
                  xtype: 'gridpanel',
+                 id: 'exchangegrid',
                  title: 'Top Exchanges',
                  store: 'ExchangeGraph',
                  columns: [{
@@ -49,13 +29,14 @@
                      text: 'Spend',
                      dataIndex: 'spend'
                  }],
-                 height: 300,
+                 height: 250,
                  width: 400,
 
              }, {
                  xtype: 'chart',
-                 width: 450,
-                 height: 300,
+                 id: 'exchangelinechart',
+                 flex: 1,
+                 height: 250,
                  animate: true,
                  store: 'ExchangeGraph',
                  title: 'PIE Chart',
@@ -66,10 +47,10 @@
                      showInLegend: true,
                      tips: {
                          trackMouse: true,
-                         width: 140,
-                         height: 28,
+                         width: 120,
+                         height: 35,
                          renderer: function(storeItem, item) {
-                             this.setTitle(storeItem.get('impressions'));
+                             this.setTitle('Impressions = ' + storeItem.get('impressions') + "\nClicks = " + storeItem.get('clicks'));
                          }
                      },
                      highlight: {
@@ -81,14 +62,14 @@
                          field: 'exchange',
                          display: 'rotate',
                          contrast: true,
-                         font: '18px Arial'
+                         font: '14px Arial'
                      }
                  }]
 
              }, {
                  xtype: 'chart',
-                 width: 500,
-                 height: 300,
+                 flex: 2,
+                 height: 250,
                  animate: true,
                  store: 'ExchangeGraph',
                  shadow: true,
@@ -99,8 +80,16 @@
                      type: 'Numeric',
                      minimum: 0,
                      position: 'left',
-                     fields: ['impressions'],
                      title: 'Impressions',
+                     fields: ['impressions', 'clicks'],
+                     //hidden: true,
+                     renderer: function(v) {
+                         return Ext.String.ellipsis(v, 15, false);
+                     },
+                     font: '9px Arial',
+                     rotate: {
+                         degrees: 270
+                     }
                      // grid: {
                      //     odd: {
                      //         opacity: 1,
@@ -118,18 +107,67 @@
                  series: [{
                      type: 'line',
                      highlight: {
-                         size: 7,
-                         radius: 7
+                         size: 4,
+                         radius: 4
                      },
                      axis: 'left',
                      xField: 'exchange',
                      yField: 'impressions',
-                     // markerCfg: {
-                     //     type: 'cross',
-                     //     size: 4,
-                     //     radius: 4,
-                     //     'stroke-width': 0
-                     // }
+                     markerCfg: {
+                         type: 'cross',
+                         size: 4,
+                         radius: 4,
+                         'stroke-width': 0,
+                     },
+                     style: {
+                         stroke: 'red'
+                     }
+
+                 }, {
+                     type: 'column',
+                     highlight: {
+                         size: 3,
+                         radius: 3
+                     },
+                     shadow: true,
+                     style: {
+                         fill: '#456d9f'
+                     },
+                     highlightCfg: {
+                         fill: '#a2b5ca'
+                     },
+                     label: {
+                         contrast: true,
+                         display: 'insideEnd',
+                         field: 'ctr %',
+                         color: '#000',
+                         orientation: 'vertical',
+                         'text-anchor': 'middle'
+                     },
+                     axis: 'right',
+                     fill: true,
+                     xField: 'exchange',
+                     yField: 'clicks',
+                     markerCfg: {
+                         type: 'circle',
+                         size: 3,
+                         radius: 3,
+                         'stroke-width': 0
+                     },
+                     tips: {
+                         trackMouse: true,
+                         width: 120,
+                         height: 35,
+                         renderer: function(storeItem, item) {
+                             this.setTitle('Impressions = ' + storeItem.get('impressions') + "\n Click = " + storeItem.get('clicks'));
+                         }
+                     },
+                     label: {
+                         field: 'clicks',
+                         display: 'insideEnd',
+                         contrast: true,
+                         font: '11px Arial'
+                     }
                  }]
              }]
          });
