@@ -26,6 +26,9 @@
    color: #009 !important; 
 
 }
+.tabCss .x-tab-bar-top .x-tab-bar-body {
+  border-top-width: 0px !important; 
+}
 .active-status .custom-creative-grid {
 	color: #080 !important;
 }

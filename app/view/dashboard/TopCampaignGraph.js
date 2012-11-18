@@ -40,7 +40,8 @@ Ext.define('ImpulseOne.view.dashboard.TopCampaignGraph', {
 
             }, {
                 xtype: 'chart',
-                width:600,
+                // width:600,
+                flex: 2,
                 height: 300,
                 split: true,
                 // style: {

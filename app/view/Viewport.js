@@ -2,13 +2,22 @@
  * The main application viewport, which displays the whole application
  * @extends Ext.Viewport
  */
-Ext.define('ImpulseOne.view.Viewport', {
+ Ext.define('ImpulseOne.view.Viewport', {
     extend: 'Ext.container.Viewport',
     alias: 'widge.viewport',
 
     layout: 'border',
 
-    requires: ['ImpulseOne.view.inventory.InventoryGrid', 'ImpulseOne.view.inventory.InventoryDetail', 'ImpulseOne.view.creative.CreativeGrid', 'ImpulseOne.view.data.DataGrid', 'ImpulseOne.view.vendor.VendorGrid', 'ImpulseOne.view.dashboard.Dashboard', 'ImpulseOne.view.dashboard.TopExchangeGraph', 'ImpulseOne.view.dashboard.TopCampaignGraph'],
+    requires: [
+    'ImpulseOne.view.inventory.InventoryGrid', 
+    'ImpulseOne.view.inventory.InventoryDetail', 
+    'ImpulseOne.view.creative.CreativeGrid', 
+    'ImpulseOne.view.data.DataGrid', 
+    'ImpulseOne.view.vendor.VendorGrid', 
+    'ImpulseOne.view.dashboard.Dashboard', 
+    'ImpulseOne.view.dashboard.TopExchangeGraph', 
+    'ImpulseOne.view.dashboard.TopCampaignGraph',
+    'ImpulseOne.view.trafficking.TrafficHome'],
     style: {
         "background-image": "url(\'data/bg.png\')",
         "width": "100%"
@@ -21,7 +30,7 @@ Ext.define('ImpulseOne.view.Viewport', {
                 xtype: 'container',
                 height: 40,
                 region: 'north',
-                html: "<img src=\'data/logo.gif\' \> ",
+                html: "<img src=\'data/logo.png\' \> ",
 
                 items: [{
                     xtype: 'button',
@@ -30,7 +39,7 @@ Ext.define('ImpulseOne.view.Viewport', {
                     width: 140,
                     height: 40,
                     arrowCls: 'arrow',
-                    text: ' <h3 style = \'color:#fff;font-size:13px; \'>User Name</h3>',
+                    text: ' <h3 style = \'color:#009;font-size:13px; \'>User Name</h3>',
                     style: {
                         'position': 'absolute',
                         'right': '20px',
@@ -53,7 +62,8 @@ Ext.define('ImpulseOne.view.Viewport', {
                 }]
             }, {
                 xtype: 'tabpanel',
-                activeTab: 0,
+                activeTab: 1,
+                cls: 'tabCss',
                 deferredRender: true,
                 items: [{
                     title: 'Dashboard',
@@ -79,9 +89,9 @@ Ext.define('ImpulseOne.view.Viewport', {
                 {
                     title: 'Trafficking',
                     id: 'traffic',
+                    layout: 'fit',
                     items: [{
-                        xtype: 'box',
-                        html: 'Traffic test'
+                        xtype: 'traffichome',
 
                     }]
                 }, {
@@ -138,6 +148,6 @@ Ext.define('ImpulseOne.view.Viewport', {
             ]
         });
 
-        me.callParent(arguments);
-    }
+me.callParent(arguments);
+}
 });

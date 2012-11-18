@@ -6,7 +6,6 @@ Ext.define('ImpulseOne.controller.Inventories', {
 
 	init: function() {
 		inventoryStore = this.getInventoryStore();
-		
 		//inventoryStore.load();
 		//inventoryStore.guaranteeRange(0, 99);
 		this.control({
@@ -22,6 +21,7 @@ Ext.define('ImpulseOne.controller.Inventories', {
 		console.log('Double clicked on ' + record.get('name'));
 	},
 	applyFilter: function(button) {
+		
 		inventoryStore.load({
 			params: {
 				channel: Ext.getCmp('ChannelFilter').getValue(),

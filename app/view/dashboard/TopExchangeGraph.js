@@ -34,9 +34,9 @@
 
              }, {
                  xtype: 'chart',
-                 id: 'exchangelinechart',
+                 id: 'exchangepiechart',
                  flex: 1,
-                 height: 250,
+                 height: 200,
                  animate: true,
                  store: 'ExchangeGraph',
                  title: 'PIE Chart',
@@ -62,14 +62,14 @@
                          field: 'exchange',
                          display: 'rotate',
                          contrast: true,
-                         font: '14px Arial'
+                         font: '12px Arial',
                      }
                  }]
 
              }, {
                  xtype: 'chart',
                  flex: 2,
-                 height: 250,
+                 height: 230,
                  animate: true,
                  store: 'ExchangeGraph',
                  shadow: true,
