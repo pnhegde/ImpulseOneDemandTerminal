@@ -1,55 +1,194 @@
 Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 	extend: 'Ext.app.Controller',
-	//stores: ['TrafficControlTree'],
-	//models: ['TrafficControlTree'],
 	views: ['trafficking.TrafficControlTree',
 	'trafficking.TrafficHome',
-	'Ext.ux.grid.DynamicGrid'],
+	'trafficking.NewAdvertiserWindow',
+	'trafficking.NewBrandWindow',
+	'Ext.ux.grid.DynamicGrid',],
 
 	init: function() {
-		//this.getTrafficControlTreeStore().load();
 		this.control({
 			'trafficcontroltree' : {
-				itemclick: this.clickHandler,
+				itemclick: this.treeNodeClickHandler,
 				collapse: this.doPanelLayout,
 				expand: this.doPanelLayout
 			},
+			'newadvertiserwindow button[text="Create"]' : {
+				click: this.createNewAdvertiser
+			},
+			'newbrandwindow button[text="Create"]' : {
+				click: this.createNewBrand
+			}
 
 		});
 	},
-	clickHandler: function(tree,node){
-		Ext.getCmp('traffichomeId').setLoading("Loading");
+	treeNodeClickHandler: function(tree,node){
+		var home = Ext.getCmp('traffichomeId');
+		home.setLoading("Loading");
 		setTimeout(function(){Ext.getCmp('traffichomeId').setLoading(false)},1000);
-		var nodeId = node.data['id'];
-		console.log(nodeId);
+		SelectedNodeId = node.data['id'];
 		var nodeType = "advertisers";
-		if(nodeId.indexOf('adv') != -1) {
+		if(SelectedNodeId.indexOf('adv') != -1) {
 			nodeType = "brands";
-		} if (nodeId.indexOf('brand') != -1) {
+		} if (SelectedNodeId.indexOf('brand') != -1) {
 			nodeType = "plans";
-		} if(nodeId.indexOf('plan') != -1) {
+		} if(SelectedNodeId.indexOf('plan') != -1) {
 			nodeType = "campaigns";
 		} ;
-		var url = 'https://user.impulse01.com/newServer.php?do=get_'+nodeType;
-		var home = Ext.getCmp('traffichomeId');
-		var grid = Ext.create('Ext.ux.grid.DynamicGrid',{url: url,param: nodeId});
-		grid.down('toolbar').add({
-			xtype: 'box',
-			height: 20,
-			html: nodeType
-		},'->','-',{
-			xtype: 'button',
-			text: 'Create New',
-			icon: 'data/icons/add.png'
-		},'-');
+		var grid = this.getGrid(SelectedNodeId, nodeType);
 		home.remove(home.items.last(),true);
-		home.doLayout();
-		console.log(home.getLayout().getLayoutItems());
+		// home.doLayout();
 		home.add(grid);
 		home.doLayout();
-		
 	},
-	doPanelLayout: function(tree) {
-		tree.up('panel').doLayout();
-	}
+	getGrid: function(nodeId,nodeType){
+		var url = 'https://user.impulse01.com/newServer.php?do=get_'+nodeType;
+		var grid = Ext.create('Ext.ux.grid.DynamicGrid',{url: url,param: nodeId });
+		if(nodeType == "advertisers") {
+			grid.down('toolbar').add({
+				xtype: 'box',
+				height: 20,
+				html: nodeType
+			},
+			'->',
+			'-',
+			{
+				xtype: 'button',
+				text: 'Delete',
+				icon: 'data/icons/delete.png',
+				handler: function() {
+					var grid = Ext.ComponentQuery.query('traffichome dynamicGrid')[0];
+					var row = grid.getSelectionModel().getSelection()[0];
+					Ext.Ajax.request({
+						url: 'https://user.impulse01.com/newServer.php?do=delete_advertiser',
+						params: {
+							advertiserId: row.data['Advertiser Id'],
+						},
+						success: function(response){
+							if(response.responseText) {
+								Ext.ComponentQuery.query('traffichome dynamicGrid')[0].getStore().load();
+								var treeStore = Ext.ComponentQuery.query('trafficcontroltree')[0].getStore();
+								treeStore.load();		
+								Ext.example.msg("Delete","Successful !");
+							} else {
+								Ext.example.msg("Delete","Cannot delete !");
+							}
+							
+						}
+					});				
+				}
+			},
+			'-',
+			{
+				xtype: 'button',
+				text: 'New Advertiser',
+				icon: 'data/icons/add.png',
+				handler: function() {
+					Ext.widget('newadvertiserwindow');
+					console.log("new advertiser window created");
+				}
+			},'-' );	
+} else if ( nodeType == "brands") {
+	grid.down('toolbar').add({
+		xtype: 'box',
+		height: 20,
+		html: nodeType
+	},'->','-', {
+		xtype: 'button',
+		text: 'Delete',
+		icon: 'data/icons/delete.png',
+		handler: function() {
+			var grid = Ext.ComponentQuery.query('traffichome dynamicGrid')[0];
+			var row = grid.getSelectionModel().getSelection()[0];
+			Ext.Ajax.request({
+				url: 'https://user.impulse01.com/newServer.php?do=delete_brand',
+				params: {
+					brandId: row.data['Brand Id'],
+				},
+				success: function(response){
+					if(response.responseText) {
+						Ext.ComponentQuery.query('traffichome dynamicGrid')[0].getStore().load();
+						var treeStore = Ext.ComponentQuery.query('trafficcontroltree')[0].getStore();
+						treeStore.load();		
+						Ext.example.msg("Delete","Successful !");
+					} else {
+						Ext.example.msg("Delete","Cannot delete !");
+					}
+
+				}
+			});				
+		}
+	},'-', {
+		xtype: 'button',
+		text: 'New Brand',
+		icon: 'data/icons/add.png',
+		handler: function() {
+			Ext.widget('newbrandwindow');
+			console.log("new Brand window created");
+		}
+	},'-');
+} else if ( nodeType == "plans") {
+	grid.down('toolbar').add({
+		xtype: 'box',
+		height: 20,
+		html: nodeType
+	},'->','-',{
+		xtype: 'button',
+		text: 'New Plan',
+		icon: 'data/icons/add.png'
+	},'-');
+} else if ( nodeType == "campaigns") {
+	grid.down('toolbar').add({
+		xtype: 'box',
+		height: 20,
+		html: nodeType
+	},'->','-',{
+		xtype: 'button',
+		text: 'New Campaign',
+		icon: 'data/icons/add.png'
+	},'-');
+}
+return grid;
+
+},
+doPanelLayout: function(tree) {
+	tree.up('panel').doLayout();
+},
+createNewAdvertiser: function(button) {
+	var win = button.up('window');
+	var values = win.down('form').getValues();
+	Ext.Ajax.request({
+		url: 'https://user.impulse01.com/newServer.php?do=create_new_advertiser',
+		params: {
+			advertiserName: values['advertiserName'],
+			advertiserCategory: values['advertiserCategory']
+		},
+		success: function(response){
+			Ext.example.msg("Create","Successful !");
+		}
+	});
+	Ext.ComponentQuery.query('traffichome dynamicGrid')[0].getStore().load();
+	var treeStore = Ext.ComponentQuery.query('trafficcontroltree')[0].getStore();
+	treeStore.load();
+	win.close();
+},
+createNewBrand: function(button) {
+	var win = button.up('window');
+	var values = win.down('form').getValues();
+	Ext.Ajax.request({
+		url: 'https://user.impulse01.com/newServer.php?do=create_new_brand',
+		params: {
+			brandName: values['brandName'],
+			advertiserId: SelectedNodeId
+		},
+		success: function(response){
+			Ext.example.msg("Create","Successful !");
+		}
+	});
+	Ext.ComponentQuery.query('traffichome dynamicGrid')[0].getStore().load();
+	var treeStore = Ext.ComponentQuery.query('trafficcontroltree')[0].getStore();
+	treeStore.load();
+	// Ext.ComponentQuery.query('trafficcontroltree')[0].getRootNode().expand(true);
+	win.close();
+}
 });

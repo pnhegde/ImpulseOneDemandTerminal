@@ -17,7 +17,8 @@ Ext.define('ImpulseOne.store.TrafficControlTree', {
 	root: {
 		text: 'Advertisers',
 		id: 'src',
-		expanded: false
+		expanded: false,
+		expandable: true
 	}
 
 }) ;
