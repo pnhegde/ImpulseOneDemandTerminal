@@ -18,12 +18,11 @@ Ext.define('Ext.ux.grid.DynamicGrid', {
     url: '',
     param: '',
     loadMask: true,
-    autoScroll: true,
+//    autoScroll: true,
     //height: 700, 		
     layout: 'fit',
     toolbar: '',	
     initComponent: function() {
-        console.log('DynamicGrid initComponent!');
         var me = this;
 	this.tbar = toolbar; 
         if (me.url == '') {

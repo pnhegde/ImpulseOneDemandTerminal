@@ -1,22 +1,6 @@
 Ext.define('ImpulseOne.model.Campaign', {
 	extend: 'Ext.data.Model',
-	fields: [{
-		name: 'campaignId',
-		type: 'int'
-	},{
-		name: 'planId',
-		type: 'int'
-	},{
-		name: 'campaignName',
-		type: 'string'
-	}, 'destinationUrl', 'status', 'channel',
-	'strategy','bidCpm','dailyBudget','totalBudget',
-	'paceType','currentPacing','startDate','endDate',
-	'timezone','goalType','goalValue','frequencyTimes',
-	'frequencyHours','countryTargets','stateTargets',
-	'carrierTargets','osTargets','creatives',
-	'audienceTargets','dayParts','contextTargets',
-	'list','listMobileApp','clickWindow','viewWindow'],
+	fields: ['campaignId', 'planId', 'campaignName', 'destinationUrl', 'status', 'channel', 'strategy', 'bidCpm', 'dailyBudget', 'totalBudget', 'paceType', 'currentPacing', 'startDate', 'endDate', 'timezone', 'optimize' ,'goalType', 'goalValue', 'frequencyTimes', 'frequencyHours', 'countryTargets', 'stateTargets', 'carrierTargets', 'osTargets', 'creatives', 'audienceTargets', 'dayParts', 'contextTargets', 'list', 'listMobileApp', 'clickWindow', 'viewWindow'],
 	proxy: {
 		type: 'ajax',
 		api: {

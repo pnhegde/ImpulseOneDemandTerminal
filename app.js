@@ -21,7 +21,7 @@ var splashscreen;
 
 Ext.onReady(function() {
     // Start the mask on the body and get a reference to the mask
-    splashscreen = Ext.getBody().mask('Loading application', 'splashscreen');
+    splashscreen = Ext.getBody().mask('Loading Impulse Demand Terminal', 'splashscreen');
     // Add a new class to this mask as we want it to look different from the default.
     splashscreen.addCls('splashscreen');
 
@@ -42,7 +42,8 @@ Ext.application({
     'ExchangeGraphs',
     'CampaignGraphs',
     'TrafficControlTrees',
-    'EditCampaignWindows'
+    'EditCampaignWindows',
+    'CampaignCreatives'
     ],
     launch: function() {  // Setup a task to fadeOut the splashscreen
         var task = new Ext.util.DelayedTask(function() {

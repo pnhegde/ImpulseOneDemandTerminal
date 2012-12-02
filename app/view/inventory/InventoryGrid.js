@@ -8,10 +8,7 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
     id: 'inventoryGrid',
     //columnLines: true,
     loadMask: true,
-    verticalScroller: {
-        xtype: 'paginggridscroller',
-    },
-
+    verticalScrollerType: 'paginggridscroller',
     invalidateScrollerOnRefresh: false,
     disableSelection: true,
     remoteSort: true,
@@ -31,7 +28,9 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
         }, {
             xtype: 'combobox',
             name: 'channelFilter',
-            style: {'font-size':'11px'},
+            style: {
+                'font-size': '11px'
+            },
             store: ['MobileWeb', 'MobileApp', 'DesktopDisplay', 'DesktopVideo'],
             emptyText: 'Channel',
             editable: false,
@@ -49,17 +48,32 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
             typeAhead: true,
             multiSelect: true,
             id: 'ExchangeFilter'
-        },
-        {
+        }, {
             xtype: 'combobox',
             name: 'countryFilter',
-            style: {'font-size':'11px'},
+            style: {
+                'font-size': '11px'
+            },
             valueField: 'countryId',
             displayField: 'countryName',
             mode: 'local',
-            store: new Ext.data.SimpleStore({ 
-                fields:['countryId','countryName'], 
-                data: [['IN','India'], ['SA','South Africa'], ['KE','Kenya'], ['AE', 'UAE'], ['MY', 'Malaysia'], [ 'ID','Indonesia'], ['SG','Singapore'], ['HK', 'Hong Kong'], ['SK','South Korea'], ['VN','Vietnam'], ['TH','Thailand'], ['PH','Phillipines'], ['JP','Japan']],
+            store: new Ext.data.SimpleStore({
+                fields: ['countryId', 'countryName'],
+                data: [
+                    ['IN', 'India'],
+                    ['SA', 'South Africa'],
+                    ['KE', 'Kenya'],
+                    ['AE', 'UAE'],
+                    ['MY', 'Malaysia'],
+                    ['ID', 'Indonesia'],
+                    ['SG', 'Singapore'],
+                    ['HK', 'Hong Kong'],
+                    ['SK', 'South Korea'],
+                    ['VN', 'Vietnam'],
+                    ['TH', 'Thailand'],
+                    ['PH', 'Phillipines'],
+                    ['JP', 'Japan']
+                ],
                 autoLoad: false
             }),
             emptyText: 'Country',
@@ -123,17 +137,16 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
                 }]
             }]
         }, '-'];
-        this.columns = [
-        {
+        this.columns = [{
             text: " Id ",
             width: 70,
             dataIndex: 'sourceId',
             sortable: false,
 
-        },{
+        }, {
             text: " Domain ",
             //style: {'font-weight':'bold','color':'green'},
-            tdCls : 'custom-inventory-grid-domain',
+            tdCls: 'custom-inventory-grid-domain',
             flex: 1.5,
             dataIndex: 'domain',
             // renderer: function(value) {
@@ -144,68 +157,68 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
         }, {
             text: " Category ",
             flex: 1,
-            tdCls : 'custom-inventory-grid-category',
+            tdCls: 'custom-inventory-grid-category',
             dataIndex: 'category',
             sortable: false,
 
-        },
-        {
+        }, {
             text: " Verified",
             flex: 0.4,
             dataIndex: 'manuallyVerified',
             renderer: function(value, metaData, record, rowIndex, colIndex, store) {
-                switch (value) {
-                 case 'Y':
-                 metaData.css = 'verified-true';
-                 icon = 'data/icons/true.jpg';
-                 break;
-                 case 'N':
-                 metaData.css = 'verified-false';
-                 icon = 'data/icons/false.jpg';
-                 break;
-             }
-             return '<img src="'+icon+'" />';
-         }
-     }, {
-        text: " Channel",
-        flex: 0.8,
-        dataIndex: 'channel',
-        sortable: false,
+                switch(value) {
+                case 'Y':
+                    metaData.css = 'verified-true';
+                    icon = 'data/icons/true.jpg';
+                    return '<img src="' + icon + '" />';
+                    break;
+                case 'N':
+                    metaData.css = 'verified-false';
+                    icon = 'data/icons/false.jpg';
+                    return '<img src="' + icon + '" />';
+                    break;
+                }
+            }
+        }, {
+            text: " Channel",
+            flex: 0.8,
+            dataIndex: 'channel',
+            sortable: false,
 
-    }, {
-        text: " Exchange",
-        flex: 0.8,
-        dataIndex: 'exchange',
-        sortable: false,
+        }, {
+            text: " Exchange",
+            flex: 0.8,
+            dataIndex: 'exchange',
+            sortable: false,
 
-    }, {
-        text: " Country",
-        flex: 0.5,
-        dataIndex: 'country',
-        sortable: false,
+        }, {
+            text: " Country",
+            flex: 0.5,
+            dataIndex: 'country',
+            sortable: false,
 
-    },{
-        text: "Impressions",
-        flex: 1,
-        dataIndex: 'impressions',
-        sortable: true
-    }, {
-        text: "Avg CPM",
-        flex: 0.7,
-        dataIndex: 'cpm',
-        sortable: false,
-    },{
-        text: "Date Added",
-        flex: 1,
-        dataIndex: 'date_added'
-    }];
-    this.viewConfig = {
-        forceFit: true,
-        trackOver: false,
-        singleSelect: true
-    };
-    this.features = {
-        ftype: 'filters',
+        }, {
+            text: "Today Impressions",
+            flex: 0.7,
+            dataIndex: 'todayImpressions',
+            sortable: true
+        }, {
+            text: "Avg Daily Impressions",
+            flex: 0.8,
+            dataIndex: 'averageDailyImpressions'
+        }, {
+            text: "Avg CPM",
+            flex: 0.7,
+            dataIndex: 'averageCpm',
+            sortable: false,
+        }];
+        this.viewConfig = {
+            forceFit: true,
+            trackOver: false,
+            singleSelect: true
+        };
+        this.features = {
+            ftype: 'filters',
             updateBuffer: 1000 // trigger load after a 1 second timer
         },
 

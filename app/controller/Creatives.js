@@ -9,7 +9,7 @@ Ext.define('ImpulseOne.controller.Creatives', {
 		store.load({
 			callback: function(results, options) {
 				if(options.response.status == 401) {
-					//Ext.example.msg('Session expired');
+					Ext.example.msg('Session expired');
 					window.location = 'index.html';
 				}
 			}
@@ -115,8 +115,12 @@ Ext.define('ImpulseOne.controller.Creatives', {
 		this.getCreativeStore().load();
 		win.close();
 	},
-	tea_break: function (msec) { 
-		var date = new Date(); var curDate = null; do { curDate = new Date(); } while(curDate - date < msec); 
+	tea_break: function(msec) {
+		var date = new Date();
+		var curDate = null;
+		do {
+			curDate = new Date();
+		} while (curDate - date < msec);
 	},
 	showPreview: function(view, cell, row, col, e) {
 		//var grid = button.up('creativegrid');

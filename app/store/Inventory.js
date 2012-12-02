@@ -18,12 +18,11 @@ Ext.define('ImpulseOne.store.Inventory', {
 			successProperty: 'success',
 			totalProperty: 'totalCount'
 		},
-		
 		simpleSortMode: true
 	},
 	//sortInfo: { field: 'impressions', direction: 'ASC' }
 	sorters: [{
-		property: "impressions",
+		property: "todayImpressions",
 		direction: "DESC"
 	}]
 
