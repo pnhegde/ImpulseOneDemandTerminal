@@ -1,29 +1,20 @@
-/* style rows on mouseover */
-/*.x-grid-row-over .x-grid-cell-inner {
-    font-weight: bold;
-    color: #007;
-}
-.x-grid-row td , .x-grid-summary-row td  {
-
-    color: #000;
-}*/
 .arrow {
-	color: #fff !important;
+ color: #fff !important;
 }
 .x-action-col-icon img.icon-preview {
-    background-image: url('../../../data/icons/preview.gif') !important;
+  background-image: url('../../../data/icons/preview.gif') !important;
 }
 /* custom icon for the "alert" ActionColumn icon */
 .x-action-col-icon img.icon-archive {
-    background-image: url('../../../data/icons/archive.png') !important;
+  background-image: url('../../../data/icons/archive.png') !important;
 }
 
 .custom-inventory-grid-domain { 
-    color: #080 !important; 
-    font-weight: bold !important;
+  color: #080 !important; 
+  font-weight: bold !important;
 }
 .custom-inventory-grid-category {
-   color: #009 !important; 
+ color: #009 !important; 
 
 }
 .tabCss .x-tab-bar-top .x-tab-bar-body {
@@ -39,18 +30,34 @@
 	color: #008 !important;
 }
 .combobox-style {
-    font-size: 11px !important;
+  font-size: 11px !important;
 }
 
 .verified-true
 {
-   background:url(../../../data/icons/true.jpg) no-repeat !important;
+ background:url(../../../data/icons/true.jpg) no-repeat !important;
 }
 .verified-false
 {
-   background:url(../../../data/icons/false.jpg) no-repeat !important;
+ background:url(../../../data/icons/false.jpg) no-repeat !important;
 }
 .padding-img
 {
  width:18px;height:0px;
 }
+.treeIcon .x-tree-icon-parent  
+{ 
+  background-image: url('../../../data/icons/folder.png') !important; 
+  background-repeat: no-repeat !important; 
+}
+
+
+/* style rows on mouseover */
+/*.x-grid-row-over .x-grid-cell-inner {
+    font-weight: bold;
+    color: #007;
+}
+.x-grid-row td , .x-grid-summary-row td  {
+
+    color: #000;
+    }*/

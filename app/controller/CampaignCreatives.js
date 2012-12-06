@@ -48,6 +48,5 @@ Ext.define('ImpulseOne.controller.CampaignCreatives', {
 	},
 	saveSelections: function(editor,e) {
 		oldSel = Ext.getCmp('campaigncreativeid').down('gridpanel').getSelectionModel().getSelection();
-
 	}
 });

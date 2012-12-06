@@ -17,7 +17,8 @@
     'ImpulseOne.view.dashboard.Dashboard', 
     'ImpulseOne.view.dashboard.TopExchangeGraph', 
     'ImpulseOne.view.dashboard.TopCampaignGraph',
-    'ImpulseOne.view.trafficking.TrafficHome'],
+    'ImpulseOne.view.trafficking.TrafficHome',
+    'ImpulseOne.view.analytics.AnalyticHome'],
     style: {
         "background-image": "url(\'data/bg.png\')",
         "width": "100%"
@@ -62,7 +63,7 @@
                 }]
             }, {
                 xtype: 'tabpanel',
-                activeTab: 1,
+                activeTab: 6,
                 cls: 'tabCss',
                 deferredRender: true,
                 items: [{
@@ -128,6 +129,10 @@
                     title: 'Vendors',
                     id: 'vendors',
                     xtype: 'vendorgrid'
+                },{
+                    title: 'Analytics',
+                    id: 'analyticsId',
+                    xtype: 'analytichome'
                 }],
                 listeners: {
                     tabchange: function(tabPanel, tab) {

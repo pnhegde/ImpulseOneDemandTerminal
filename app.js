@@ -43,7 +43,8 @@ Ext.application({
     'CampaignGraphs',
     'TrafficControlTrees',
     'EditCampaignWindows',
-    'CampaignCreatives'
+    'CampaignCreatives',
+    'Analytics'
     ],
     launch: function() {  // Setup a task to fadeOut the splashscreen
         var task = new Ext.util.DelayedTask(function() {
