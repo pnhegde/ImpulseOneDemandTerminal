@@ -89,15 +89,8 @@
                      font: '9px Arial',
                      rotate: {
                          degrees: 270
-                     }
-                     // grid: {
-                     //     odd: {
-                     //         opacity: 1,
-                     //         fill: '#ddd',
-                     //         stroke: '#bbb',
-                     //         'stroke-width': 0.5
-                     //     }
-                     // }
+                     },
+                     grid: true
                  }, {
                      type: 'Category',
                      position: 'bottom',

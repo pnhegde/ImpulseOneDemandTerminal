@@ -15,7 +15,7 @@ Ext.define('ImpulseOne.view.analytics.AnalyticMenuPanel', {
     border: false,
     // disabled: true,
     iconCls: "treeIcon",
-    autoScroll:true,
+    // autoScroll:true,
     rootVisible: false,
     root: {
         text: 'Root',

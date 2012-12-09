@@ -1,30 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <anychart>
   <charts>
-    <chart plot_type="CategorizedHorizontal">
+    <chart plot_type="Scatter">
+      <data_plot_settings default_series_type="Bubble">
+        <bubble_series minimum_bubble_size="15">
+          <tooltip_settings enabled="True">
+            <format>Domain : {%Name}
+Impressions:    {%XValue}
+Click Through Rate: {%YValue}%</format>
+          </tooltip_settings>
+        </bubble_series>
+      </data_plot_settings> 
       <data>
-        <series name="Year 2003" type="Bar">
-          <point name="Department Stores" y="637166" />
-          <point name="Discount Stores" y="721630" />
-          <point name="Men's/Women's Specialty Stores" y="148662" />
-          <point name="Juvenile Specialty Stores" y="78662" />
-          <point name="All other outlets" y="90000" />
-        </series>
-      </data>
+  <series color="Red" type="Bubble">
+    <point name="moneycontrol.com" x="123000" y="0.45" size="10" />
+    <point name="yahoo.com" x="233444" y="0.12" size="10" />
+    <point name="yahoo.com" x="233444" y="0.12" size="10" />    
+  </series>
+      </data>  
       <chart_settings>
         <title>
-          <text>Sales of ACME Corp.</text>
+    <font family="Verdana" bold="True" size="12" />
+          <text>CTR vs No. Of Impressions By Domains</text>
         </title>
         <axes>
           <y_axis>
+      <labels>
+        <font family="Verdana" bold="True" size="10" />
+      </labels>
             <title>
-              <text>Sales</text>
+        <font family="Verdana" bold="True" size="12" />
+              <text>Click Through Rate</text>
             </title>
           </y_axis>
           <x_axis>
-            <labels align="Outside" />
+      <labels>
+        <font family="Verdana" bold="True" size="10" />
+      </labels>     
             <title>
-              <text>Retail Channel</text>
+        <font family="Verdana" bold="True" size="12" />
+              <text>Number Of Impressions</text>
             </title>
           </x_axis>
         </axes>

@@ -352,9 +352,6 @@ Ext.define('ImpulseOne.view.trafficking.EditCampaignWindow', {
                             }]
                         }]
                     }]
-                }, {
-                    title: 'Geo Targetings',
-                    //   items: [],
                 },
                 /*{
                     title: 'Creatives',

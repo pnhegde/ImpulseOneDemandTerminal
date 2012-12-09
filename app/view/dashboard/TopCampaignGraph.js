@@ -61,14 +61,14 @@ Ext.define('ImpulseOne.view.dashboard.TopCampaignGraph', {
                     position: 'left',
                     fields: ['impressions', 'clicks'],
                     title: 'Impressions',
-                    // grid: {
-                    //     odd: {
-                    //         opacity: 1,
-                    //         fill: '#ddd',
-                    //         stroke: '#bbb',
-                    //         'stroke-width': 0.5
-                    //     }
-                    // }
+                    grid: true/*{
+                        odd: {
+                            opacity: 1,
+                            fill: '#ddd',
+                            stroke: '#bbb',
+                            'stroke-width': 0.5
+                        }
+                    }*/
                 }, {
                     type: 'Category',
                     position: 'bottom',

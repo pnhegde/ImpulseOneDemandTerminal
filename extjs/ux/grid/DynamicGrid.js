@@ -17,8 +17,9 @@ Ext.define('Ext.ux.grid.DynamicGrid', {
     // URL used for request to the server. Required
     url: '',
     param: '',
+    type: '',
     loadMask: true,
-//    autoScroll: true,
+  //  autoScroll: true,
     //height: 700, 		
     layout: 'fit',
     toolbar: '',	
@@ -51,7 +52,8 @@ Ext.define('Ext.ux.grid.DynamicGrid', {
                         type: 'rest',
                         url: me.url,
 			extraParams: {
-				id: me.param
+				id: me.param,
+				type: me.type
 			},
                     }
                 })

@@ -2,23 +2,16 @@
  * The main application viewport, which displays the whole application
  * @extends Ext.Viewport
  */
- Ext.define('ImpulseOne.view.Viewport', {
+Ext.define('ImpulseOne.view.Viewport', {
     extend: 'Ext.container.Viewport',
     alias: 'widge.viewport',
 
     layout: 'border',
 
-    requires: [
-    'ImpulseOne.view.inventory.InventoryGrid', 
-    'ImpulseOne.view.inventory.InventoryDetail', 
-    'ImpulseOne.view.creative.CreativeGrid', 
-    'ImpulseOne.view.data.DataGrid', 
-    'ImpulseOne.view.vendor.VendorGrid', 
-    'ImpulseOne.view.dashboard.Dashboard', 
-    'ImpulseOne.view.dashboard.TopExchangeGraph', 
-    'ImpulseOne.view.dashboard.TopCampaignGraph',
-    'ImpulseOne.view.trafficking.TrafficHome',
-    'ImpulseOne.view.analytics.AnalyticHome'],
+    requires: ['ImpulseOne.view.inventory.InventoryGrid', 'ImpulseOne.view.inventory.InventoryDetail', 'ImpulseOne.view.creative.CreativeGrid', 'ImpulseOne.view.data.DataGrid', 'ImpulseOne.view.vendor.VendorGrid', 'ImpulseOne.view.dashboard.Dashboard',
+    // 'ImpulseOne.view.dashboard.TopExchangeGraph', 
+    // 'ImpulseOne.view.dashboard.TopCampaignGraph',
+    'ImpulseOne.view.trafficking.TrafficHome', 'ImpulseOne.view.analytics.AnalyticHome'],
     style: {
         "background-image": "url(\'data/bg.png\')",
         "width": "100%"
@@ -63,31 +56,18 @@
                 }]
             }, {
                 xtype: 'tabpanel',
-                activeTab: 6,
+                activeTab: 0,
                 cls: 'tabCss',
-                deferredRender: true,
+                // deferredRender: true,
                 items: [{
+                    xtype: 'panel',
+                    width:  Ext.getBody().getViewSize().width ,
+                    height:  Ext.getBody().getViewSize().height - 49,
+                    layout: 'fit',
+                    autoScroll: true,
                     title: 'Dashboard',
                     id: 'dashboard',
-                    layout: 'border',
-                    items: [{
-                        xtype: 'topexchangegraph',
-                        region: 'center',
-                    },
-                    /* {
-                        xtype: 'toolbar',
-                        height:2,
-                        region: 'center'
-                    }*/
-                    {
-                        xtype: 'topcampaigngraph',
-                        region: 'south',
-                        height: 311,
-                        split:true,
-                    }]
-                },
-
-                {
+                }, {
                     title: 'Trafficking',
                     id: 'traffic',
                     layout: 'fit',
@@ -129,7 +109,7 @@
                     title: 'Vendors',
                     id: 'vendors',
                     xtype: 'vendorgrid'
-                },{
+                }, {
                     title: 'Analytics',
                     id: 'analyticsId',
                     xtype: 'analytichome'
@@ -153,6 +133,6 @@
             ]
         });
 
-me.callParent(arguments);
-}
+        me.callParent(arguments);
+    }
 });

@@ -3,9 +3,6 @@ Ext.define('ImpulseOne.view.analytics.GraphPanel', {
     alias : 'widget.graphpanel',
     border: false,
     layout: 'fit',
-    autoScroll: true,
-    items: [{
-    	xtype: 'panel',
-    	id: 'graphpanelId'
-    }]
+    // autoScroll: true,
+    
 });

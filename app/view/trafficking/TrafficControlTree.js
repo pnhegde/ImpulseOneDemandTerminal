@@ -4,7 +4,7 @@ Ext.define('ImpulseOne.view.trafficking.TrafficControlTree', {
     alias : 'widget.trafficcontroltree',
    // useArrows:true,
     title: 'Advertisers',
-    autoScroll:true,
+    //autoScroll:true,
     id: 'trafficcontroltreeId',
     rootVisible: true,
     hideHeaders: true,
