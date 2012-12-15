@@ -11,7 +11,7 @@ Ext.define('ImpulseOne.model.CampaignGraph', {
 	proxy: {
 		type: 'ajax',
 		api: {
-			read: ' https://user.impulse01.com/newServer.php?do=get_campaign_data'
+			read: ' https://terminal.impulse01.com/newServer.php?do=get_campaign_data'
 		},
 		reader: {
 			root: 'data',

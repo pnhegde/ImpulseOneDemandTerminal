@@ -220,7 +220,7 @@ Ext.define('ImpulseOne.view.trafficking.EditCampaignWindow', {
                                 pageSize: 10,
                                 proxy: {
                                     type: 'ajax',
-                                    url: 'https://user.impulse01.com/newServer.php?do=get_states',
+                                    url: 'https://terminal.impulse01.com/newServer.php?do=get_states',
                                     reader: {
                                         type: 'json',
                                         root: 'data',

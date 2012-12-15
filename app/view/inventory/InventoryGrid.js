@@ -101,7 +101,7 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
                 pageSize: 10,
                 proxy: {
                     type: 'ajax',
-                    url: 'https://user.impulse01.com/newServer.php?do=get_categories',
+                    url: 'https://terminal.impulse01.com/newServer.php?do=get_categories',
                     reader: {
                         type: 'json',
                         root: 'data',

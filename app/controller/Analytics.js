@@ -1,7 +1,51 @@
+var colors = ['url(#v-1)',
+'url(#v-2)',
+/*'url(#v-3)',
+'url(#v-4)',
+'url(#v-5)'*/];
+
+var baseColor = '#000';
+Ext.chart.theme.myTheme = Ext.extend(Ext.chart.theme.Base, {
+	constructor: function(config) {
+		this.callParent([Ext.apply({
+			axis: {
+				fill: baseColor,
+				stroke: baseColor
+			},
+			axisLabelLeft: {
+				fill: baseColor,
+				font: '10px Verdana'
+			},
+			axisLabelRight: {
+				fill: baseColor,
+				font: '10px Verdana'
+			},
+			axisLabelBottom: {
+				fill: baseColor,
+				font: '10px Verdana'
+			},
+			axisTitleLeft: {
+				fill: baseColor,
+				font: 'bold 12px Verdana',
+			},
+			axisTitleRight: {
+				fill: baseColor,
+				font: 'bold 12px Verdana',
+			},
+			axisTitleBottom: {
+				fill: baseColor,
+				font: 'bold 12px Verdana'
+			},
+			colors: colors
+		}, config)]);
+	}
+});
+
 Ext.define('ImpulseOne.controller.Analytics', {
 	extend: 'Ext.app.Controller',
 	views: ['analytics.AnalyticHome', 'analytics.AnalyticMenuPanel', 'analytics.GraphPanel'],
 	init: function() {
+		glob = this;
 		this.control({
 			'analyticmenupanel': {
 				itemclick: this.treeItemClicked
@@ -14,9 +58,21 @@ Ext.define('ImpulseOne.controller.Analytics', {
 			},
 			'graphpanel #dashboardPanel': {
 				render: this.loadCampaignDashboard
+			}, 
+			'graphpanel #bubbleChartId': {
+				render: this.loadBubblePlot
 			},
 			'optionpanel #barId': {
 				change: this.buildChart
+			}, 
+			'optionpanel #LineMetricId' : {
+				change: this.buildChart
+			}, 
+			'optionpanel #barGoId' : {
+				click: this.buildGraphPanel
+			},
+			'optionpanel #bubbleGoId' :{
+				click : this.goBubble
 			}
 		});
 	},
@@ -37,21 +93,24 @@ Ext.define('ImpulseOne.controller.Analytics', {
 				xtype: 'combobox',
 				fieldLabel: 'X-Axis',
 				labelWidth: 50,
-				id: 'optionXaxisId',
-				store: ['test', 'test2'],
-				margin: '0 0 0 10'
+				id: 'bubbleXId',
+				store: ['Clicks', 'CTR','eCPM','eCPA'],
+				margin: '0 0 0 10',
+				value: 'Clicks'
 			}, {
 				xtype: 'combobox',
 				fieldLabel: 'Y-Axis',
-				id: 'optionYaxisId',
+				id: 'bubbleYId',
 				labelWidth: 50,
-				store: ['test', 'test2'],
-				margin: '0 0 0 10'
+				store: ['CTR', 'Clicks','eCPM','eCPA'],
+				margin: '0 0 0 10',
+				value: 'CTR'
 			}, {
 				xtype: 'datefield',
 				format: 'Y-m-d',
 				fieldLabel: 'Start Date',
 				labelWidth: 60,
+				id: 'bubbleFromDateId',
 				value: new Date(),
 				margin: '0 0 0 10'
 			}, {
@@ -59,11 +118,13 @@ Ext.define('ImpulseOne.controller.Analytics', {
 				format: 'Y-m-d',
 				fieldLabel: 'End Date',
 				labelWidth: 60,
+				id: 'bubbleToDateId',
 				value: new Date(),
 				margin: '0 0 0 10'
 			}, {
 				xtype: 'button',
 				text: 'Go',
+				id: 'bubbleGoId',
 				margin: '0 0 0 10'
 			}]);
 			// optionPanel.doLayout();
@@ -78,19 +139,22 @@ Ext.define('ImpulseOne.controller.Analytics', {
 				xtype: 'datefield',
 				format: 'Y-m-d',
 				fieldLabel: 'Start Date',
-				labelWidth: 40,
+				labelWidth: 60,
+				id: 'barFromDateId',
 				value: new Date(),
 				margin: '0 0 0 10'
 			}, {
 				xtype: 'datefield',
 				format: 'Y-m-d',
 				fieldLabel: 'End Date',
-				labelWidth: 40,
+				labelWidth: 60,
+				id : 'barToDateId',
 				value: new Date(),
 				margin: '0 0 0 10'
 			} , {
 				xtype: 'button',
 				text: 'Go',
+				id: 'barGoId',
 				margin: '0 0 0 20'
 			}, {
 				xtype: 'combobox',
@@ -100,12 +164,21 @@ Ext.define('ImpulseOne.controller.Analytics', {
 				store: ['Impressions', 'Clicks', 'Conversions','Spend','CTR','CVR','eCPM','eCPC','eCPA'],
 				margin: '0 0 0 60',
 				value: 'Impressions'
-			}, {
-				xtype: 'checkboxgroup',
+			},{
+				xtype: 'combobox',
 				fieldLabel: 'Line',
-				columns: 5,
-				vertical: true,
 				labelWidth: 40,
+				id: 'LineMetricId',
+				store: ['Impressions', 'Clicks', 'Conversions','Spend','CTR','CVR','eCPM','eCPC','eCPA'],
+				margin: '0 0 0 20',
+				value: 'Spend'
+			}, /*{
+				xtype: 'radiogroup',
+				fieldLabel: 'Line',
+				columns: 4,
+				vertical: true,
+				labelWidth: 30,
+				flex: 0.5,
 				margin: '0 0 0 10',
 				id: 'LineMetricId',
 				items: [{
@@ -115,18 +188,15 @@ Ext.define('ImpulseOne.controller.Analytics', {
 					boxLabel: 'Spend',
 					name: 'lb'
 				}, {
-					boxLabel: 'Conversions',
-					name: 'lb',
-					width: 75,
-				}, {
-					boxLabel: 'CTR',
-					name: 'lb'
-				}, {
 					boxLabel: 'eCPM',
+					name: 'lb',
+				}, {
+					boxLabel: 'eCPA',
 					name: 'lb'
 				}],
 				listeners: {
 					change: function(cb, nv, ov) {
+
 						if(Ext.isArray(nv.lb)) {
 							if(nv.lb.length > 3) {
 								Ext.getCmp('LineMetricId').markInvalid('You can select only 3!');
@@ -136,7 +206,7 @@ Ext.define('ImpulseOne.controller.Analytics', {
 						}
 					}
 				}
-			}]);
+			}*/]);
 // optionPanel.doLayout();
 } 
 else if(nodeType == "Performance Graph") {
@@ -184,173 +254,305 @@ if(nodeType == "Dashboard") {
 	optionPanel.setVisible(false);
 	// optionPanel.doLayout();
 }
-this.buildGraphPanel(selectedNode);
+this.buildGraphPanel();
 },
-buildGraphPanel: function(selectedNode) {
+buildGraphPanel: function() {
+	var selectedNode = Ext.ComponentQuery.query('analytichome analyticmenupanel')[0].getSelectionModel().getSelection()[0];
+	console.log(selectedNode);
 	if(selectedNode.isLeaf()) {
 		var nodeType = selectedNode.data['text'];
 		var selectedCampaign = Ext.ComponentQuery.query('analytichome #campaignSearchId')[0].getValue();
 		var graphPanel = Ext.ComponentQuery.query('analytichome graphpanel')[0];
 		if(nodeType == "Line/Bar Chart") {
 			nodeType = 'lineBarChart';
+			var from; var to;
+			var fromD = Ext.ComponentQuery.query('analytichome optionpanel')[0].down('#barFromDateId').getValue();
+			if(fromD) {
+				from = fromD;
+			} else {
+				from = new Date();
+			}
+			var toD = Ext.ComponentQuery.query('analytichome optionpanel')[0].down('#barToDateId').getValue();
+			if(fromD) {
+				to = toD;
+			} else {
+				to = new Date();
+			}
+			var url = 'https://terminal.impulse01.com/lineanalysis.php';
+			var grid = Ext.create('Ext.ux.grid.DynamicGrid', {
+				url: url,
+				height: 200,
+				layout: 'fit',
+				id: 'dynamicGrid'
+			});
+			grid.getStore().getProxy().extraParams =  {
+				campaignId: selectedCampaign,
+				dim: selectedNode.data['parentId'],
+				from: from,
+				to: to
+			};
+			graphPanel.removeAll();
+			graphPanel.add(grid);
+			grid.getStore().on('load',function(g,r){
+				glob.buildChart();
+				graphPanel.doLayout();
+			});
 		} else if(nodeType == "Bubble Plot") {
 			graphPanel.removeAll();
+			graphPanel.add({xtype: 'panel', id: 'bubbleChartId'});
 			return;
 		} else if(nodeType == "Performance Graph") {
+			graphPanel.removeAll();
 			nodeType = 'performanceChart';
+			return;
 		} else if(nodeType == "Dashboard") {
 			graphPanel.removeAll();
 			graphPanel.add({xtype: 'panel',id:'dashboardPanel'});
-			// gridPanel.doLayout();
 			return;
 		}
-		var url = 'https://user.impulse01.com/linebar.php';
-		var grid = Ext.create('Ext.ux.grid.DynamicGrid', {
-			url: url,
-			height: 200,
-			id: 'dynamicGrid'
-		});
-		grid.getStore().getProxy().extraParams =  {
-			campaignId: selectedCampaign,
-			type: selectedNode.data['parentId'],
-		};
-		graphPanel.removeAll();
-		graphPanel.add(grid);
-		this.buildChart(graphPanel,grid);
-		graphPanel.doLayout();
 	}
 },
 loadCampaignDashboard: function(panel) {
 	var selectedCampaign = Ext.ComponentQuery.query('analytichome #campaignSearchId')[0].getValue();
 	if(selectedCampaign) {
-		// var graphPanel = Ext.ComponentQuery.query('analytichome graphpanel')[0];
-		// graphPanel.setVisible(true);
-		// var menuPanel = Ext.ComponentQuery.query('analytichome analyticmenupanel')[0];
-		// menuPanel.setVisible(true);
-
 		AnyChart.renderingType = anychart.RenderingType.SVG_ONLY;
 		var chart = new AnyChart();
 		chart.width = '100%';
 		chart.height = '100%';
-		chart.setXMLFile('https://user.impulse01.com/anychart/anychart.xml?campaignId='+selectedCampaign);
+		chart.setXMLFile('https://terminal.impulse01.com/anychart/anychart.xml?campaignId='+selectedCampaign);
 		chart.write(panel.body);
 	}
 },
 buildChart: function() {
 	var graphPanel = Ext.ComponentQuery.query('analytichome graphpanel')[0];
 	var grid = graphPanel.down('#dynamicGrid');
-	if(graphPanel.down('chart')) {
+	if(graphPanel.down('#chartPanel')) {
 		console.log('yes');
-		graphPanel.remove(graphPanel.down('chart'));
+		graphPanel.remove(graphPanel.down('#chartPanel'));
 	}
 	var str = grid.getStore();
 	var optionPanel = Ext.ComponentQuery.query('analytichome optionpanel')[0];
 	var bar = optionPanel.down('#barId');
+	var lineM = optionPanel.down('#LineMetricId');
 	var barMetric ;
+	var lineMetric;
 	if(bar.getValue()) {
 		barMetric =  bar.getValue();
 	}	else {
 		barMetric = 'Impressions' ;
 	}
+	if(lineM.getValue()) {
+		lineMetric = lineM.getValue();
+	} else {
+		lineMetric = 'Spend';
+	}
+	
 	var chart = Ext.create('Ext.chart.Chart', {
+		theme: 'myTheme',
 		shadow: true,
-		animate: true,
+		animate: {
+			easing: 'bounceOut',
+			duration: 500
+		},gradients: [
+		{
+			'id': 'v-1',
+			'angle': 0,
+			stops: {
+				0: {
+					color: 'rgb(212, 40, 40)'
+				},
+				100: {
+					color: 'rgb(117, 14, 14)'
+				}
+			}
+		}/*,
+		{
+			'id': 'v-2',
+			'angle': 0,
+			stops: {
+				0: {
+					color: 'rgb(76, 76, 76)'
+				},
+				100: {
+					color: 'rgb(0, 0, 0)'
+				}
+			}
+		},
+		{
+			'id': 'v-3',
+			'angle': 0,
+			stops: {
+				0: {
+					color: 'rgb(43, 221, 115)'
+				},
+				100: {
+					color: 'rgb(14, 117, 56)'
+				}
+			}
+		}*/,
+		{
+			'id': 'v-2',
+			'angle': 0,
+			stops: {
+				0: {
+					color: 'rgb(0, 73, 144)'
+				},
+				100: {
+					color: 'rgb(0, 13, 23)'
+				}
+			}
+		},
+		/*{
+			'id': 'v-5',
+			'angle': 0,
+			stops: {
+				0: {
+					color: 'rgb(187, 45, 222)'
+				},
+				100: {
+					color: 'rgb(85, 10, 103)'
+				}
+			}
+		}*/],
 		store: str,
-		height: 300,
-		layout: 'fit',
+		legend: {
+			position: 'top',
+			font: '10px Verdana'
+		},
+		background: {
+			fill: '#FEFEFE'
+		},
 		axes: [{
 			type: 'Numeric',
 			position: 'left',
-			fields: [barMetric,'CTR'],
+			fields: [barMetric],
 			minimum: 0,
 			grid: {
 				odd: {
 					opacity: 1,
-					fill: '#eee',
-					stroke: '#bbb',
-					'stroke-width': 0.5
+					fill: '#f9f9f9',
+					stroke: '#ccc',
+				},
+				even: {
+					stroke: '#ccc',
 				}
 			},
-			title: barMetric
+			//hidden: true,
+			title: barMetric,
+		},{
+			type: 'Numeric',
+			position: 'right',
+			fields: [lineMetric],
+			minimum: 0,
+			title: lineMetric,
 		}, {
 			type: 'Category',
 			position: 'bottom',
-			fields: ['Domain'],
-			title: 'Domain',
+			fields: grid.columns[0].dataIndex,
+			title: grid.columns[0].dataIndex,
 			label: {
 				renderer: function(v) {
-					return Ext.String.ellipsis(v, 15, false);
+					return Ext.String.ellipsis(v, 10, false);
 				},
-				font: '9px Arial',
+				// rotate: {
+				// 	degrees: 315
+				// },
+				font: '10px Verdana',
+				contrast: true
 			}
 		}],
 		series: [{
 			type: 'column',
 			axis: 'left',
 			highlight: true,
-			style: {
-				fill: '#456d9f'
-			},
-			highlightCfg: {
-				fill: '#a2b5ca'
-			},
+			// highlightCfg: {
+			// 	fill: 'green'
+			// },
 			label: {
-				contrast: true,
 				display: 'insideEnd',
+				'text-anchor': 'middle',
 				field: 'CTR',
-				color: '#000',
-				orientation: 'vertical',
-				'text-anchor': 'middle'
+				orientation: 'horizontal',
+				fill: '#fff',
+				font: '10px Verdana',
 			},
 			tips: {
 				trackMouse: true,
-				width: 120,
-				height: 35,
+				width: 150,
+				height: 40,
+				style: {
+					'background-color' : '#ffffff',
+					font: '10px Verdana',
+					fill: '#000'
+
+				},
 				renderer: function(storeItem, item) {
-					this.setTitle('Impressions = '+storeItem.get('Impressions') + ': Clicks = ' + storeItem.get('Clicks') );
+					this.setTitle(grid.columns[0].dataIndex + ' = '+storeItem.get(grid.columns[0].dataIndex));
+					this.update(barMetric+' = ' + storeItem.get(barMetric));
+					
 				}
 			},
-			xField: 'Domain',
+			renderer: function(sprite, storeItem, barAttr, i, store) {
+				barAttr.fill = colors[i % colors.length];
+				return barAttr;
+			},
+			style: {
+				opacity: 0.5,
+				font: '10px Verdana',
+			},
+			xField: grid.columns[0].dataIndex,
 			yField: [barMetric]
 		},{
 			type: 'line',
 			axis: 'right',
-			fill: true,
-			fillOpacity: 0.5,
 			highlight: true,
-			// style: {
-			// 	fill: '#ff4500',
-			// 	stroke: '#ff0000',
-			// 	'stroke-width': 1
-			// },
+			style: {
+				fill: '#38B8BF',
+				stroke: '#1d8bd1',
+				'stroke-width': 3
+			},
+			markerConfig: {
+				type: 'circle',
+				size: 4,
+				radius: 4,
+				'stroke-width': 0,
+				fill: '#145e8d',
+				stroke: '#38B8BF'
+			},
 			tips: {
 				trackMouse: true,
-				width: 120,
-				height: 35,
+				width: 150,
+				height: 40,
+				style: {
+					'background-color' : '#FFF',
+					font: '10px Verdana'
+				},
 				renderer: function(storeItem, item) {
-					this.setTitle('Impressions = '+storeItem.get('Impressions') + ': Clicks = ' + storeItem.get('Clicks') );
+					this.setTitle( grid.columns[0].dataIndex +' = '+storeItem.get(grid.columns[0].dataIndex));
+					this.update(lineMetric + ': ' + storeItem.get(lineMetric));
 				}
 			},
-			xField: 'Domain',
-			yField: 'CTR'
-		},{
-			type: 'line',
-			axis: 'right',
-			highlight: true,
-			smooth: true,
-			tips: {
-				trackMouse: true,
-				width: 100,
-				height: 35,
-				renderer: function(storeItem, item) {
-					this.setTitle('Spend = '+storeItem.get('Spend') + ': Clicks = ' + storeItem.get('Clicks') );
-				}
-			},
-			xField: 'Domain',
-			yField: 'Spend'
+			xField: grid.columns[0].dataIndex,
+			yField: [lineMetric]
 		}]
 	});
-graphPanel.insert(0,chart);
+
+var count =  55*(str.getCount());
+if(count< 1200) {
+	count = 1150;
+} 
+console.log(count);
+chart.setWidth(count);
+
+var chartPanel = Ext.create('Ext.panel.Panel',{
+	autoScroll: true,
+	height: 300,
+	border: false,
+	layout: 'fit',
+	id: 'chartPanel'
+});
+chartPanel.add(chart);	
+graphPanel.insert(0,chartPanel);
 },
 addDashboardPanel: function(button) {
 	var graphPanel = Ext.ComponentQuery.query('analytichome graphpanel')[0];
@@ -360,6 +562,45 @@ addDashboardPanel: function(button) {
 	graphPanel.removeAll();
 	graphPanel.add({xtype:'panel',id: 'dashboardPanel'});
 	// graphPanel.doLayout();
+},
+goBubble: function (button) {
+	var graphPanel = Ext.ComponentQuery.query('analytichome graphpanel')[0];
+	graphPanel.removeAll();
+	graphPanel.add({xtype: 'panel', id: 'bubbleChartId'});
+},
+loadBubblePlot: function(bubblePanel) {
+	// bubblePanel = Ext.ComponentQuery.query('analytichome graphpanel #bubbleChartId')[0] ;  
+	var selectedCampaign = Ext.ComponentQuery.query('analytichome #campaignSearchId')[0].getValue();
+	if(selectedCampaign) {
+		var xf = Ext.ComponentQuery.query('analytichome optionpanel')[0].down('#bubbleXId').getValue();
+		var yf = Ext.ComponentQuery.query('analytichome optionpanel')[0].down('#bubbleYId').getValue();
+		if(!xf) {
+			xf = 'Clicks';
+		}
+		if(!yf) {
+			yf = 'CTR';
+		}
+		var from; var to;
+		var fromD = Ext.ComponentQuery.query('analytichome optionpanel')[0].down('#bubbleFromDateId').getValue();
+		if(fromD) {
+			from = fromD;
+		} else {
+			from = new Date();
+		}
+		var toD = Ext.ComponentQuery.query('analytichome optionpanel')[0].down('#bubbleToDateId').getValue();
+		if(fromD) {
+			to = toD;
+		} else {
+			to = new Date();
+		}
+		var url = 'https://terminal.impulse01.com/scatteranalysis.php?campaignId='+selectedCampaign+ '&dim=' + Ext.ComponentQuery.query('analytichome analyticmenupanel')[0].getSelectionModel().getSelection()[0].data['parentId']+'&metricx='+xf+'&metricy='+yf+'&from='+from+'&to='+to; 
+		AnyChart.renderingType = anychart.RenderingType.SVG_ONLY;
+		var chart = new AnyChart();
+		chart.width = '100%';
+		chart.height = '100%';
+		chart.setXMLFile(url);
+		chart.write(bubblePanel.body);
+	}	
 },
 showBubble: function(tab) {
 	var menuPanel = Ext.ComponentQuery.query('analytichome analyticmenupanel')[0];

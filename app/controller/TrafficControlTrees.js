@@ -51,7 +51,7 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 		home.doLayout();
 	},
 	getGrid: function(nodeId, nodeType) {
-		var url = 'https://user.impulse01.com/newServer.php?do=get_' + nodeType;
+		var url = 'https://terminal.impulse01.com/newServer.php?do=get_' + nodeType;
 		var grid = Ext.create('Ext.ux.grid.DynamicGrid', {
 			url: url,
 			param: nodeId
@@ -60,7 +60,7 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 			grid.down('toolbar').add({
 				xtype: 'box',
 				height: 20,
-				html: nodeType
+				html: '<b>Advertisers</b>'
 			}, '->', '-', {
 				xtype: 'button',
 				text: 'Delete',
@@ -71,7 +71,7 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 					var grid = Ext.ComponentQuery.query('traffichome dynamicGrid')[0];
 					var row = grid.getSelectionModel().getSelection()[0];
 					Ext.Ajax.request({
-						url: 'https://user.impulse01.com/newServer.php?do=delete_advertiser',
+						url: 'https://terminal.impulse01.com/newServer.php?do=delete_advertiser',
 						params: {
 							advertiserId: row.data['Advertiser Id'],
 						},
@@ -104,7 +104,7 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 			grid.down('toolbar').add({
 				xtype: 'box',
 				height: 20,
-				html: nodeType
+				html: '<b>Brands</b>'
 			}, '->', '-', {
 				xtype: 'button',
 				text: 'Delete',
@@ -115,7 +115,7 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 					var grid = Ext.ComponentQuery.query('traffichome dynamicGrid')[0];
 					var row = grid.getSelectionModel().getSelection()[0];
 					Ext.Ajax.request({
-						url: 'https://user.impulse01.com/newServer.php?do=delete_brand',
+						url: 'https://terminal.impulse01.com/newServer.php?do=delete_brand',
 						params: {
 							brandId: row.data['Brand Id'],
 						},
@@ -148,7 +148,7 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 			grid.down('toolbar').add({
 				xtype: 'box',
 				height: 20,
-				html: nodeType
+				html: '<b>Plans</b>'
 			}, '->', '-', {
 				xtype: 'button',
 				text: 'Delete',
@@ -159,7 +159,7 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 					var grid = Ext.ComponentQuery.query('traffichome dynamicGrid')[0];
 					var row = grid.getSelectionModel().getSelection()[0];
 					Ext.Ajax.request({
-						url: 'https://user.impulse01.com/newServer.php?do=delete_plan',
+						url: 'https://terminal.impulse01.com/newServer.php?do=delete_plan',
 						params: {
 							planId: row.data['Plan Id'],
 						},
@@ -191,7 +191,7 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 			grid.down('toolbar').add({
 				xtype: 'box',
 				height: 20,
-				html: nodeType
+				html: '<b>Campaigns</b>'
 			}, '->', '-', {
 				xtype: 'button',
 				text: 'Activate',
@@ -202,7 +202,7 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 					var grid = Ext.ComponentQuery.query('traffichome dynamicGrid')[0];
 					var row = grid.getSelectionModel().getSelection()[0];
 					Ext.Ajax.request({
-						url: 'https://user.impulse01.com/newServer.php?do=activate_campaign',
+						url: 'https://terminal.impulse01.com/newServer.php?do=activate_campaign',
 						params: {
 							campaignId: row.data['Campaign Id'],
 						},
@@ -229,7 +229,7 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 					var grid = Ext.ComponentQuery.query('traffichome dynamicGrid')[0];
 					var row = grid.getSelectionModel().getSelection()[0];
 					Ext.Ajax.request({
-						url: 'https://user.impulse01.com/newServer.php?do=pause_campaign',
+						url: 'https://terminal.impulse01.com/newServer.php?do=pause_campaign',
 						params: {
 							campaignId: row.data['Campaign Id'],
 						},
@@ -256,7 +256,7 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 					var grid = Ext.ComponentQuery.query('traffichome dynamicGrid')[0];
 					var row = grid.getSelectionModel().getSelection()[0];
 					Ext.Ajax.request({
-						url: 'https://user.impulse01.com/newServer.php?do=archive_campaign',
+						url: 'https://terminal.impulse01.com/newServer.php?do=archive_campaign',
 						params: {
 							campaignId: row.data['Campaign Id'],
 						},
@@ -283,7 +283,7 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 					var grid = Ext.ComponentQuery.query('traffichome dynamicGrid')[0];
 					var row = grid.getSelectionModel().getSelection()[0];
 					Ext.Ajax.request({
-						url: 'https://user.impulse01.com/newServer.php?do=delete_campaign',
+						url: 'https://terminal.impulse01.com/newServer.php?do=delete_campaign',
 						params: {
 							campaignId: row.data['Campaign Id'],
 						},
@@ -372,7 +372,7 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 		var win = button.up('window');
 		var values = win.down('form').getValues();
 		Ext.Ajax.request({
-			url: 'https://user.impulse01.com/newServer.php?do=create_new_advertiser',
+			url: 'https://terminal.impulse01.com/newServer.php?do=create_new_advertiser',
 			params: {
 				advertiserName: values['advertiserName'],
 				advertiserCategory: values['advertiserCategory']
@@ -394,7 +394,7 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 		var win = button.up('window');
 		var values = win.down('form').getValues();
 		Ext.Ajax.request({
-			url: 'https://user.impulse01.com/newServer.php?do=create_new_brand',
+			url: 'https://terminal.impulse01.com/newServer.php?do=create_new_brand',
 			params: {
 				brandName: values['brandName'],
 				advertiserId: SelectedNodeId
@@ -417,7 +417,7 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 		var win = button.up('window');
 		var values = win.down('form').getValues();
 		Ext.Ajax.request({
-			url: 'https://user.impulse01.com/newServer.php?do=create_new_plan',
+			url: 'https://terminal.impulse01.com/newServer.php?do=create_new_plan',
 			params: {
 				planName: values['planName'],
 				planBudget: values['maxBudget'],
@@ -444,7 +444,7 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 		var win = button.up('window');
 		var values = win.down('form').getValues();
 		Ext.Ajax.request({
-			url: 'https://user.impulse01.com/newServer.php?do=create_new_campaign',
+			url: 'https://terminal.impulse01.com/newServer.php?do=create_new_campaign',
 			params: {
 				campaignName: values['campaignName'],
 				// channel: values['channel'],
@@ -572,7 +572,7 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 					pageSize: 10,
 					proxy: {
 						type: 'ajax',
-						url: 'https://user.impulse01.com/newServer.php?do=get_carriers',
+						url: 'https://terminal.impulse01.com/newServer.php?do=get_carriers',
 						reader: {
 							type: 'json',
 							root: 'data',

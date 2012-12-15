@@ -13,6 +13,6 @@ Ext.define('ImpulseOne.store.DynamicTrafficGrid', {
     proxy: {
         reader: Ext.create('Ext.ux.data.reader.DynamicReader'),
         type: 'ajax',
-        url: 'https://user.impulse01.com/newServer.php?do=get_advertisers',
+        url: 'https://terminal.impulse01.com/newServer.php?do=get_advertisers',
     }
 });

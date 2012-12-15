@@ -9,9 +9,9 @@ Ext.define('ImpulseOne.store.Vendor', {
 	proxy: {
 		type: 'ajax',
 		api: {
-			read: 'https://user.impulse01.com/newServer.php?do=get_all_vendors',
-			create: 'https://user.impulse01.com/newServer.php?do=create_new_vendor',
-			update: 'https://user.impulse01.com/newServer.php?do=edit_vendor'
+			read: 'https://terminal.impulse01.com/newServer.php?do=get_all_vendors',
+			create: 'https://terminal.impulse01.com/newServer.php?do=create_new_vendor',
+			update: 'https://terminal.impulse01.com/newServer.php?do=edit_vendor'
 			//destroy: 'app.php/users/destroy'
 		},
 		reader: {

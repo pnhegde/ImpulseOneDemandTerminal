@@ -4,7 +4,7 @@ function Redirect() {
 Ext.onReady(function() {
     Ext.QuickTips.init();
     var login = new Ext.FormPanel({
-        url: 'https://user.impulse01.com/newServer.php?do=authenticate',
+        url: 'https://terminal.impulse01.com/newServer.php?do=authenticate',
         frame: true,
         title: 'Impulse Demand Terminal - BETA',
         defaultType: 'textfield',

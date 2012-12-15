@@ -4,7 +4,7 @@ Ext.define('ImpulseOne.store.TrafficControlTree', {
 	autoLoad: true,
 	proxy: {
 		type: 'ajax',
-		url: 'https://user.impulse01.com/newServer.php?do=get_tree',
+		url: 'https://terminal.impulse01.com/newServer.php?do=get_tree',
 		extraParams: {
 			isXml: true
 		},

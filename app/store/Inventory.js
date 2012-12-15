@@ -10,7 +10,7 @@ Ext.define('ImpulseOne.store.Inventory', {
 	proxy: {
 		type: 'ajax',
 		api: {
-			read: 'https://user.impulse01.com/newServer.php?do=getInventory'
+			read: 'https://terminal.impulse01.com/newServer.php?do=getInventory'
 		},
 		reader: {
 			root: 'data',

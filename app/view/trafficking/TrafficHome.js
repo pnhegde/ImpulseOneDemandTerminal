@@ -11,15 +11,15 @@ Ext.define('ImpulseOne.view.trafficking.TrafficHome', {
     {
         xtype: 'trafficcontroltree',
         region: 'west',
-        split:true,
+        // split:true,
         width:200
 
     },{
-        style: {'background':'#fff'},
+        style: {'background':'#fff !important'},
         id: 'dynamicGridId',
         region: 'center',
-        title: 'Grid',
-        url: 'https://user.impulse01.com/newServer.php?do=get_advertisers'
+        title: 'Trafficking',
+        url: 'https://terminal.impulse01.com/newServer.php?do=get_advertisers'
     }]
 });
 

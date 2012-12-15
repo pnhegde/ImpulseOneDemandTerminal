@@ -32,7 +32,7 @@ Ext.define('ImpulseOne.controller.CampaignCreatives', {
 		};
 		this.getCampaignCreativeStore().sync();
 		Ext.Ajax.request({
-			url: 'https://user.impulse01.com/newServer.php?do=save_campaign_creatives',
+			url: 'https://terminal.impulse01.com/newServer.php?do=save_campaign_creatives',
 			params: {
 				creatives: selCrtId,
 				campaignId: camId

@@ -129,12 +129,12 @@ Ext.define('ImpulseOne.controller.Creatives', {
 		if(Ext.get(e.getTarget()).hasCls('icon-preview')) {
 			var p = record.data['filePath'];
 			var htmlContent;
-			var filePath = "https://user.impulse01.com/" + p;
+			var filePath = "https://terminal.impulse01.com/" + p;
 			if(record.data['creativeType'] == "Flash Video") {
 				htmlContent = '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="600" height="400" id="flvPlayer"> \
 				<param name=\'allowFullScreen\' value=\'true\'> \
-				<param name=\'movie\' value=\'https://user.impulse01.com/OSplayer.swf?movie=[' + filePath + ']&bgcolor=0x8E6A4F&fgcolor=0x8E6A4F&volume=70&autoplay=on&autoload=on&clickurl=http://google.com&clicktarget=_blank&postimage=\'> \
-				<embed src=\'https://user.impulse01.com/OSplayer.swf?movie=[' + filePath + ']&bgcolor=0x8E6A4F&fgcolor=0x8E6A4F&volume=70&autoplay=on&autoload=on&clickurl=http://google.com&clicktarget=_blank&postimage=\' width=\'600\' height=\'400\' allowFullScreen=\'true\' type=\'application/x-shockwave-flash\'> \
+				<param name=\'movie\' value=\'https://terminal.impulse01.com/OSplayer.swf?movie=[' + filePath + ']&bgcolor=0x8E6A4F&fgcolor=0x8E6A4F&volume=70&autoplay=on&autoload=on&clickurl=http://google.com&clicktarget=_blank&postimage=\'> \
+				<embed src=\'https://terminal.impulse01.com/OSplayer.swf?movie=[' + filePath + ']&bgcolor=0x8E6A4F&fgcolor=0x8E6A4F&volume=70&autoplay=on&autoload=on&clickurl=http://google.com&clicktarget=_blank&postimage=\' width=\'600\' height=\'400\' allowFullScreen=\'true\' type=\'application/x-shockwave-flash\'> \
 				</object> ';
 			} else if(record.data['creativeType'] == "Flash") {
 				htmlContent = '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" \
@@ -178,16 +178,21 @@ Ext.define('ImpulseOne.controller.Creatives', {
 					h = 60;
 				}
 			}
-			Ext.create('Ext.window.Window', {
-				width: w,
-				height: h,
-				autoShow: true,
+			console.log(w +' : ->'+h);
+			var prwin = Ext.create('Ext.window.Window', {
+				// autoShow: true,
 				modal: true,
 				layout: 'fit',
-				html: htmlContent,
 				border: false,
-				bodyPadding: 10
+				// bodyPadding: 10,
+				items: [{
+					xtype: 'box',
+					width: w,
+					height: h,
+					html: htmlContent
+				}]
 			});
+			prwin.show();
 		} else if(Ext.get(e.getTarget()).hasCls('icon-archive')) {
 			alert('Archived');
 		}
@@ -196,7 +201,7 @@ Ext.define('ImpulseOne.controller.Creatives', {
 	submitFileupload: function(button) {
 		form = Ext.getCmp('uploadCreative').down('form');
 		form.getForm().submit({
-			url: 'https://user.impulse01.com/newServer.php?do=upload_new_creative',
+			url: 'https://terminal.impulse01.com/newServer.php?do=upload_new_creative',
 			submitEmptyText: false,
 			waitMsg: 'Saving Data...',
 

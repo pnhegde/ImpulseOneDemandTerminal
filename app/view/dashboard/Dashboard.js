@@ -15,7 +15,7 @@ Ext.define('ImpulseOne.view.dashboard.Dashboard', {
                         var chart = new AnyChart();
                         chart.width = '100%';
                         chart.height = '100%';
-                        chart.setXMLFile('https://user.impulse01.com/anychart/maindashboard.xml');
+                        chart.setXMLFile('https://terminal.impulse01.com/anychart/maindashboard.xml');
                         chart.write(panel.body);
                     }
                 }

@@ -8,9 +8,9 @@ Ext.define('ImpulseOne.store.Data', {
 	proxy: {
 		type: 'ajax',
 		api: {
-			read: 'https://user.impulse01.com/newServer.php?do=list_all_segments',
-			create: 'https://user.impulse01.com/newServer.php?do=create_new_segment',
-			update: 'https://user.impulse01.com/newServer.php?do=edit_segment'
+			read: 'https://terminal.impulse01.com/newServer.php?do=list_all_segments',
+			create: 'https://terminal.impulse01.com/newServer.php?do=create_new_segment',
+			update: 'https://terminal.impulse01.com/newServer.php?do=edit_segment'
 			//destroy: 'app.php/users/destroy'
 		},
 		reader: {

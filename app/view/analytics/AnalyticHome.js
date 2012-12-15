@@ -27,7 +27,7 @@ Ext.define('ImpulseOne.view.analytics.AnalyticHome', {
             mode: 'local',
             proxy: {
                 type: 'ajax',
-                url: 'https://user.impulse01.com/newServer.php?do=get_all_campaigns',
+                url: 'https://terminal.impulse01.com/newServer.php?do=get_all_campaigns',
                 reader: {
                     type: 'json',
                     root: 'data',
@@ -43,6 +43,8 @@ Ext.define('ImpulseOne.view.analytics.AnalyticHome', {
         xtype: 'analyticmenupanel',
         region: 'west',
         split:true,
+        // collapsible:true,
+        // collapseMode:'mini',
         width:200,
     },{
         xtype: 'container',

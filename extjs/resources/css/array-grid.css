@@ -18,7 +18,8 @@
 
 }
 .tabCss .x-tab-bar-top .x-tab-bar-body {
-  border-top-width: 0px !important; 
+  border-top-width: 0px !important;
+  background-color: #F9F9F9 !important; 
 }
 .active-status .custom-creative-grid {
 	color: #080 !important;

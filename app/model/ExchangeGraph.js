@@ -11,7 +11,7 @@ Ext.define('ImpulseOne.model.ExchangeGraph', {
 	proxy: {
 		type: 'ajax',
 		api: {
-			read: ' https://user.impulse01.com/newServer.php?do=get_exchange_data'
+			read: ' https://terminal.impulse01.com/newServer.php?do=get_exchange_data'
 		},
 		reader: {
 			root: 'data',

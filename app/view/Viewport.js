@@ -2,7 +2,7 @@
  * The main application viewport, which displays the whole application
  * @extends Ext.Viewport
  */
-Ext.define('ImpulseOne.view.Viewport', {
+ Ext.define('ImpulseOne.view.Viewport', {
     extend: 'Ext.container.Viewport',
     alias: 'widge.viewport',
 
@@ -13,7 +13,8 @@ Ext.define('ImpulseOne.view.Viewport', {
     // 'ImpulseOne.view.dashboard.TopCampaignGraph',
     'ImpulseOne.view.trafficking.TrafficHome', 'ImpulseOne.view.analytics.AnalyticHome'],
     style: {
-        "background-image": "url(\'data/bg.png\')",
+        //"background-image": "url(\'data/bg.png\')",
+        "background-color" : '#F9F9F9',
         "width": "100%"
     },
     initComponent: function() {
@@ -68,7 +69,7 @@ Ext.define('ImpulseOne.view.Viewport', {
                     title: 'Dashboard',
                     id: 'dashboard',
                 }, {
-                    title: 'Trafficking',
+                    title: 'Campaign Console',
                     id: 'traffic',
                     layout: 'fit',
                     items: [{
@@ -76,7 +77,7 @@ Ext.define('ImpulseOne.view.Viewport', {
 
                     }]
                 }, {
-                    title: 'Inventory',
+                    title: 'Inventory Query',
                     id: 'inventory',
                     layout: 'border',
                     items: [{
@@ -93,7 +94,7 @@ Ext.define('ImpulseOne.view.Viewport', {
                     // }
                     ]
                 }, {
-                    title: 'Data',
+                    title: 'Audience Management',
                     id: 'data',
                     // tabConfig: {
                     //     tooltip: 'tooltip',
@@ -101,16 +102,16 @@ Ext.define('ImpulseOne.view.Viewport', {
                     // },
                     xtype: 'datagrid',
                 }, {
-                    title: 'Creatives',
+                    title: 'Creative Management',
                     id: 'creatives',
-                    xtype: 'creativegrid',
+                    xtype: 'creativegrid'
 
                 }, {
-                    title: 'Vendors',
+                    title: 'Vendor Management',
                     id: 'vendors',
                     xtype: 'vendorgrid'
                 }, {
-                    title: 'Analytics',
+                    title: 'Campaign Insight',
                     id: 'analyticsId',
                     xtype: 'analytichome'
                 }],
@@ -133,6 +134,6 @@ Ext.define('ImpulseOne.view.Viewport', {
             ]
         });
 
-        me.callParent(arguments);
-    }
+me.callParent(arguments);
+}
 });

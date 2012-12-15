@@ -4,8 +4,8 @@ Ext.define('ImpulseOne.model.Campaign', {
 	proxy: {
 		type: 'ajax',
 		api: {
-			read: ' https://user.impulse01.com/newServer.php?do=get_campaign',
-			update: 'https://user.impulse01.com/newServer.php?do=update_campaign'
+			read: ' https://terminal.impulse01.com/newServer.php?do=get_campaign',
+			update: 'https://terminal.impulse01.com/newServer.php?do=update_campaign'
 		},
 		reader: {
 			root: 'data',

@@ -30,7 +30,7 @@ Ext.define('ImpulseOne.controller.Globals', {
 		chart.width = '100%';
 		chart.height = '98%';
 		chart.write(panel.body);
-		chart.setXMLFile('https://user.impulse01.com/anychart/maindashboard.xml');
+		chart.setXMLFile('https://terminal.impulse01.com/anychart/maindashboard.xml');
 	},
 	logout: function() {
 		var redirect = 'index.html';

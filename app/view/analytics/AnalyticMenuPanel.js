@@ -24,55 +24,65 @@ Ext.define('ImpulseOne.view.analytics.AnalyticMenuPanel', {
             text : 'Dashboard',
             leaf: true,
             id: 'dashboardNodeId',
-            icon: '/ImpulseOneDemandTerminal/data/icons/home.png'
+            icon: '/data/icons/home.png'
         }, {
             text: 'Single Dimension Analysis',
+            icon: '/data/icons/folder.png',
             expanded: true,
-            // icon: '/ImpulseOneDemandTerminal/data/icons/folder.png',
             children: [{
                 text: 'Media Source',
                 id: 'MSId',
-                expanded: true,
+                icon: '/data/icons/folder.png',
                 children: leaves
             }, {
                 text: 'State',
                 id: 'StateId',
+                icon: '/data/icons/folder.png',
                 children: leaves
             }, {
                 text: 'City',
                 id: 'CityId',
+                icon: '/data/icons/folder.png',
                 children: leaves
             },{
                 text: 'Hour',
                 id: 'HourId',
+                icon: '/data/icons/folder.png',
                 children: leaves
             },{
                 text: 'Daypart',
                 id: 'DaypartId',
+                icon: '/data/icons/folder.png',
                 children: leaves
             },{
                 text: 'Creative',
                 id: 'CreativeId',
+                icon: '/data/icons/folder.png',
                 children: leaves
             },{
                 text: 'Weekday',
                 id: 'WeekdayId',
+                icon: '/data/icons/folder.png',
                 children: leaves
             },{
                 text: 'Context',
                 id: 'ContextId',
+                icon: '/data/icons/folder.png',
                 children: leaves
             },{
                 text: 'Device',
                 id: 'DeviceId',
+                icon: '/data/icons/folder.png',
                 children: leaves
             },{
                 text: 'Carrier / ISP',
                 id: 'CarrierId',
+                icon: '/data/icons/folder.png',
                 children: leaves
             }]
         },{
             text: 'Double Dimension Analysis',
+            icon: '/data/icons/folder.png',
             children: [{
                 text: 'Media Source Vs City',
                 id: 'MSvCityId',

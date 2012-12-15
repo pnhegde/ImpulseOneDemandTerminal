@@ -1,7 +1,7 @@
 Ext.define('ImpulseOne.view.trafficking.DynamicTrafficGrid', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.dynamictrafficgrid',
-    url: 'https://user.impulse01.com/newServer.php?do=get_advertisers',
+    url: 'https://terminal.impulse01.com/newServer.php?do=get_advertisers',
     initComponent: function() {
         console.log('DynamicGrid initComponent!');
         var me = this;

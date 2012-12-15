@@ -7,9 +7,9 @@ Ext.define('ImpulseOne.store.Creative', {
 	proxy: {
 		type: 'ajax',
 		api: {
-			read: 'https://user.impulse01.com/newServer.php?do=get_all_creatives',
-			create: 'https://user.impulse01.com/newServer.php?do=upload_tag_creative',
-			update: 'https://user.impulse01.com/newServer.php?do=edit_creative'
+			read: 'https://terminal.impulse01.com/newServer.php?do=get_all_creatives',
+			create: 'https://terminal.impulse01.com/newServer.php?do=upload_tag_creative',
+			update: 'https://terminal.impulse01.com/newServer.php?do=edit_creative'
 		},
 		simpleSortMode: true,
 		reader: {

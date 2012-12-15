@@ -2,7 +2,7 @@ Ext.define('ImpulseOne.view.analytics.LineBarGrid', {
 	extend: 'Ext.grid.Panel',
 	alias : 'widget.linebargrid',
 	id: 'linebargridId',
-    url: 'https://user.impulse01.com/newServer.php?do=get_linebargrid',
+    url: 'https://terminal.impulse01.com/newServer.php?do=get_linebargrid',
     initComponent: function() {
         console.log('DynamicGrid initComponent!');
         var me = this;
