@@ -13,7 +13,7 @@
  	<!-- Ext JS Files -->
  	<link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all-gray.css">
 
-
+ 	
  	<script type="text/javascript" src="extjs/ext-all-debug.js"></script>
  	<!-- App Files -->
  	<link rel="stylesheet" type="text/css" href="extjs/resources/css/array-grid.css" />
@@ -27,14 +27,14 @@
  	<script type="text/javascript" src="https://code.highcharts.com/highcharts-more.js"></script>
  	<script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
  	<script type="text/javascript" src="/Chart/ux/HighChart.js"></script>
-	-->
- 	<!-- <script src="extjs/ux/Exporter/Exporter-all.js" type="text/javascript"></script> -->
- 	<script type="text/javascript" src="app.js"></script>
+ -->
+ <!-- <script src="extjs/ux/Exporter/Exporter-all.js" type="text/javascript"></script> -->
+ <script type="text/javascript" src="app.js"></script>
 
 
 
- </head>
- <body>
+</head>
+<body>
 
- </body>
- </html>
+</body>
+</html>

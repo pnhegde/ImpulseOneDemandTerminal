@@ -7,20 +7,22 @@ Ext.define('ImpulseOne.view.header.FinanceWin' ,{
     width: 750,
     height: 500,
     modal: true,
-    //bodyPadding: 15,
+    bodyPadding: 10,
     initComponent: function() {
-        this.buttons = [
-        {
+        this.items = [ {
+            
+        }
+
+
+        ];
+        this.buttons = [{
             text: 'Apply',
             action: 'apply'
-        },
-        {
+        }, {
             text: 'Cancel',
             scope: this,
             handler: this.close
-        }
-        ];
-
+        }];
         this.callParent(arguments);
     }
 

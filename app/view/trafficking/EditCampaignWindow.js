@@ -4,7 +4,7 @@ Ext.define('ImpulseOne.view.trafficking.EditCampaignWindow', {
     layout: 'fit',
     title: 'Edit Campaign',
     autoShow: true,
-    width: 800,
+    width: 750,
     height: 550,
     modal: true,
     autoScroll: true,
@@ -21,7 +21,7 @@ Ext.define('ImpulseOne.view.trafficking.EditCampaignWindow', {
             },
             items: {
                 xtype: 'tabpanel',
-                bodyPadding: 20,
+                bodyPadding: 15,
                 layout: 'fit',
                 items: [{
                     title: 'Basic Targetings',
@@ -35,36 +35,36 @@ Ext.define('ImpulseOne.view.trafficking.EditCampaignWindow', {
                             xtype: 'textfield',
                             name: 'campaignName',
                             labelWidth: 160,
-                            height: 25,
+                            height: 25, padding: '0 0 7 0',
                             fieldLabel: 'Campaign Name'
                         }, {
                             xtype: 'textfield',
                             name: 'destinationUrl',
                             labelWidth: 160,
-                            height: 25,
+                            height: 25, padding: '0 0 7 0',
                             fieldLabel: 'Destination URL'
                         }, {
                             xtype: 'textfield',
                             name: 'bidCpm',
                             labelWidth: 160,
-                            height: 25,
+                            height: 25, padding: '0 0 7 0',
                             fieldLabel: 'Bid'
                         }, {
                             xtype: 'textfield',
                             name: 'dailyBudget',
                             labelWidth: 160,
-                            height: 25,
+                            height: 25, padding: '0 0 7 0',
                             fieldLabel: 'Daily Budget'
                         }, {
                             xtype: 'textfield',
                             name: 'totalBudget',
                             labelWidth: 160,
-                            height: 25,
+                            height: 25, padding: '0 0 7 0',
                             fieldLabel: 'Total Budget'
                         }, {
                             xtype: 'radiogroup',
                             labelWidth: 160,
-                            height: 25,
+                            height: 25, padding: '0 0 7 0',
                             fieldLabel: 'Pace Type',
                             items: [{
                                 boxLabel: 'Enable',
@@ -81,7 +81,7 @@ Ext.define('ImpulseOne.view.trafficking.EditCampaignWindow', {
                             xtype: 'datefield',
                             name: 'startDate',
                             labelWidth: 160,
-                            height: 25,
+                            height: 25, padding: '0 0 7 0',
                             fieldLabel: 'Start Date',
                             format: 'Y-m-d',
                             value: new Date()
@@ -89,7 +89,7 @@ Ext.define('ImpulseOne.view.trafficking.EditCampaignWindow', {
                             xtype: 'datefield',
                             name: 'endDate',
                             labelWidth: 160,
-                            height: 25,
+                            height: 25, padding: '0 0 7 0',
                             fieldLabel: 'End Date',
                             format: 'Y-m-d',
                             value: new Date()
@@ -97,7 +97,7 @@ Ext.define('ImpulseOne.view.trafficking.EditCampaignWindow', {
                             xtype: 'textfield',
                             name: 'timezone',
                             labelWidth: 160,
-                            height: 25,
+                            height: 25, padding: '0 0 7 0',
                             fieldLabel: 'Timezone',
                         }, {
                             xtype: 'radiogroup',
@@ -122,14 +122,14 @@ Ext.define('ImpulseOne.view.trafficking.EditCampaignWindow', {
                             id: 'frequencyTimes',
                             minValue: 0,
                             labelWidth: 160,
-                            height: 25,
+                            height: 25, padding: '0 0 7 0',
                             fieldLabel: 'Frequency Times',
                         }, {
                             xtype: 'combobox',
                             name: 'frequencyTimePeriod',
                             id: 'frequencyTimePeriod',
                             labelWidth: 160,
-                            height: 25,
+                            height: 25, padding: '0 0 7 0',
                             fieldLabel: 'Frequency Time Period',
                             valueField: 'feqId',
                             displayField: 'feqName',
@@ -137,9 +137,9 @@ Ext.define('ImpulseOne.view.trafficking.EditCampaignWindow', {
                             store: new Ext.data.SimpleStore({
                                 fields: ['feqId', 'feqName'],
                                 data: [
-                                    ['1', 'One Day'],
-                                    ['2', 'One Week'],
-                                    ['3', 'One Month'], ],
+                                ['1', 'One Day'],
+                                ['2', 'One Week'],
+                                ['3', 'One Month'], ],
                                 autoLoad: false
                             }),
                             editable: false,
@@ -156,26 +156,26 @@ Ext.define('ImpulseOne.view.trafficking.EditCampaignWindow', {
                             xtype: 'combobox',
                             name: 'countryTargets',
                             labelWidth: 160,
-                            height: 25,
+                            height: 25, padding: '0 0 7 0',
                             valueField: 'countryId',
                             displayField: 'countryName',
                             queryMode: 'local',
                             store: new Ext.data.SimpleStore({
                                 fields: ['countryId', 'countryName'],
                                 data: [
-                                    ['IN', 'India'],
-                                    ['ZA', 'South Africa'],
-                                    ['KE', 'Kenya'],
-                                    ['AE', 'UAE'],
-                                    ['MY', 'Malaysia'],
-                                    ['ID', 'Indonesia'],
-                                    ['SG', 'Singapore'],
-                                    ['HK', 'Hong Kong'],
-                                    ['SK', 'South Korea'],
-                                    ['VN', 'Vietnam'],
-                                    ['TH', 'Thailand'],
-                                    ['PH', 'Phillipines'],
-                                    ['JP', 'Japan']
+                                ['IN', 'India'],
+                                ['ZA', 'South Africa'],
+                                ['KE', 'Kenya'],
+                                ['AE', 'UAE'],
+                                ['MY', 'Malaysia'],
+                                ['ID', 'Indonesia'],
+                                ['SG', 'Singapore'],
+                                ['HK', 'Hong Kong'],
+                                ['SK', 'South Korea'],
+                                ['VN', 'Vietnam'],
+                                ['TH', 'Thailand'],
+                                ['PH', 'Phillipines'],
+                                ['JP', 'Japan']
                                 ],
                                 autoLoad: false
                             }),
@@ -202,13 +202,36 @@ Ext.define('ImpulseOne.view.trafficking.EditCampaignWindow', {
                                             }
                                         });
                                     }
+                                },
+                                'afterrender' : function(ctr) {
+                                    newva = ctr.getValue();
+                                    if(newva) {
+                                        var stateCombo = ctr.up('editcampaignwindow').down('form').getForm().findField('stateTargets');
+                                        if(stateCombo) {
+                                            stateCombo.clearValue();
+                                            stateCombo.getStore().load({
+                                                params: {
+                                                    countryId: newva
+                                                }
+                                            });
+                                        }
+                                        var carrierCombo = ctr.up('editcampaignwindow').down('form').getForm().findField('carrierTargets');
+                                        if(carrierCombo) {
+                                            carrierCombo.clearValue();
+                                            carrierCombo.getStore().load({
+                                                params: {
+                                                    countryId: newva
+                                                }
+                                            });
+                                        }
+                                    }
                                 }
                             }
                         }, {
                             xtype: 'combobox',
                             name: 'stateTargets',
                             labelWidth: 160,
-                            height: 25,
+                            height: 25, padding: '0 0 7 0',
                             fieldLabel: 'State Targets',
                             multiSelect: true,
                             valueField: 'state',
@@ -239,13 +262,13 @@ Ext.define('ImpulseOne.view.trafficking.EditCampaignWindow', {
                             xtype: 'textfield',
                             name: 'clickWindow',
                             labelWidth: 160,
-                            height: 25,
+                            height: 25, padding: '0 0 7 0',
                             fieldLabel: 'Click conversion window',
                         }, {
                             xtype: 'textfield',
                             name: 'viewWindow',
                             labelWidth: 160,
-                            height: 25,
+                            height: 25, padding: '0 0 7 0',
                             fieldLabel: 'View conversion window',
                         }, {
                             xtype: 'radiogroup',
@@ -268,7 +291,7 @@ Ext.define('ImpulseOne.view.trafficking.EditCampaignWindow', {
                             name: 'goalType',
                             id: 'goalTypeId',
                             labelWidth: 160,
-                            height: 25,
+                            height: 25, padding: '0 0 7 0',
                             fieldLabel: 'Goal Type',
                             editable: false,
                             valueField: 'optId',
@@ -277,8 +300,8 @@ Ext.define('ImpulseOne.view.trafficking.EditCampaignWindow', {
                             store: new Ext.data.SimpleStore({
                                 fields: ['optId', 'optName'],
                                 data: [
-                                    ['1', 'CPA'],
-                                    ['2', 'CPC'], ],
+                                ['1', 'CPA'],
+                                ['2', 'CPC'], ],
                                 autoLoad: false
                             }),
                             renderer: function(value) {
@@ -291,7 +314,7 @@ Ext.define('ImpulseOne.view.trafficking.EditCampaignWindow', {
                             name: 'goalValue',
                             id: 'goalValueId',
                             labelWidth: 160,
-                            height: 25,
+                            height: 25, padding: '0 0 7 0',
                             fieldLabel: 'Goal Value'
                         }, {
                             xtype: 'radiogroup',

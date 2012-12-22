@@ -7,6 +7,7 @@ Ext.define('ImpulseOne.store.Inventory', {
 	remoteSort: true,
 	remoteFilter: true,
 	loadMask: true,
+	leadingBufferZone: 100,
 	proxy: {
 		type: 'ajax',
 		api: {

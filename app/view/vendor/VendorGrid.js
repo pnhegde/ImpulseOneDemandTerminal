@@ -99,7 +99,8 @@ Ext.define('ImpulseOne.view.vendor.VendorGrid', {
       flex: 1,
       dataIndex: 'state',
       sortable: true,
-      align: 'center'
+      align: 'center',
+      hidden: true
     }, {
       text: "City",
       flex: 1,
@@ -125,7 +126,8 @@ Ext.define('ImpulseOne.view.vendor.VendorGrid', {
       flex: 1,
       dataIndex: 'phone',
       sortable: true,
-      align: 'center'
+      align: 'center',
+      hidden: true
     }, {
       text: "CEO Name",
       flex: 1,

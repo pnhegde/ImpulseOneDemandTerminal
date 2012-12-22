@@ -16,35 +16,36 @@ Ext.define('ImpulseOne.controller.Inventories', {
 		// 		inventoryStore.guaranteeRange(0, 99);
 		// 	}
 		// });
-		this.control({
-			'inventorygrid': {
-				itemdblclick: this.editUser
-			},
-			'inventorygrid #applySearch': {
-				click: this.applyFilter
-			},
+this.control({
+	'inventorygrid': {
+		itemdblclick: this.editUser
+	},
+	'inventorygrid #applySearch': {
+		click: this.applyFilter
+	},
 
-		});
-	},
-	editUser: function(grid, record) {
-		console.log('Double clicked on ' + record.get('name'));
-	},
-	applyFilter: function(button) {
-		inventoryStore.getProxy().extraParams = {
-			channel: Ext.getCmp('ChannelFilter').getValue(),
-			filter: Ext.getCmp('DomainFilter').getValue(),
-			exchange: Ext.getCmp('ExchangeFilter').getValue(),
-			category: Ext.getCmp('CategoryFilter').getValue(),
-			country: Ext.getCmp('CountryFilter').getValue()
-		};
-		inventoryStore.load({
-			params: {
+});
+},
+editUser: function(grid, record) {
+	console.log('Double clicked on ' + record.get('name'));
+},
+applyFilter: function(button) {
+	inventoryStore.getProxy().extraParams = {
+		channel: Ext.getCmp('ChannelFilter').getValue(),
+		filter: Ext.getCmp('DomainFilter').getValue(),
+		exchange: Ext.getCmp('ExchangeFilter').getValue(),
+		category: Ext.getCmp('CategoryFilter').getValue(),
+		country: Ext.getCmp('CountryFilter').getValue()
+	};
+	// inventoryStore.prefetchData.clear();
+	inventoryStore.load({
+		params: {
 			channel: Ext.getCmp('ChannelFilter').getValue(),
 			filter: Ext.getCmp('DomainFilter').getValue(),
 			exchange: Ext.getCmp('ExchangeFilter').getValue(),
 			category: Ext.getCmp('CategoryFilter').getValue(),
 			country: Ext.getCmp('CountryFilter').getValue()
 		}
-		});
-	}
+	});
+}
 });

@@ -9,12 +9,11 @@ Ext.define('ImpulseOne.view.creative.HtmlCreative' ,{
     height: 300,
     modal: true,
     id: 'htmlCreative',
-    //bodyPadding: 15,
     initComponent: function() {
         this.items = [
         {
             xtype: 'form',
-            bodyPadding: 10,
+            bodyPadding: 15,
             layout: 'anchor',
             defaults: {
                 anchor: '100%'
@@ -23,12 +22,14 @@ Ext.define('ImpulseOne.view.creative.HtmlCreative' ,{
             {
                 xtype: 'textfield',
                 name : 'creativeName',
-                fieldLabel: 'Name'
+                fieldLabel: 'Name',
+                padding: '5 10 5 5'
             },
             {
                 xtype: 'textarea',
                 name : 'tagCode',
                 fieldLabel: 'Ad Code',
+                padding: '5 10 5 5',
                 emptyText: 'Please replace the click tracker macro with [CLICK_MACRO]'
             },
             {
@@ -37,6 +38,7 @@ Ext.define('ImpulseOne.view.creative.HtmlCreative' ,{
                 store: ['728','160','120','300'],
                 fieldLabel: 'Width',
                 forceSelection: true,
+                padding: '5 10 5 5',
                 editable: false,
             },
             {
@@ -45,6 +47,7 @@ Ext.define('ImpulseOne.view.creative.HtmlCreative' ,{
                 store: ['90', '600', '600', '250'] ,
                 fieldLabel: 'Height',
                 forceSelection: true,
+                padding: '5 10 5 5',
                 editable: false,
             }
             ]

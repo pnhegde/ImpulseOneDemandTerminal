@@ -18,6 +18,7 @@ Ext.define('ImpulseOne.view.trafficking.CampaignCreativeWindow', {
   height: 500,
   modal: true,
   autoScroll: true,
+  closable: false,
   requires: ['Ext.ux.grid.FiltersFeature'],
   initComponent: function() {
     this.items = [{
@@ -42,7 +43,7 @@ Ext.define('ImpulseOne.view.trafficking.CampaignCreativeWindow', {
         sortable: true
       }, {
         header: "Creative Type",
-        flex: 2,
+        flex: 1,
         dataIndex: 'creativeType',
         align: 'left',
         sortable: true
@@ -67,7 +68,20 @@ Ext.define('ImpulseOne.view.trafficking.CampaignCreativeWindow', {
         editor: {
           xtype: 'textfield',
         },
-        tdCls: 'custom-creative-grid'
+        tdCls: 'custom-creative-grid',
+        renderer : function(value, metadata) {
+          metadata.tdAttr = 'data-qtip="' + 'Click here to edit Destination URL' + '"';
+          return value;
+        },
+      },{
+        xtype: 'actioncolumn',
+        // header: 'Preview',
+        flex: 0.3,
+        items: [{
+          iconCls: 'icon-preview',
+          icon: 'data/icons/preview.png',
+          tooltip: 'Preview',
+        }]
       }],
       viewConfig: {
         forceFit: true,

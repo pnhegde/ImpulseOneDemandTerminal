@@ -1,43 +1,29 @@
+var upload =  Ext.create('Ext.ux.upload.Dialog', {
+  dialogTitle: 'My Upload Widget',
+  uploadUrl: 'https://terminal.impulse01.com/newServer.php?do=upload_new_creative',
+});
 Ext.define('ImpulseOne.view.creative.UploadCreative', {
   extend: 'Ext.window.Window',
   alias: 'widget.uploadcreative',
   title: 'Creative upload',
-  width: 410,
-  layout: 'anchor',
+  width: 510,
+  height: 400,
+  layout: 'fit',
   buttonAlign: 'center',
-  autoHeight: true,
   closable: false,
   modal: true,
   id: 'uploadCreative',
 
   initComponent: function() {
-    this.items = [
-    new Ext.form.FormPanel({
-      fileUpload: true,
-      layout: 'fit',
-      frame: true,
-      autoHeight: true,
-      bodyStyle: 'padding: 10px 10px 0 10px;',
-
-      items: [{
-        xtype: 'fileuploadfield',
-        id: 'form-file',
-        emptyText: 'Select your image',
-        hideLabel: true,
-        name: 'uploadfile'
-      }, {
-        xtype: 'textfield',
-        name: 'oid',
-        hidden: true
-      }]
-    })];
+    this.items = [upload];
 
     this.fbar = {
       xtype: 'toolbar',
       items: [{
         xtype: 'button',
-        text: 'Ok',
-        action: 'upload'
+        text: 'Done',
+        scope: this,
+        handler: this.close
       }, {
         xtype: 'button',
         text: 'Cancel',

@@ -13,14 +13,21 @@ Ext.onReady(function() {
         items: [{
             fieldLabel: 'Username',
             name: 'id',
+            padding: '0 0 5 0',
             style: 'color: #003; font-weight: bold; font-size: 11px',
             allowBlank: false,
             width: 300,
+            // listeners: {
+            //     'render': function(button) {
+            //         button.focus();  
+            //     } 
+            // }
         }, {
             fieldLabel: 'Password',
             name: 'password',
             inputType: 'password',
             allowBlank: true,
+            padding: '0 0 5 0',
             style: 'color: #003; font-weight: bold; font-size: 11px',
             autoHeight: true,
             width: 300
@@ -28,6 +35,11 @@ Ext.onReady(function() {
         buttons: [{
             text: 'Login',
             formBind: true,
+            // listeners: {
+            //     'render': function(button) {
+            //         button.focus();  
+            //     } 
+            // },
             handler: function() {
                 login.getForm().submit({
                     method: 'GET',
@@ -50,21 +62,21 @@ Ext.onReady(function() {
         }]
     });
 
-    var win = new Ext.Window({
-        layout: 'fit',
-        width: 350,
-        height: 150,
-        closable: false,
-        resizable: false,
-        plain: true,
-        border: false,
-        draggable: false,
-        style: 'background-color: #FFF; ',
-        bbar: [{
-            xtype: 'tbtext',
-            text: ' ©    2012 - Impulse Media Pvt.Ltd'
-        }],
-        items: [login]
-    });
-    win.show();
+var win = new Ext.Window({
+    layout: 'fit',
+    width: 350,
+    height: 150,
+    closable: false,
+    resizable: false,
+    plain: true,
+    border: false,
+    draggable: false,
+    style: 'background-color: #FFF; ',
+    bbar: [{
+        xtype: 'tbtext',
+        text: ' ©    2012 - Impulse Media Pvt.Ltd'
+    }],
+    items: [login]
+});
+win.show();
 });

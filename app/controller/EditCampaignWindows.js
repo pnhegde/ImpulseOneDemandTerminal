@@ -64,7 +64,7 @@ Ext.define('ImpulseOne.controller.EditCampaignWindows', {
 		Ext.Msg.show({
 			title: 'Save Changes?',
 			width: 300,
-			msg: 'You are closing a tab that has unsaved changes. Would you like to save your changes?',
+			msg: 'You are closing a window that has unsaved changes. \n Would you like to save your changes?',
 			buttons: Ext.Msg.YESNOCANCEL,
 			fn: function(btn) {
 				if(btn == 'yes') {

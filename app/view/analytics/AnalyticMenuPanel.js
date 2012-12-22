@@ -4,8 +4,13 @@ var leaves = [{
 },{
     text: 'Line/Bar Chart',
     leaf: true
+} ] ;
+
+var dleaves = [{
+    text: 'Single Metric',
+    leaf: true
 },{
-    text: 'Performance Graph',
+    text: 'Double Metric',
     leaf: true
 } ] ;
 Ext.define('ImpulseOne.view.analytics.AnalyticMenuPanel', {
@@ -15,10 +20,10 @@ Ext.define('ImpulseOne.view.analytics.AnalyticMenuPanel', {
     border: false,
     // disabled: true,
     iconCls: "treeIcon",
-    // autoScroll:true,
     rootVisible: false,
     root: {
         text: 'Root',
+        id: 'rootId',
         expanded: true,
         children: [{ 
             text : 'Dashboard',
@@ -84,33 +89,106 @@ Ext.define('ImpulseOne.view.analytics.AnalyticMenuPanel', {
             text: 'Double Dimension Analysis',
             icon: '/data/icons/folder.png',
             children: [{
-                text: 'Media Source Vs City',
-                id: 'MSvCityId',
-                leaf: true
+                text: 'Domain Vs State',
+                id: 'DomainVStateId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
+                
             },{
-                text: 'Media Source Vs Daypart',
-                id: 'MSvDaypartId',
-                leaf: true
+                text: 'Domain Vs City',
+                id: 'DomainVCityId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
             },{
-                text: 'Media Source Vs Creative',
-                id: 'MSvCreativeId',
-                leaf: true
+                text: 'Domain Vs Creative',
+                id: 'DomainVCreativeId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
             },{
-                text: 'Media Source Vs Weekday',
-                id: 'MSvWeekdayId',
-                leaf: true
+                text: 'Domain Vs Hours',
+                id: 'DomainVHoursId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
             },{
-                text: 'Media Source Vs Context',
-                id: 'MSvContextId',
-                leaf: true
+                text: 'Domain Vs Dayparts',
+                id: 'DomainVDaypartsId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
             },{
-                text: 'Media Source Vs Device',
-                id: 'MSvDeviceId',
-                leaf: true
+                text: 'Domains Vs WeekDays',
+                id: 'DomainVWeekdayId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
             },{
-                text: 'City Vs Carrier',
-                id: 'MSvCarrierId',
-                leaf: true
+                text: 'Context Vs State',
+                id: 'ContextVStateId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
+            },{
+                text: 'Context Vs City',
+                id: 'ContextVCityId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
+            },{
+                text: 'Context Vs Creatives',
+                id: 'ContextVCreativeId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
+            },{
+                text: 'States Vs Devices',
+                id: 'StateVDeviceId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
+            },{
+                text: 'States Vs Carrier',
+                id: 'StateVCarrierId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
+            },{
+                text: 'States Vs Creatives',
+                id: 'StateVCreativeId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
+            },{
+                text: 'Cities Vs Creatives',
+                id: 'CityVCreativeId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
+            },{
+                text: 'Cities Vs Devices',
+                id: 'CityVDeviceId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
+            },{
+                text: 'Cities Vs Carrier',
+                id: 'CityVCarrierId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
+            },{
+                text: 'Weekday Vs Dayparts',
+                id: 'WeekdayVDaypartId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
+            },{
+                text: 'Weekday Vs Hours',
+                id: 'WeekdayVHourId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
+            },{
+                text: 'Creatives Vs WeekDays',
+                id: 'CreativeVWeekdayId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
+            },{
+                text: 'Creatives Vs Dayparts',
+                id: 'CreativeVDaypartId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
+            },{
+                text: 'Creatives Vs Hours',
+                id: 'CreativeVHourId',
+                icon: '/data/icons/folder.png',
+                children: dleaves
             }]
         }]}
     });

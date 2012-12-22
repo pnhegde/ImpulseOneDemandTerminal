@@ -9,16 +9,16 @@ Ext.define('ImpulseOne.view.dashboard.Dashboard', {
         Ext.apply(me, {
             items: [{
                 xtype: 'panel',
-                listeners: {
-                    'render': function(panel) {
-                        AnyChart.renderingType = anychart.RenderingType.SVG_ONLY;
-                        var chart = new AnyChart();
-                        chart.width = '100%';
-                        chart.height = '100%';
-                        chart.setXMLFile('https://terminal.impulse01.com/anychart/maindashboard.xml');
-                        chart.write(panel.body);
-                    }
-                }
+                // listeners: {
+                //     'render': function(panel) {
+                //         AnyChart.renderingType = anychart.RenderingType.SVG_ONLY;
+                //         var chart = new AnyChart();
+                //         chart.width = '100%';
+                //         chart.height = '100%';
+                //         chart.setXMLFile('https://terminal.impulse01.com/anychart/maindashboard.xml');
+                //         chart.write(panel.body);
+                //     }
+                // }
             }
             /*{
                 xtype: 'topexchangegraph',

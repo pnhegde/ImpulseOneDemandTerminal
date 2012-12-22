@@ -5,8 +5,8 @@ Ext.define('ImpulseOne.controller.Creatives', {
 	views: ['creative.CreativeGrid', 'creative.HtmlCreative', 'creative.UploadCreative'],
 
 	init: function() {
-		store = this.getCreativeStore();
-		store.load({
+		allCreativeStore = this.getCreativeStore();
+		allCreativeStore.load({
 			callback: function(results, options) {
 				if(options.response.status == 401) {
 					Ext.example.msg('Session expired');
@@ -33,8 +33,11 @@ Ext.define('ImpulseOne.controller.Creatives', {
 			'htmlcreative button[text="Save"]': {
 				click: this.newHtmlCreative
 			},
-			'uploadcreative button[action=upload]': {
-				click: this.submitFileupload
+			// 'uploadcreative button[action=upload]': {
+			// 	click: this.submitFileupload
+			// },
+			'creativegrid checkboxfield': {
+				'change': this.toggleArchive
 			}
 		});
 
@@ -48,6 +51,21 @@ Ext.define('ImpulseOne.controller.Creatives', {
 			b.enable();
 			console.log(row);
 		}
+	},
+	toggleArchive: function(thischeckbox, newValue, oldValue) {
+		Ext.Ajax.request({
+			url: 'https://terminal.impulse01.com/newServer.php?do=toggle_archive_creative',
+			params: {
+				show: newValue
+			},
+			success: function(response) {
+				if(JSON.parse(response.responseText).success) {
+					allCreativeStore.load();
+				} else {
+					Ext.example.msg("Archive", "Fail !");
+				}
+			}
+		});
 	},
 	editHtmlCreative: function(button) {
 		var me = this;
@@ -100,7 +118,20 @@ Ext.define('ImpulseOne.controller.Creatives', {
 
 	},
 	creativeUpload: function() {
-		Ext.widget('uploadcreative').show();
+		//Ext.widget('uploadcreative').show();
+		var uploadDialog = Ext.create('Ext.ux.upload.Dialog', {
+			dialogTitle: 'creative Upload',
+			uploadUrl: 'https://terminal.impulse01.com/newServer.php?do=upload_new_creative',
+			listeners: {
+				'uploadcomplete': function(upDialog, manager, items, errorCount) {
+					if(!errorCount) {
+						upDialog.close();
+						allCreativeStore.load();
+					}
+				}
+			}
+		});
+		uploadDialog.show();
 	},
 	newHtmlCreative: function(button) {
 		var win = button.up('window');
@@ -115,48 +146,15 @@ Ext.define('ImpulseOne.controller.Creatives', {
 		this.getCreativeStore().load();
 		win.close();
 	},
-	tea_break: function(msec) {
-		var date = new Date();
-		var curDate = null;
-		do {
-			curDate = new Date();
-		} while (curDate - date < msec);
-	},
 	showPreview: function(view, cell, row, col, e) {
 		//var grid = button.up('creativegrid');
-		this.tea_break(1500);
 		var record = this.getCreativeStore().getAt(row);
 		if(Ext.get(e.getTarget()).hasCls('icon-preview')) {
 			var p = record.data['filePath'];
 			var htmlContent;
 			var filePath = "https://terminal.impulse01.com/" + p;
-			if(record.data['creativeType'] == "Flash Video") {
-				htmlContent = '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="600" height="400" id="flvPlayer"> \
-				<param name=\'allowFullScreen\' value=\'true\'> \
-				<param name=\'movie\' value=\'https://terminal.impulse01.com/OSplayer.swf?movie=[' + filePath + ']&bgcolor=0x8E6A4F&fgcolor=0x8E6A4F&volume=70&autoplay=on&autoload=on&clickurl=http://google.com&clicktarget=_blank&postimage=\'> \
-				<embed src=\'https://terminal.impulse01.com/OSplayer.swf?movie=[' + filePath + ']&bgcolor=0x8E6A4F&fgcolor=0x8E6A4F&volume=70&autoplay=on&autoload=on&clickurl=http://google.com&clicktarget=_blank&postimage=\' width=\'600\' height=\'400\' allowFullScreen=\'true\' type=\'application/x-shockwave-flash\'> \
-				</object> ';
-			} else if(record.data['creativeType'] == "Flash") {
-				htmlContent = '<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" \
-				codebase="http://download.macromedia.com/pub/shockwave/ \
-				cabs/flash/swflash.cab#version=6,0,40,0" \
-				width="[' + record.data["width"] + ']" height="[' + record.data["height"] + ']" \
-				id="mymoviename"> \
-				<param name="movie" value="[' + filePath + ']" /> \
-				<param name="quality" value="high" /> \
-				<param name="bgcolor" value="#ffffff" /> \
-				<embed src="' + filePath + '" quality="high" bgcolor="#ffffff" \
-				width="[' + record.data["width"] + ']" height="[' + record.data["height"] + ']" \
-				name="mymoviename" align="" type="application/x-shockwave-flash" \
-				pluginspage="http://www.macromedia.com/go/getflashplayer"> \
-				</embed> \
-				</object> ';
-			} else if(record.data['creativeType'] == "Image") {
-				htmlContent = "<image src=\'" + filePath + " \' />";
-			} else {
-				htmlContent = record.data['tagCode'];
-			}
 			var w = record.data['width'];
+			w = parseInt(w);
 			if(w > 1200) {
 				w = 1200;
 			}
@@ -168,6 +166,7 @@ Ext.define('ImpulseOne.controller.Creatives', {
 				}
 			}
 			var h = record.data['height'];
+			h = parseInt(h);
 			if(h > 650) {
 				h = 650;
 			}
@@ -178,27 +177,49 @@ Ext.define('ImpulseOne.controller.Creatives', {
 					h = 60;
 				}
 			}
-			console.log(w +' : ->'+h);
-			var prwin = Ext.create('Ext.window.Window', {
-				// autoShow: true,
+
+			if(record.data['creativeType'] == "Flash Video") {
+				htmlContent = '<iframe src="https://terminal.impulse01.com/previewflash.php?width='+w+'&height='+h+'&path='+p+'" width="'+ w+'" height="'+h+'" frameborder=0 marginwidth=0 marginheight=0 scrolling=NO></iframe>';
+			} else if(record.data['creativeType'] == "Flash") {
+				htmlContent = '<iframe src="https://terminal.impulse01.com/previewflash.php?width='+w+'&height='+h+'&path='+p+'" width="'+ w+'" height="'+h+'" frameborder=0 marginwidth=0 marginheight=0 scrolling=NO></iframe>';
+			} else if(record.data['creativeType'] == "Image") {
+				htmlContent = "<image src=\'" + filePath + " \' />";
+			} else {
+				htmlContent = record.data['tagCode'];
+			}
+
+			w = w + 10;
+			h = h + 30;
+			Ext.create('Ext.window.Window', {
+				autoShow: true,
+				// layout: 'fit',
 				modal: true,
-				layout: 'fit',
+				width: w,
+				height: h,
 				border: false,
-				// bodyPadding: 10,
-				items: [{
-					xtype: 'box',
-					width: w,
-					height: h,
-					html: htmlContent
-				}]
+				html: htmlContent
+
 			});
-			prwin.show();
 		} else if(Ext.get(e.getTarget()).hasCls('icon-archive')) {
-			alert('Archived');
+			Ext.Ajax.request({
+				url: 'https://terminal.impulse01.com/newServer.php?do=archive_creative',
+				params: {
+					creativeId: record.data['creativeId']
+				},
+				success: function(response) {
+					if(JSON.parse(response.responseText).success) {
+						Ext.example.msg("Archive", "Successful !");
+						allCreativeStore.load();
+					} else {
+						Ext.example.msg("Archive", "Fail !");
+					}
+				}
+			});
+
 		}
 
 	},
-	submitFileupload: function(button) {
+	/*submitFileupload: function(button) {
 		form = Ext.getCmp('uploadCreative').down('form');
 		form.getForm().submit({
 			url: 'https://terminal.impulse01.com/newServer.php?do=upload_new_creative',
@@ -209,13 +230,12 @@ Ext.define('ImpulseOne.controller.Creatives', {
 				button.up('window').close();
 				//Ext.example.msg('success');
 				console.log('uploaded successfully');
-				store.load();
+				allCreativeStore.load();
 			},
 			failure: function(form, action) {
 				Ext.Msg.alert('Failed', action.result ? action.result.msg : 'No response');
 				button.up('window').close();
 			}
 		});
-
-	}
+}*/
 });

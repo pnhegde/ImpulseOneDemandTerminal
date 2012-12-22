@@ -38,7 +38,7 @@ Ext.define('ImpulseOne.view.analytics.AnalyticHome', {
     },'-' ,{
         xtype: 'button',
         text: 'Load'
-    }, '-'],
+    },'-'],
     items: [{
         xtype: 'analyticmenupanel',
         region: 'west',

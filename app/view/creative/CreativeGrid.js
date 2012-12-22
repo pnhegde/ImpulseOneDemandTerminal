@@ -34,7 +34,7 @@ Ext.define('ImpulseOne.view.creative.CreativeGrid', {
       xtype: 'checkboxfield',
       fieldLabel: 'Show Archived',
       // icon: 'data/icons/archive.png',
-      checked: false
+      checked: true,
     },  '-' ,  {
       xtype: 'button',
       text: 'Edit',
