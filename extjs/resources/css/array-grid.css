@@ -36,22 +36,22 @@
 
 .verified-true
 {
- background:url(../../../data/icons/true.jpg) no-repeat !important;
+ background:url('../../../data/icons/true.jpg') no-repeat !important;
 }
 .verified-false
 {
- background:url(../../../data/icons/false.jpg) no-repeat !important;
+ background:url('../../../data/icons/false.jpg') no-repeat !important;
 }
 .padding-img
 {
  width:18px;height:0px;
 }
-.treeIcon .x-tree-icon-parent  
+
+.treeIcon  
 { 
-  background-image: url('../../../data/icons/folder.png') !important; 
+  background-image: url('/data/icons/folder.png') !important; 
   background-repeat: no-repeat !important; 
 }
-
 
 /* style rows on mouseover */
 /*.x-grid-row-over .x-grid-cell-inner {

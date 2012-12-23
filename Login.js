@@ -6,7 +6,7 @@ Ext.onReady(function() {
     var login = new Ext.FormPanel({
         url: 'https://terminal.impulse01.com/newServer.php?do=authenticate',
         frame: true,
-        title: 'Impulse Demand Terminal - BETA',
+        title: ' <img src="data/logo-small.png"\>- beta',
         defaultType: 'textfield',
         monitorValid: true,
         border:false,
@@ -17,11 +17,7 @@ Ext.onReady(function() {
             style: 'color: #003; font-weight: bold; font-size: 11px',
             allowBlank: false,
             width: 300,
-            // listeners: {
-            //     'render': function(button) {
-            //         button.focus();  
-            //     } 
-            // }
+            
         }, {
             fieldLabel: 'Password',
             name: 'password',
@@ -35,14 +31,9 @@ Ext.onReady(function() {
         buttons: [{
             text: 'Login',
             formBind: true,
-            // listeners: {
-            //     'render': function(button) {
-            //         button.focus();  
-            //     } 
-            // },
             handler: function() {
                 login.getForm().submit({
-                    method: 'GET',
+                    method: 'POST',
                     waitTitle: 'Connecting...',
                     waitMsg: 'Sending Data to the server...',
                     success: function() {
@@ -74,7 +65,7 @@ var win = new Ext.Window({
     style: 'background-color: #FFF; ',
     bbar: [{
         xtype: 'tbtext',
-        text: ' ©    2012 - Impulse Media Pvt.Ltd'
+        text: ' &copy; 2012 - Impulse Media Pvt.Ltd'
     }],
     items: [login]
 });

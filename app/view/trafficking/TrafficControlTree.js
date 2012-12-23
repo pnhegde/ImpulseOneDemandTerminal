@@ -10,5 +10,5 @@ Ext.define('ImpulseOne.view.trafficking.TrafficControlTree', {
     hideHeaders: true,
     collapsible: true,
     collapseMode:'mini',
-    store: str,
+    store: str
 });

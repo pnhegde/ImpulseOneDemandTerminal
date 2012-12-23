@@ -33,15 +33,25 @@ Ext.define('Ext.ux.data.reader.DynamicReader', {
             var fields = new Array();
             var columns = new Array();
             var p;
-
+	    var i = 0;	
             for (p in item) {
                 if (p && p != undefined) {
                     // floatOrString type is only an option
                     // You can make your own data type for more complex situations
                     // or set it just to 'string'
                     fields.push({name: p, type: 'floatOrString'});
-                    columns.push({text: p, dataIndex: p});
+                    if(i == 0 && p!= 'id') {
+		      columns.push({text: p, dataIndex: p, width: 150});
+		    } else {
+ 		    	if((p == "CTR Index") || (p == 'eCPM Index')) {		    	
+			    columns.push({text: p, dataIndex: p, hidden: true});
+		    	}
+		        else {
+		        	columns.push({text: p, dataIndex: p});
+		    	}	
+		    }
                 }
+		i = i+1;
             }
 
             data.metaData = { fields: fields, columns: columns };

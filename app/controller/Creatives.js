@@ -6,14 +6,7 @@ Ext.define('ImpulseOne.controller.Creatives', {
 
 	init: function() {
 		allCreativeStore = this.getCreativeStore();
-		allCreativeStore.load({
-			callback: function(results, options) {
-				if(options.response.status == 401) {
-					Ext.example.msg('Session expired');
-					window.location = 'index.html';
-				}
-			}
-		});
+		allCreativeStore.load();
 		this.control({
 			'creativegrid button menu #htmlcreative': {
 				click: this.newHtmlCreativeSelected
@@ -49,45 +42,36 @@ Ext.define('ImpulseOne.controller.Creatives', {
 		var b = Ext.getCmp('HtmlEditButton');
 		if(row.data['creativeType'] == "HTML Tag" && b.disabled) {
 			b.enable();
-			console.log(row);
 		}
 	},
 	toggleArchive: function(thischeckbox, newValue, oldValue) {
-		Ext.Ajax.request({
-			url: 'https://terminal.impulse01.com/newServer.php?do=toggle_archive_creative',
+		allCreativeStore.load({
 			params: {
-				show: newValue
-			},
-			success: function(response) {
-				if(JSON.parse(response.responseText).success) {
-					allCreativeStore.load();
-				} else {
-					Ext.example.msg("Archive", "Fail !");
-				}
+				showArchive: newValue
 			}
 		});
-	},
-	editHtmlCreative: function(button) {
-		var me = this;
-		var w = Ext.create('Ext.window.Window', {
-			title: 'Edit HTML Creative',
-			width: 300,
-			height: 200,
-			autoShow: true,
-			modal: true,
-			layout: 'fit',
-			border: false,
-			closable: false,
-			bodyPadding: 10,
+},
+editHtmlCreative: function(button) {
+	var me = this;
+	var w = Ext.create('Ext.window.Window', {
+		title: 'Edit HTML Creative',
+		width: 300,
+		height: 200,
+		autoShow: true,
+		modal: true,
+		layout: 'fit',
+		border: false,
+		closable: false,
+		bodyPadding: 10,
+		items: [{
+			xtype: 'form',
+			layout: 'anchor',
+			defaults: {
+				anchor: '100%'
+			},
 			items: [{
-				xtype: 'form',
-				layout: 'anchor',
-				defaults: {
-					anchor: '100%'
-				},
-				items: [{
-					xtype: 'textarea',
-					name: 'tagCode',
+				xtype: 'textarea',
+				name: 'tagCode',
 					//value: button.up('creativegrid').getSelectionModel().getSelection()[0].data['tagCode']
 				}],
 				buttons: [{
@@ -113,11 +97,11 @@ Ext.define('ImpulseOne.controller.Creatives', {
 				}]
 			}]
 		});
-		w.show();
-		w.down('form').getForm().loadRecord(button.up('creativegrid').getSelectionModel().getSelection()[0]);
+	w.show();
+	w.down('form').getForm().loadRecord(button.up('creativegrid').getSelectionModel().getSelection()[0]);
 
-	},
-	creativeUpload: function() {
+},
+creativeUpload: function() {
 		//Ext.widget('uploadcreative').show();
 		var uploadDialog = Ext.create('Ext.ux.upload.Dialog', {
 			dialogTitle: 'creative Upload',
@@ -126,8 +110,8 @@ Ext.define('ImpulseOne.controller.Creatives', {
 				'uploadcomplete': function(upDialog, manager, items, errorCount) {
 					if(!errorCount) {
 						upDialog.close();
-						allCreativeStore.load();
 					}
+					allCreativeStore.load();
 				}
 			}
 		});
@@ -201,20 +185,24 @@ Ext.define('ImpulseOne.controller.Creatives', {
 
 			});
 		} else if(Ext.get(e.getTarget()).hasCls('icon-archive')) {
-			Ext.Ajax.request({
-				url: 'https://terminal.impulse01.com/newServer.php?do=archive_creative',
-				params: {
-					creativeId: record.data['creativeId']
-				},
-				success: function(response) {
-					if(JSON.parse(response.responseText).success) {
-						Ext.example.msg("Archive", "Successful !");
-						allCreativeStore.load();
-					} else {
-						Ext.example.msg("Archive", "Fail !");
+			if(record.data['status'] == 'Archived') {
+				Ext.example.msg("Already Archived", "Cannot archive twice !");
+			} else {
+				Ext.Ajax.request({
+					url: 'https://terminal.impulse01.com/newServer.php?do=archive_creative',
+					params: {
+						creativeId: record.data['creativeId']
+					},
+					success: function(response) {
+						if(JSON.parse(response.responseText).success) {
+							Ext.example.msg("Archive", "Successful !");
+							allCreativeStore.load();
+						} else {
+							Ext.example.msg("Archive", "Fail !");
+						}
 					}
-				}
-			});
+				});
+			}
 
 		}
 

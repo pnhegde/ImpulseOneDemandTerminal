@@ -10,25 +10,18 @@ var filters = {
 Ext.define('ImpulseOne.view.data.DataGrid', {
   extend: 'Ext.grid.Panel',
   alias: 'widget.datagrid',
-  requires: ['Ext.toolbar.Paging'],
   id: 'dataGrid',
   layout: 'fit',
   loadMask: true,
   features: [filters],
-  plugins: [{
-    ptype: 'cellediting'
-  }],
   selModel: {
     mode: 'MULTI'
   },
-  requires: ['Ext.ux.grid.FiltersFeature',
-  //'Ext.ux.Exporter.Button'
-  ],
+  requires: ['Ext.ux.grid.FiltersFeature'],
   plugins: [
   Ext.create('Ext.grid.plugin.RowEditing', {
     clicksToEdit: 2
   })],
-  selType: 'rowmodel',
   initComponent: function() {
     this.store = 'Data';
     this.tbar = [{
@@ -46,14 +39,8 @@ Ext.define('ImpulseOne.view.data.DataGrid', {
       id: 'codeButton',
       text: 'Get Code',
       icon: 'data/icons/download.png',
-      disabled: true
-
-    },
-    // {
-    //   xtype: 'exportbutton',
-    //   store: 'Data'
-    // }
-    ];
+      disabled: true,
+    }];
     this.columns = [{
       text: "ID",
       id: 'id',

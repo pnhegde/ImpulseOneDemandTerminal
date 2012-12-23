@@ -1,7 +1,9 @@
  <?php
  if(!isset($_COOKIE["atn"])){
- 	header("HTTP/1.0 401 Unauthorized");
- 	die();
+ 	// header("HTTP/1.0 401 Unauthorized");
+ 	// echo '<script type="text/javascript"> console.log("Session Expired. Login again."); </script> ';
+ 	header("Location: https://terminal.impulse01.com/");
+ 	exit;
  }
 
  ?>

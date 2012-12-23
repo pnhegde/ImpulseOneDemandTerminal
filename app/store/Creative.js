@@ -3,7 +3,7 @@ Ext.define('ImpulseOne.store.Creative', {
 	model: 'ImpulseOne.model.Creative',
 	buffered: true,
 	pageSize: 200,
-
+	loadMask: true,
 	proxy: {
 		type: 'ajax',
 		api: {

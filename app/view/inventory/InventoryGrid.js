@@ -60,19 +60,19 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
             store: new Ext.data.SimpleStore({
                 fields: ['countryId', 'countryName'],
                 data: [
-                    ['IN', 'India'],
-                    ['SA', 'South Africa'],
-                    ['KE', 'Kenya'],
-                    ['AE', 'UAE'],
-                    ['MY', 'Malaysia'],
-                    ['ID', 'Indonesia'],
-                    ['SG', 'Singapore'],
-                    ['HK', 'Hong Kong'],
-                    ['SK', 'South Korea'],
-                    ['VN', 'Vietnam'],
-                    ['TH', 'Thailand'],
-                    ['PH', 'Phillipines'],
-                    ['JP', 'Japan']
+                ['IN', 'India'],
+                ['SA', 'South Africa'],
+                ['KE', 'Kenya'],
+                ['AE', 'UAE'],
+                ['MY', 'Malaysia'],
+                ['ID', 'Indonesia'],
+                ['SG', 'Singapore'],
+                ['HK', 'Hong Kong'],
+                ['SK', 'South Korea'],
+                ['VN', 'Vietnam'],
+                ['TH', 'Thailand'],
+                ['PH', 'Phillipines'],
+                ['JP', 'Japan']
                 ],
                 autoLoad: false
             }),
@@ -123,28 +123,45 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
             items: [{
                 xtype: 'splitbutton',
                 text: '  Export as   ',
-                icon: 'data/icons/download.png',
+                icon: 'data/icons/export.png',
                 arrowAlign: 'right',
                 menu: [{
                     id: 'csv',
-                    text: 'CSV file'
-                }, {
-                    text: 'Microsoft Excel',
-                    id: 'excel',
-                    // handler: function() {
-                    //     document.location = 'data:application/vnd.ms-excel;base64,' + Base64.encode(me.getExcelXml());
-                    // }
-                }]
+                    icon: 'data/icons/csv.png',
+                    text: 'CSV file',
+                    handler: function() {
+                       var channel = Ext.getCmp('ChannelFilter').getValue();
+                       var filter = Ext.getCmp('DomainFilter').getValue();
+                       var exchange = Ext.getCmp('ExchangeFilter').getValue();
+                       var category = Ext.getCmp('CategoryFilter').getValue();
+                       var country = Ext.getCmp('CountryFilter').getValue();
+                       var url = 'https://terminal.impulse01.com/newServer.php?do=exportInventory&channel='+channel+'&filter='+filter+'&exchange='+exchange+'&category='+category+'&country='+country+'&format=CSV';
+                       window.open(url, '_blank');
+                   }
+               }, {
+                text: 'Microsoft Excel',
+                id: 'excel',
+                icon: 'data/icons/excel.png',
+                handler: function() {
+                    var channel = Ext.getCmp('ChannelFilter').getValue();
+                    var filter = Ext.getCmp('DomainFilter').getValue();
+                    var exchange = Ext.getCmp('ExchangeFilter').getValue();
+                    var category = Ext.getCmp('CategoryFilter').getValue();
+                    var country = Ext.getCmp('CountryFilter').getValue(); 
+                    var url = 'https://terminal.impulse01.com/newServer.php?do=exportInventory&channel='+channel+'&filter='+filter+'&exchange='+exchange+'&category='+category+'&country='+country+'&format=MSExcel';
+                    window.open(url, '_blank');
+                }
             }]
-        }, '-'];
-        this.columns = [{
-            text: " Id ",
-            width: 70,
-            dataIndex: 'sourceId',
-            sortable: false,
+        }]
+    }, '-'];
+    this.columns = [{
+        text: " Id ",
+        width: 70,
+        dataIndex: 'sourceId',
+        sortable: false,
 
-        }, {
-            text: " Domain ",
+    }, {
+        text: " Domain ",
             //style: {'font-weight':'bold','color':'green'},
             tdCls: 'custom-inventory-grid-domain',
             flex: 1.5,
@@ -167,12 +184,12 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
             dataIndex: 'manuallyVerified',
             renderer: function(value, metaData, record, rowIndex, colIndex, store) {
                 switch(value) {
-                case 'Y':
+                    case 'Y':
                     metaData.css = 'verified-true';
                     icon = 'data/icons/true.jpg';
                     return '<img src="' + icon + '" />';
                     break;
-                case 'N':
+                    case 'N':
                     metaData.css = 'verified-false';
                     icon = 'data/icons/false.jpg';
                     return '<img src="' + icon + '" />';

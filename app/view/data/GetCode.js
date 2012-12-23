@@ -7,24 +7,17 @@ Ext.define('ImpulseOne.view.data.GetCode' ,{
     width: 350,
     height: 300,
     modal: true,
-    // closable: false,
+    closable: false,
     autoScroll: true,
     initComponent: function() {
         this.items = [
         {
             xtype: 'textarea',
-            emptyText: 'Copy this code'
-        }
-        
-        ];
+            readOnly: true
+        } ];
 
-        this.buttons = [
-        {
-            text: 'Copy',
-            action: 'save'
-        },
-        {
-            text: 'Cancel',
+        this.buttons = [{
+            text: 'Close',
             scope: this,
             handler: this.close
         }];

@@ -8,7 +8,8 @@ Ext.define('ImpulseOne.controller.Data', {
 		this.getDataStore().load();
 		this.control({
 			'datagrid': {
-				itemclick: this.enableButton
+				itemclick: this.enableButton,
+				edit: this.updateStore
 			},
 			'datagrid #codeButton': {
 				click: this.getCode
@@ -18,20 +19,19 @@ Ext.define('ImpulseOne.controller.Data', {
 			},
 			'createaudiencegrp button[text="Create"]': {
 				click: this.createNewAudienceGrp
-			},
-			'datagrid' : {
-				edit: this.updateStore
 			}
 		});
 	},
 	enableButton: function(grid, record) {
-		var button = Ext.getCmp('codeButton');
+		var button = Ext.ComponentQuery.query('datagrid #codeButton')[0];
 		if(button.disabled) {
 			button.enable();
 		}
 	},
 	getCode: function(button) {
+		var id = button.up('datagrid').getSelectionModel().getSelection()[0].data['id'];
 		var getCodeWin = Ext.widget('getcode');
+		getCodeWin.down('textarea').setValue('<script src="http://rtbidder.impulse01.com/segment?group='+id+'"></script>');
 	},
 	activateNewAudienceGrp: function(button) {
 		Ext.widget('createaudiencegrp');

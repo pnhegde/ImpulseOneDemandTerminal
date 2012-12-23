@@ -16,7 +16,7 @@ Ext.define('Ext.ux.upload.uploader.AbstractUploader', {
          * 
          * (NOT IMPLEMENTED) The maximum file size allowed to be uploaded.
          */
-        maxFileSize : 50000000,
+        maxFileSize : 500000000,
 
         /**
          * @cfg {String} [method='PUT']
@@ -37,7 +37,7 @@ Ext.define('Ext.ux.upload.uploader.AbstractUploader', {
          * 
          * The connection timeout in miliseconds.
          */
-        timeout : 60 * 1000,
+        timeout : 500 * 1000,
 
         /**
          * @cfg {String} [contentType='application/x-www-form-urlencoded']

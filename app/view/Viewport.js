@@ -57,7 +57,6 @@
                 }]
             }, {
                 xtype: 'tabpanel',
-                activeTab: 0,
                 cls: 'tabCss',
                 // deferredRender: true,
                 items: [{
@@ -112,12 +111,17 @@
                     xtype: 'vendorgrid'
                 }, {
                     title: 'Campaign Insight',
-                    id: 'analyticsId',
+                    id: 'analytics',
                     xtype: 'analytichome'
                 }],
                 listeners: {
                     tabchange: function(tabPanel, tab) {
                         window.location.hash = '#' + tab.id;
+                    },
+                    afterrender: function(tabpanel) {
+                        var i = window.location.hash != "" ? (window.location.hash).substring(1) : "dashboard"
+                        window.location.hash = '#'+i;
+                        tabpanel.setActiveTab(i);
                     }
                 },
                 margin: '0 0 0 0',

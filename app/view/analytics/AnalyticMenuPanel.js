@@ -17,7 +17,7 @@ Ext.define('ImpulseOne.view.analytics.AnalyticMenuPanel', {
     extend: 'Ext.tree.Panel',
     alias : 'widget.analyticmenupanel',
     layout: 'fit',
-    border: false,
+    border: false, 
     // disabled: true,
     iconCls: "treeIcon",
     rootVisible: false,
@@ -29,7 +29,7 @@ Ext.define('ImpulseOne.view.analytics.AnalyticMenuPanel', {
             text : 'Dashboard',
             leaf: true,
             id: 'dashboardNodeId',
-            icon: '/data/icons/home.png'
+            icon: '/data/icons/analytic.png'
         }, {
             text: 'Single Dimension Analysis',
             icon: '/data/icons/folder.png',
@@ -54,7 +54,12 @@ Ext.define('ImpulseOne.view.analytics.AnalyticMenuPanel', {
                 id: 'HourId',
                 icon: '/data/icons/folder.png',
                 children: leaves
-            },{
+            }, {
+                text: 'Date',
+                id: 'DateId',
+                icon: '/data/icons/folder.png',
+                children: leaves
+            }, {
                 text: 'Daypart',
                 id: 'DaypartId',
                 icon: '/data/icons/folder.png',
@@ -190,5 +195,17 @@ Ext.define('ImpulseOne.view.analytics.AnalyticMenuPanel', {
                 icon: '/data/icons/folder.png',
                 children: dleaves
             }]
-        }]}
-    });
+        }, {
+           text: 'Advanced Analytics',
+           icon: '/data/icons/folder.png',
+           children: [{
+            text: 'Frequency Analysis',
+            id: 'frequencyId',
+            leaf: true
+        }, {
+            text: 'Consideration Period',
+            id: 'considerationId',
+            leaf: true
+        }]
+    }]}
+});

@@ -11,7 +11,6 @@ Ext.define('ImpulseOne.view.creative.CreativeGrid', {
   extend: 'Ext.grid.Panel',
   alias: 'widget.creativegrid',
   id: 'creative',
-  //columnLines: true,
   features: [filters],
   plugins: [{
     ptype: 'cellediting'
@@ -33,8 +32,7 @@ Ext.define('ImpulseOne.view.creative.CreativeGrid', {
     {
       xtype: 'checkboxfield',
       fieldLabel: 'Show Archived',
-      // icon: 'data/icons/archive.png',
-      checked: true,
+      checked: false,
     },  '-' ,  {
       xtype: 'button',
       text: 'Edit',
@@ -50,9 +48,11 @@ Ext.define('ImpulseOne.view.creative.CreativeGrid', {
       arrowAlign: 'right',
       menu: [{
         id: 'htmlcreative',
-        text: ' + Create HTML Creative'
+        icon: 'data/icons/html.png',
+        text: 'Create HTML Creative'
       }, {
-        text: ' ^ Upload Creatives',
+        text: 'Upload Creatives',
+        icon: 'data/icons/upload.png',
         id: 'creativeupload',
       }]
 
