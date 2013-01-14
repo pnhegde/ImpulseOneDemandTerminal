@@ -28,7 +28,7 @@ Ext.define('ImpulseOne.view.vendor.VendorGrid', {
     this.store = 'Vendor';
     this.tbar = [{
       xtype: 'box',
-      html: '<b style=\'font-size:13px;\'>Direct Vendors</b>'
+      html: '<b style=\'font-size:12px;\'>Direct Vendors</b>'
     }, '->', '-',
     {
       xtype: 'button',

@@ -1,5 +1,7 @@
 Ext.define('ImpulseOne.controller.Globals', {
 	extend: 'Ext.app.Controller',
+	models: ['AccountSetting'],
+	stores: ['AccountSetting'],
 	views: ['header.SettingWin', 'header.FinanceWin'],
 
 	init: function() {
@@ -15,6 +17,12 @@ Ext.define('ImpulseOne.controller.Globals', {
 			},
 			'viewport #dashboard': {
 				afterrender : this.loadDashboard
+			},
+			'settingwin button[text="Apply"]' : {
+				click: this.updateSettings
+			},
+			'settingwin' : {
+				afterrender: this.loadSettings
 			}
 		});
 	},
@@ -33,8 +41,25 @@ Ext.define('ImpulseOne.controller.Globals', {
 		chart.setXMLFile('https://terminal.impulse01.com/anychart/maindashboard.xml');
 	},
 	logout: function() {
-		var redirect = 'index.html';
-		window.location = redirect;
-		//TODO: Implement logout
+		Ext.Ajax.request({
+			url: 'https://terminal.impulse01.com/newServer.php?do=logout',
+			success: function(response) {
+				if(JSON.parse(response.responseText).success) {
+					window.location = 'index.php';
+					window.location.hash = "";
+				} 
+			}
+		});
+	},
+	updateSettings: function(button) {
+		var rec = button.up('settingwin').down('form').getRecord();
+		var val =button.up('settingwin').down('form').getForm().getValues();
+		rec.set(val);
+		this.getAccountSettingStore().sync();
+		button.up('settingwin').close();
+		Ext.example.msg('Update settings', 'Successfully updated');
+	},
+	loadSettings: function(win) {
+		win.down('form').getForm().loadRecord(this.getAccountSettingStore().getAt(0));
 	}
 });

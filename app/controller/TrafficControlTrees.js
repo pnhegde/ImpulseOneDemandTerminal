@@ -545,8 +545,6 @@ createNewBrand: function(button) {
 			frequencyRadio.down('#enablefreqId').setValue(true);
 		}
 		var strategy = results[0].data['strategy'];
-		console.log('Strategy = ' + strategy);
-
 		var mobTab = {
 			title: 'Mobile Settings',
 			items: [{
@@ -605,24 +603,59 @@ createNewBrand: function(button) {
 		var contextTab = {
 			title: 'Context Targeting'
 		};
+		var channel = results[0].data['channel'];
+		console.log(channel);
+		var genTagItems = [{
+			xtype: 'textfield',
+			fieldLabel: 'Domain Name',
+			name: 'gentabdomain'
+		}, {
+			xtype: 'textfield',
+			fieldLabel: 'CPM',
+			name: 'gentabcpm'
+		}];
+		if(channel == '1') {
+			genTagItems.push([{
+				xtype: 'combobox',
+				name: 'gentagsize',
+				fieldLabel: 'Size',
+				store: [ 'Javascript Tag', 'IFrame Tag'],
+				editable: false
+			}, {
+				xtype: 'combobox',
+				name: 'gentagtype',
+				fieldLabel: 'Type',
+				store: ['728x90', '160x600','120x600', '300x250', '336x280'],
+				editable: false
+			}]);
+		} else if(channel == '3') {
+			genTagItems.push({
+				xtype: 'textfield',
+				border: false,
+				readOnly: true,
+				name: 'gentagsize',
+				fieldLabel: 'Size',
+				value: '300x50'	
+			});
+		}
 		var genTagTab = {
 			title: 'Genrate Tags',
 			items: [{
-				xtype: 'combobox',
-				fieldLabel: 'Vendors',
-				store: ['test', 'test2', 'test3']
-			}, {
-				xtype: 'combobox',
-				fieldLabel: 'Size',
-				store: ['test', 'test2']
-			}, {
-				xtype: 'textfield',
-				fieldLabel: 'CPM'
-			}, {
+				xtype: 'form',
+				border: false,
+				fieldDefaults: {height: 28, margin: '0 10 5 5', anchor: '75%'},
+				id: 'genTagFormId',
+				items: genTagItems
+			},{
+				xtype: 'button',
+				text: 'Get Code',
+			},{
 				xtype: 'textarea',
+				id: 'codeareadId',
 				fieldLabel: 'Code',
+				readOnly: true,
 				height: 200,
-				width: 300
+				width: 400
 			}]
 		};
 		var audienceTab = {

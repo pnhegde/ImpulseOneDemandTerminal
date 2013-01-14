@@ -27,7 +27,8 @@ Ext.define('ImpulseOne.view.creative.CreativeGrid', {
     this.store = 'Creative';
     this.tbar = [{
       xtype: 'box',
-      html: '<b style=\'font-size:13px;\'>Banners </b>'
+      height: 18,
+      html: '<h3 style=\'font-size:12px;\'>&nbsp&nbspBanners </h3>'
     }, '->', '-',
     {
       xtype: 'checkboxfield',

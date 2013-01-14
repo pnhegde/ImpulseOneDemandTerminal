@@ -20,6 +20,9 @@ Ext.define('ImpulseOne.controller.EditCampaignWindows', {
 			},
 			'editcampaignwindow #optimizeRadioId': {
 				change: this.disableOptimize
+			},
+			'editcampaignwindow button[text="Get Code"]' : {
+				click: this.getCode
 			}
 		});
 	},
@@ -106,5 +109,27 @@ Ext.define('ImpulseOne.controller.EditCampaignWindows', {
 			Ext.ComponentQuery.query('editcampaignwindow #goalTypeId')[0].enable();
 			Ext.ComponentQuery.query('editcampaignwindow #goalValueId')[0].enable();
 		}	
+	},
+	getCode: function(button) {
+		var v = button.up('editcampaignwindow').down('#genTagFormId').getValues();
+		var dom = v['gentabdomain']; var s = v['gentabsize']; var c  = v['gentabcpm']; var t = v['gentagtype'];
+		var campId = Ext.ComponentQuery.query('traffichome dynamicGrid')[0].getSelectionModel().getSelection()[0].data['Campaign Id'];
+		Ext.Ajax.request({
+			url: 'https://terminal.impulse01.com/newServer.php?do=generate_tag',
+			params: {
+				campaignId: campId,
+				domain: dom,
+				size : s,
+				cpm : c,
+				type: t
+			},
+			success: function(response) {
+				if(JSON.parse(response.responseText).success) {
+					button.up('editcampaignwindow').down('#codeareadId').setValue(JSON.parse(response.responseText).tag) ;
+				} else {
+					Ext.example.msg("Generate Code", "Fail !");
+				}
+			}
+		});
 	}
 });

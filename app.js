@@ -31,13 +31,21 @@ Ext.onReady(function() {
     });
 });
 
+// Check for authentication or any other request exception with every Ajax request. If session expired, redirect back to login page.   
+Ext.Ajax.on('requestexception',function(conn, response,opt){
+    if(response.status == 401) {
+        Ext.example.msg('Session Expired', 'Please login again !');
+        setTimeout(function(){window.location = 'index.php';}, 150d0);
+    }
+});
+
 Ext.application({
     name: 'ImpulseOne',
-    controllers: [
+    controllers: [  //List of all controllers used in this application. 
     'Inventories',
     'Creatives',
     'Data',
-    'Vendors',
+    //'Vendors',
     'Globals',
     //'ExchangeGraphs',
     //'CampaignGraphs',

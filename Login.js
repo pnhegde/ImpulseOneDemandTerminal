@@ -1,12 +1,14 @@
+//After successful login redirect to terminal home. 
 function Redirect() {
     window.location = 'Home.php';
 }
+//Login page starts here. 
 Ext.onReady(function() {
     Ext.QuickTips.init();
     var login = new Ext.FormPanel({
         url: 'https://terminal.impulse01.com/newServer.php?do=authenticate',
         frame: true,
-        title: ' <img src="data/logo-small.png"\>- beta',
+        title: ' <img src="data/logo-small.png"\> &nbsp',
         defaultType: 'textfield',
         monitorValid: true,
         border:false,
@@ -34,14 +36,12 @@ Ext.onReady(function() {
             handler: function() {
                 login.getForm().submit({
                     method: 'POST',
-                    waitTitle: 'Connecting...',
-                    waitMsg: 'Sending Data to the server...',
+                    waitTitle: 'Authenticating...',
                     success: function() {
                         Redirect();
                     },
                     failure: function(form, action) {
                         if(action.failureType == 'server') {
-                            //obj = Ext.util.JSON.decode(action.response.responseText); 
                             Ext.Msg.alert('Login Failed! Try again');
                         } else {
                             Ext.Msg.alert('Warning!', 'Authentication server is unreachable : ' + action.response.responseText);
@@ -53,10 +53,11 @@ Ext.onReady(function() {
         }]
     });
 
+//Create a class for login window. 
 var win = new Ext.Window({
     layout: 'fit',
     width: 350,
-    height: 150,
+    height: 155,
     closable: false,
     resizable: false,
     plain: true,
@@ -65,7 +66,7 @@ var win = new Ext.Window({
     style: 'background-color: #FFF; ',
     bbar: [{
         xtype: 'tbtext',
-        text: ' &copy; 2012 - Impulse Media Pvt.Ltd'
+        text: ' &copy; 2012 - <a href="http://impulsemedia.co.in">Impulse Media Pvt.Ltd</a>'
     }],
     items: [login]
 });

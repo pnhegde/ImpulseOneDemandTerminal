@@ -18,7 +18,8 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
         var me = this;
         this.tbar = [{
             xtype: 'box',
-            html: '<b>Filters</b>'
+            // height: 18,
+            html: '<h3>&nbsp&nbspFilters</h3>'
         }, '-',
         {
             xtype: 'textfield',

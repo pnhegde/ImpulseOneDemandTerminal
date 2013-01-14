@@ -50,29 +50,24 @@ Ext.define('ImpulseOne.controller.Creatives', {
 				showArchive: newValue
 			}
 		});
-},
-editHtmlCreative: function(button) {
-	var me = this;
-	var w = Ext.create('Ext.window.Window', {
-		title: 'Edit HTML Creative',
-		width: 300,
-		height: 200,
-		autoShow: true,
-		modal: true,
-		layout: 'fit',
-		border: false,
-		closable: false,
-		bodyPadding: 10,
-		items: [{
-			xtype: 'form',
-			layout: 'anchor',
-			defaults: {
-				anchor: '100%'
-			},
+	},
+	editHtmlCreative: function(button) {
+		var me = this;
+		var w = Ext.create('Ext.window.Window', {
+			title: 'Edit HTML Creative',
+			width: 300,
+			height: 200,
+			autoShow: true,
+			modal: true,
+			layout: 'fit',
+			border: false,
+			closable: false,
 			items: [{
-				xtype: 'textarea',
-				name: 'tagCode',
-					//value: button.up('creativegrid').getSelectionModel().getSelection()[0].data['tagCode']
+				xtype: 'form',
+				layout: 'fit',
+				items: [{
+					xtype: 'textarea',
+					name: 'tagCode',
 				}],
 				buttons: [{
 					text: 'Save',
@@ -97,11 +92,11 @@ editHtmlCreative: function(button) {
 				}]
 			}]
 		});
-	w.show();
-	w.down('form').getForm().loadRecord(button.up('creativegrid').getSelectionModel().getSelection()[0]);
+		w.show();
+		w.down('form').getForm().loadRecord(button.up('creativegrid').getSelectionModel().getSelection()[0]);
 
-},
-creativeUpload: function() {
+	},
+	creativeUpload: function() {
 		//Ext.widget('uploadcreative').show();
 		var uploadDialog = Ext.create('Ext.ux.upload.Dialog', {
 			dialogTitle: 'creative Upload',

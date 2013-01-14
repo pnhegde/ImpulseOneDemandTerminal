@@ -8,7 +8,8 @@ Ext.define('ImpulseOne.view.analytics.AnalyticHome', {
     layout: 'border',
     tbar : [{
         xtype: 'box',
-        html: '<b>Advanced Analytics</b>'
+        height: 18,
+        html: '<h3 style=\'font-size:12px;\'> &nbsp&nbspAdvanced Analytics</h3>'
     }, '->',{
         xtype: 'combobox',
         width: 380,

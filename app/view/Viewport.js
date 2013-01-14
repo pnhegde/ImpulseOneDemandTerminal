@@ -19,30 +19,31 @@
     },
     initComponent: function() {
         var me = this;
-
+        //This is the parent container for all components of this application. Everything comes under this viewport component.
         Ext.apply(me, {
             items: [{
-                xtype: 'container',
+                xtype: 'container', // Header region. Contains App name, Logo, Logout menu etc. 
                 height: 40,
                 region: 'north',
                 html: "<img src=\'data/logo.png\' \> ",
-
+                //Components of Header region
                 items: [{
                     xtype: 'button',
-                    border: false,
+                    border: true,
                     arrowAlign: 'right',
-                    width: 140,
-                    height: 40,
+                    width: 200,
+                    height: 30,
                     arrowCls: 'arrow',
-                    text: ' <h3 style = \'color:#009;font-size:13px; \'>User Name</h3>',
+                    text: '<h3 style = \'color:#009;font-size:12px; \'> '+accountName+'</h3>',
                     style: {
                         'position': 'absolute',
                         'right': '20px',
-                        'top': '1px',
+                        'top': '10px',
                         'background': 'transparent !important'
                     },
                     menu: [{
                         text: 'Settings',
+                        width: 190,
                         icon: 'data/icons/setting.png',
                         id: 'settings'
                     }, {
@@ -56,7 +57,7 @@
                     }]
                 }]
             }, {
-                xtype: 'tabpanel',
+                xtype: 'tabpanel', //Center region is a tab panel. Consists of different operating tabs. 
                 cls: 'tabCss',
                 // deferredRender: true,
                 items: [{
@@ -105,34 +106,33 @@
                     id: 'creatives',
                     xtype: 'creativegrid'
 
-                }, {
+                }, /*{
                     title: 'Vendor Management',
                     id: 'vendors',
                     xtype: 'vendorgrid'
-                }, {
+                },*/ {
                     title: 'Campaign Insight',
                     id: 'analytics',
                     xtype: 'analytichome'
                 }],
-                listeners: {
-                    tabchange: function(tabPanel, tab) {
-                        window.location.hash = '#' + tab.id;
-                    },
-                    afterrender: function(tabpanel) {
-                        var i = window.location.hash != "" ? (window.location.hash).substring(1) : "dashboard"
-                        window.location.hash = '#'+i;
-                        tabpanel.setActiveTab(i);
-                    }
-                },
+                // listeners: {
+                //     tabchange: function(tabPanel, tab) {
+                //         window.location.hash = '#' + tab.id;
+                //     },
+                //     afterrender: function(tabpanel) {
+                //         var i = window.location.hash != "" ? (window.location.hash).substring(1) : "dashboard"
+                //         window.location.hash = '#'+i;
+                //         tabpanel.setActiveTab(i);
+                //     }
+                // },
                 margin: '0 0 0 0',
                 region: 'center'
             }, {
-                xtype: 'toolbar',
+                xtype: 'toolbar', //Footer of the page. 
                 height: 25,
                 region: 'south',
-                // html: '<>'
-                // "<h4 style=\'font-size:10px;position:absolute;left:600px;color:#fff; \'>\
-                // Copyright (C) 2012 Impulse Media Pvt.Ltd </h4>"
+                html: '<h4 style=\'font-size:11px;position:absolute;left:600px;color:#000; \'>\
+                Impulse Demand Terminal &copy; 2012  - <a href = "http://impulsemedia.co.in">Impulse Media Pvt.Ltd</a> </h4>'
             }
 
             ]

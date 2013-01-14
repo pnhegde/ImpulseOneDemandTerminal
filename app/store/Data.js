@@ -34,6 +34,9 @@ Ext.define('ImpulseOne.store.Data', {
 		}
 		else if( operation.response['status'] != 200) {
 			Ext.example.msg('Error','Server Error. Try again');
+		} else if( operation.response['status'] == 401) {
+			Ext.example.msg('Session Expired','Please login again');
+			Ext.ComponentQuery.query('viewport #login')[0].fireEvent('click');
 		} 
    },
 
@@ -46,6 +49,9 @@ Ext.define('ImpulseOne.store.Data', {
 		}
 		else if( operation.response['status'] != 200) {
 			Ext.example.msg('Error','Server Error. Try again');
+		} else if( operation.response['status'] == 401) {
+			Ext.example.msg('Session Expired','Please login again');
+			Ext.ComponentQuery.query('viewport #login')[0].fireEvent('click');
 		}
     	
     },

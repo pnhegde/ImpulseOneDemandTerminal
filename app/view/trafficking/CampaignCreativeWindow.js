@@ -88,7 +88,7 @@ Ext.define('ImpulseOne.view.trafficking.CampaignCreativeWindow', {
         stripeRows: true,
       },
     }], this.buttons = [{
-      text: 'Create',
+      text: 'Save',
       action: 'save'
     }, {
       text: 'Cancel',
