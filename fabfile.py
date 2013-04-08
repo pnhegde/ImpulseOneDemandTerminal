@@ -1,3 +1,4 @@
+#Deployment using fabric. Modify the code according to your requirement. 
 from fabric.api import local
 
 def prepare_deploy():
