@@ -19,6 +19,7 @@ Ext.define('ImpulseOne.view.trafficking.TrafficHome', {
         id: 'dynamicGridId',
         region: 'center',
         title: 'Trafficking',
+        icon: '/data/icons/campaign.png',
         url: 'https://terminal.impulse01.com/newServer.php?do=get_advertisers'
     }]
 });

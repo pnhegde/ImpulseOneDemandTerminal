@@ -7,14 +7,13 @@ Ext.define('ImpulseOne.view.analytics.AnalyticHome', {
     border: false,
     layout: 'border',
     tbar : [{
-        xtype: 'box',
-        height: 18,
-        html: '<h3 style=\'font-size:12px;\'> &nbsp&nbspAdvanced Analytics</h3>'
+        icon: '/data/icons/analytics.png',
+        text: 'Advanced Analytics'
     }, '->',{
         xtype: 'combobox',
         width: 380,
         name: 'campaignSearch',
-        fieldLabel: 'Select Campaign',
+        fieldLabel: 'Change Campaign',
         emptyText: 'Search for Campaigns',
         editable: true,
         typeAhead: true,
@@ -36,10 +35,10 @@ Ext.define('ImpulseOne.view.analytics.AnalyticHome', {
                 }
             }
         }
-    },'-' ,{
+    },'-' ,/*{
         xtype: 'button',
         text: 'Load'
-    },'-'],
+    },'-'*/],
     items: [{
         xtype: 'analyticmenupanel',
         region: 'west',

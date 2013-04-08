@@ -226,6 +226,14 @@ Ext.define('ImpulseOne.view.trafficking.EditCampaignWindow', {
                                         }
                                     }
                                 }
+                            },
+                            listConfig: {
+                                getInnerTpl: function() {
+                                    var tpl = '<div>'+
+                                    '<img src="data/icons/flags/{countryId}.png" align="left">&nbsp;&nbsp;'+
+                                    '{countryName}</div>';
+                                    return tpl;
+                                }
                             }
                         }, {
                             xtype: 'combobox',

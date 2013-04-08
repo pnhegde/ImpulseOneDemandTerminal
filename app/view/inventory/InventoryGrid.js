@@ -10,16 +10,15 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
     loadMask: true,
     verticalScrollerType: 'paginggridscroller',
     invalidateScrollerOnRefresh: false,
-    disableSelection: true,
+    //disableSelection: true,
     remoteSort: true,
 
     initComponent: function() {
         this.store = 'Inventory';
         var me = this;
         this.tbar = [{
-            xtype: 'box',
-            // height: 18,
-            html: '<h3>&nbsp&nbspFilters</h3>'
+            icon:'/data/icons/filter_data.png',
+            text: 'Filters'
         }, '-',
         {
             xtype: 'textfield',
@@ -42,7 +41,7 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
             xtype: 'combobox',
             name: 'exchangeFilter',
             itemCls: 'combobox-style',
-            store: ['Google AdX', 'OpenX', 'Rubicon', 'Pubmatics', 'SpotXchange'],
+            store: ['GoogleAdX', 'OpenX', 'Rubicon', 'Pubmatics', 'SpotXchange'],
             emptyText: 'Exchange',
             editable: true,
             delimiter: ' and ',
@@ -77,10 +76,16 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
                 ],
                 autoLoad: false
             }),
+            listConfig: {
+                getInnerTpl: function() {
+                    var tpl = '<div>'+
+                    '<img src="data/icons/flags/{countryId}.png" align="left">&nbsp;&nbsp;'+
+                    '{countryName}</div>';
+                    return tpl;
+                }
+            },
             emptyText: 'Country',
             editable: false,
-            typeAhead: true,
-            multiSelect: true,
             id: 'CountryFilter'
         }, {
             xtype: 'combobox',
@@ -131,15 +136,15 @@ Ext.define('ImpulseOne.view.inventory.InventoryGrid', {
                     icon: 'data/icons/csv.png',
                     text: 'CSV file',
                     handler: function() {
-                       var channel = Ext.getCmp('ChannelFilter').getValue();
-                       var filter = Ext.getCmp('DomainFilter').getValue();
-                       var exchange = Ext.getCmp('ExchangeFilter').getValue();
-                       var category = Ext.getCmp('CategoryFilter').getValue();
-                       var country = Ext.getCmp('CountryFilter').getValue();
-                       var url = 'https://terminal.impulse01.com/newServer.php?do=exportInventory&channel='+channel+'&filter='+filter+'&exchange='+exchange+'&category='+category+'&country='+country+'&format=CSV';
-                       window.open(url, '_blank');
-                   }
-               }, {
+                     var channel = Ext.getCmp('ChannelFilter').getValue();
+                     var filter = Ext.getCmp('DomainFilter').getValue();
+                     var exchange = Ext.getCmp('ExchangeFilter').getValue();
+                     var category = Ext.getCmp('CategoryFilter').getValue();
+                     var country = Ext.getCmp('CountryFilter').getValue();
+                     var url = 'https://terminal.impulse01.com/newServer.php?do=exportInventory&channel='+channel+'&filter='+filter+'&exchange='+exchange+'&category='+category+'&country='+country+'&format=CSV';
+                     window.open(url, '_blank');
+                 }
+             }, {
                 text: 'Microsoft Excel',
                 id: 'excel',
                 icon: 'data/icons/excel.png',

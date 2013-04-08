@@ -44,11 +44,11 @@ Ext.define('ImpulseOne.view.header.SettingWin' ,{
                 labelWidth: 190,
                 name: 'address'
             }, {
-               xtype: 'textfield',
-               labelWidth: 190,
-               fieldLabel: 'City',
-               name: 'city'
-           }, {
+             xtype: 'textfield',
+             labelWidth: 190,
+             fieldLabel: 'City',
+             name: 'city'
+         }, {
             xtype: 'textfield',
             labelWidth: 190,
             fieldLabel: 'State',
@@ -57,9 +57,39 @@ Ext.define('ImpulseOne.view.header.SettingWin' ,{
             xtype: 'combobox',
             name: 'country',
             labelWidth: 190,
-            store: ['India', 'South Africa', 'Kenya', 'UAE', 'Malaysia', 'Indonesia', 'Singapore', 'Hong Kong', 'South Korea', 'Vietnam', 'Thailand', 'Phillipines', 'Japan'],
+            //store: ['India', 'South Africa', 'Kenya', 'UAE', 'Malaysia', 'Indonesia', 'Singapore', 'Hong Kong', 'South Korea', 'Vietnam', 'Thailand', 'Phillipines', 'Japan'],
+            valueField: 'countryId',
+            displayField: 'countryName',
+            queryMode: 'local',
+            store: new Ext.data.SimpleStore({
+                fields: ['countryId', 'countryName'],
+                data: [
+                ['IN', 'India'],
+                ['ZA', 'South Africa'],
+                ['KE', 'Kenya'],
+                ['AE', 'UAE'],
+                ['MY', 'Malaysia'],
+                ['ID', 'Indonesia'],
+                ['SG', 'Singapore'],
+                ['HK', 'Hong Kong'],
+                ['SK', 'South Korea'],
+                ['VN', 'Vietnam'],
+                ['TH', 'Thailand'],
+                ['PH', 'Phillipines'],
+                ['JP', 'Japan']
+                ],
+                autoLoad: false
+            }),
             fieldLabel: 'Country',
             editable: false,
+            listConfig: {
+                getInnerTpl: function() {
+                    var tpl = '<div>'+
+                    '<img src="data/icons/flags/{countryId}.png" align="left">&nbsp;&nbsp;'+
+                    '{countryName}</div>';
+                    return tpl;
+                }
+            }
         }, {
             xtype: 'textfield',
             labelWidth: 190,

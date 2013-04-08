@@ -69,6 +69,7 @@ Ext.define('ImpulseOne.controller.EditCampaignWindows', {
 			width: 300,
 			msg: 'You are closing a window that has unsaved changes. \n Would you like to save your changes?',
 			buttons: Ext.Msg.YESNOCANCEL,
+			icon: Ext.window.MessageBox.INFO,
 			fn: function(btn) {
 				if(btn == 'yes') {
 					var win = button.up('editcampaignwindow');
@@ -81,8 +82,7 @@ Ext.define('ImpulseOne.controller.EditCampaignWindows', {
 				} else if(btn == 'no') {
 					button.up('window').close();
 				}
-			},
-			icon: Ext.window.MessageBox.QUESTION
+			}
 		});
 	},
 	enableCheckbox: function(button, newval, oldval) {

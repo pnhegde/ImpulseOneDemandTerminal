@@ -53,8 +53,11 @@ Ext.define('ImpulseOne.controller.Analytics', {
 			'analytichome': {
 				afterrender: this.showBubble
 			},
-			'analytichome button[text="Load"]': {
-				click: this.addDashboardPanel
+			// 'analytichome button[text="Load"]': {
+			// 	click: this.addDashboardPanel
+			// },
+			'analytichome #campaignSearchId': {
+				change: this.addDashboardPanel
 			},
 			'graphpanel #dashboardPanel': {
 				afterrender: this.loadCampaignDashboard
@@ -697,8 +700,9 @@ graphPanel.insert(0,chart);
 	Ext.example.msg('Store', 'Empty!');
 }
 },
-addDashboardPanel: function(button) {
-	if(Ext.ComponentQuery.query('analytichome #campaignSearchId')[0].getValue()) {
+addDashboardPanel: function(button,newv,oldv) {
+	// Ext.ComponentQuery.query('analytichome #campaignSearchId')[0].getValue()
+	if(newv) {
 		var graphPanel = Ext.ComponentQuery.query('analytichome graphpanel')[0];
 		graphPanel.setVisible(true);
 		var menuPanel = Ext.ComponentQuery.query('analytichome analyticmenupanel')[0];

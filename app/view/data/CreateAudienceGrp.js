@@ -26,14 +26,15 @@ Ext.define('ImpulseOne.view.data.CreateAudienceGrp' ,{
             },
             {
                 xtype: 'box',
-                html :  '</br>Auto remove this user from this group after a certain number of days. Enter the number of days. Enter 0 for permanent inclusions. ',
-                height: 45,
+                html :  '</br>Auto remove this user from this group after a certain number of days.(Enter 0 for permanent inclusions) ',
+                height: 55,
                 bodyPadding: 10
             },
             {
                 xtype: 'numberfield',
                 name : 'days',
-                fieldLabel: 'No of days'
+                value: '0',
+                fieldLabel: 'Number of days.'
             }]
         }
         ];

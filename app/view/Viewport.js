@@ -25,9 +25,36 @@
                 xtype: 'container', // Header region. Contains App name, Logo, Logout menu etc. 
                 height: 40,
                 region: 'north',
-                html: "<img src=\'data/logo.png\' \> ",
+
                 //Components of Header region
                 items: [{
+                    xtype: 'box',
+                    html: "<img src=\'data/logo.png\' \> ",
+
+                },{
+                    xtype: 'button',
+                    text: '<b>Intro</b>',
+                    width: 100,
+                    height: 25,
+                    style: {
+                        'position': 'absolute',
+                        'right': '420px',
+                        'top': '12px',
+                        'background': 'transparent !important'
+                    },
+                    handler: function() {
+                        introJs().start();
+                    }
+                },{
+                    xtype: 'box' ,
+                    html: '<div id="google_translate_element" align= \'div\' data-intro=\'Change your default language!\' data-step=\'1\'>',
+                    style: {
+                        'position': 'absolute',
+                        'right': '250px',
+                        'top': '12px',
+                        'background': 'transparent !important'
+                    }    
+                },{
                     xtype: 'button',
                     border: true,
                     arrowAlign: 'right',
@@ -66,18 +93,17 @@
                     height:  Ext.getBody().getViewSize().height - 49,
                     layout: 'fit',
                     autoScroll: true,
-                    title: 'Dashboard',
+                    title: '<div data-intro=\'Manage your Dashboard!\' data-step=\'2\'>Dashboard</div>',
                     id: 'dashboard',
                 }, {
-                    title: 'Campaign Console',
+                    title: '<div data-intro=\'Manage your Campaign!\' data-step=\'3\'>Campaign Console</div>',
                     id: 'traffic',
                     layout: 'fit',
                     items: [{
                         xtype: 'traffichome',
-
                     }]
                 }, {
-                    title: 'Inventory Query',
+                    title: '<div data-intro=\'Inventory Control!\' data-step=\'4\'>Inventory Query</div>',
                     id: 'inventory',
                     layout: 'border',
                     items: [{
@@ -94,7 +120,7 @@
                     // }
                     ]
                 }, {
-                    title: 'Audience Management',
+                    title: '<div data-intro=\'Manage your Audience!\' data-step=\'5\'>Audience Management</div>',
                     id: 'data',
                     // tabConfig: {
                     //     tooltip: 'tooltip',
@@ -102,7 +128,7 @@
                     // },
                     xtype: 'datagrid',
                 }, {
-                    title: 'Creative Management',
+                    title: '<div data-intro=\'Creative management!\' data-step=\'6\'>Creative Management</div>',
                     id: 'creatives',
                     xtype: 'creativegrid'
 
@@ -111,7 +137,7 @@
                     id: 'vendors',
                     xtype: 'vendorgrid'
                 },*/ {
-                    title: 'Campaign Insight',
+                    title: '<div data-intro=\'Advanced Analytics!\' data-step=\'7\'>Campaign Insight</div>',
                     id: 'analytics',
                     xtype: 'analytichome'
                 }],

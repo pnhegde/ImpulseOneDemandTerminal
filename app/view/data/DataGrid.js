@@ -25,9 +25,8 @@ Ext.define('ImpulseOne.view.data.DataGrid', {
   initComponent: function() {
     this.store = 'Data';
     this.tbar = [{
-      xtype: 'box',
-      height: 18,
-      html: '<h3 style=\'font-size:12px;\'>&nbsp&nbspImpulse Audience Cloud</h3>'
+      icon: '/data/icons/audience.png',
+      text: 'Impulse Audience Cloud'
     }, '->', '-',
     {
       xtype: 'button',

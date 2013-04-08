@@ -45,7 +45,16 @@ Ext.define('ImpulseOne.controller.TrafficControlTrees', {
 		};
 		var grid = this.getGrid(SelectedNodeId, nodeType);
 		home.remove(home.items.last(), true);
-		// home.doLayout();
+		/*home.add({
+			xtype: 'panel',
+			name: 'campaignInfoPanel',
+			id: 'campaignInfoId',
+			height: 200,
+			region: 'south',
+			hidden: true,
+			title: 'Campaign Info',
+			split: true
+		});*/
 		home.add(grid);
 		home.doLayout();
 	},
@@ -464,6 +473,10 @@ createNewBrand: function(button) {
 		win.close();
 	},
 	enableDeleteButton: function(grid, record) {
+		// var infoPan = Ext.ComponentQuery.query('traffichome #campaignInfoId')[0];
+		// if(infoPan.isHidden()){
+		// 	infoPan.setVisible(true);
+		// }
 		//var record = record[0];
 		var editButton = Ext.getCmp('editButtonId');
 		var pauseButton = Ext.getCmp('pauseButtonId');
@@ -471,9 +484,11 @@ createNewBrand: function(button) {
 		var archiveButton = Ext.getCmp('archiveButtonId');
 		var activateButton = Ext.getCmp('activateButtonId');
 		var creativeButton = Ext.getCmp('creativeButtonId');
-		if(editButton.disabled) {
-			editButton.enable();
-			creativeButton.enable();
+		if(editButton){
+			if(editButton.disabled) {
+				editButton.enable();
+				creativeButton.enable();
+			}
 		}
 		if(record.data['Status'].indexOf("Draft") != -1) {
 			if(deleteButton.disabled) {
