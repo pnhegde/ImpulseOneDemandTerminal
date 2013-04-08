@@ -5,6 +5,6 @@ def prepare_deploy():
     commit_msg = "Code updated"
     commit_msg =  raw_input("Enter commit message: ")
     local("git commit -m \""+commit_msg+"\"")
-    local("git push -u origin master")
+    local("git push origin master")
 
 
